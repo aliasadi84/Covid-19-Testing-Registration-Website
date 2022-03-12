@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Check In | WCHC</title>
+<link rel="stylesheet" href="../../css/nav_bar.css">
+<link rel="stylesheet" href="../../css/main.css">
+<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+</head>
+
+<body>
+
+<script language="javascript" type="text/javascript" src="header.txt"></script>
+
+<fieldset>
+  <legend><h4>Check-In</h4></legend>
+      <form>
+          <h2>Instruction: </h2>
+          <p>IN ORDER TO CHECK-IN PLEASE FILL OUT THE INFORMATION ON YOUR LOCATION, CAR (MAKE, MODEL & COLOR), & LICENSE PLATE NUMBER</p><br>
+          <h3>Parking Lot Image:</h3><br>
+          <img id="myImg" src="../../assets/draw.jpg" alt="Parked Location" style="width:100%;max-width:300px"><br><br>
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <span class="clo">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+          </div>
+
+          <label for="location">Location:</label>
+          <select name="location" id="location">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+          </select><br><br>
+          <div id="vehicle" class="info">
+          <tr>
+            <td colspan="2">
+              <h3>Select Vehicle Information</h3>
+          <select name="make" id="formmake">
+            <option value="" selected="selected">Make</option></select>
+            
+          <select name="model" id="formmodel">
+              <option value="" selected="selected">Model</option></select>
+          <select name="color" id="formcolor">
+              <option value="" selected="selected">Color</option></select>
+            </tr>
+            </td><br>
+       <h2>License Plate: </h2>
+        <input type="text" id="plate" name="plate" value="Plate Number"><br><br>
+        <input type="submit" value="Submit"><br>
+                      </div>
+        </div>
+        </form>
+      </div>
+</fieldset>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var img = document.getElementById("myImg");
+  var modalImg = document.getElementById("img01");
+  var captionText = document.getElementById("caption");
+  img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+  }
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("clo")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }
+  </script>
+
+  <script>
+    var navList = document.getElementById("nav-lists");
+    function Show() {
+    navList.classList.add("_Menus-show");
+    }
+    
+    function Hide(){
+    navList.classList.remove("_Menus-show");
+    }
+    </script>
+
+  <script src="./main.js"></script>
+</body>
+</html>

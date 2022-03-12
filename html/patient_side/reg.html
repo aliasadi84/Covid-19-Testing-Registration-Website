@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Registration | WCHC</title>
+<link rel="stylesheet" href="../../css/nav_bar.css">
+<link rel="stylesheet" href="../../css/main.css">
+<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+</head>
+
+		<script type="text/javascript">
+			/*window.onload = function() {
+			  document.getElementById('dependent').style.display = 'none';
+			};
+			function myFunction() {
+			  var x = document.getElementById("dependent");
+			  if (x.style.display === "none") {
+				x.style.display = "block";
+			  } else {
+				x.style.display = "none";
+			  }
+      }*/
+    function checkLoggedIn() {
+        if (loggedIn) //Add variable later to determine if user is logged in or not
+            window.location.href = "account.html";
+        else
+            window.location.href = "login.html";
+    }
+    
+      function pwdRequirements() {
+      var passwordEntry = document.getElementById("passwordEntry");
+      passwordEntry.setCustomValidity("Must be at least 8 characters, have one uppercase letter, one number, and one special character");
+    }
+	
+    function validatePassword() {
+			var password = document.getElementById("password")
+            if (password.value.match(/[a-z]/g) && password.value.match(/[A-Z]/g) && password.value.match(/[0-9]/g) && password.value.match(/[^a-zA-Z\d]/g) && password.value.length >= 8) {
+                password.setCustomValidity('');
+				checkMatching();
+			}
+            else {
+                password.setCustomValidity("Password doesn't meet minimum requirements");
+				password.onchange = validatePassword;
+			}				
+
+    
+			
+		}
+    function checkMatching() {
+        var confirm_password = document.getElementById("confirmPassword");
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords don't match");
+        } 
+        else {
+            confirm_password.setCustomValidity('');
+        }	
+        confirm_password.onkeyup = checkMatching;
+    }
+    
+    </script>
+
+    
+    <body>
+      <script language="javascript" type="text/javascript" src="header.txt"></script>
+      <header>
+        <div class="container">
+        <h1>Register For an Account</h1>
+       </div><br>
+      </header>
+
+        <form action="account.html" autocomplete="on">
+            <h3>Please fill out the following information</h3>
+            <p>All fields are required</p>
+
+            <label for="fname">First Name</label><br>
+            <input type="text" id="fname" name="fname" placeholder="First Name" required autofocus autocomplete><br>
+            
+            <label for="lname">Last Name</label><br>
+            <input type="text" id="lname" name="lname" placeholder="Last Name" required autofocus autocomplete><br>
+      
+            Gender Assigned at Birth<br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+
+            <label for="dob">Date of Birth</label><br>
+            <input type="date" id="dob" name="dob" placeholder="Date of Birth" required autofocus autocomplete><br>
+        
+            <label for="race">Race/Ethnicity</label><br>
+            <select id = "race" name="race">
+              <option value=""  selected disabled hidden></option>
+              <option value="arab">Arab</option>
+	      <option value="asian">Asian</option>
+              <option value="black">Black/African American</option>
+              <option value="indo">Indo-Aryan</option>
+	      <option value="white">White</option>    
+              <option value="other">Other</option>
+            </select>
+
+            <br><label for="email">E-Mail Address</label><br>
+            <input type="email" id="email" name="email" placeholder="E-Mail Address" required autofocus autocomplete><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="passwordEntry" name="password" placeholder="Password" onclick="pwdRequirements" required autofocus autocomplete><br>
+
+            <label for="password">Confirm Password</label><br>
+            <input type="password" id="confirmPass" name="confirmPass" placeholder="Confirm Password" required autofocus autocomplete><br>
+        
+            <label for="phoneNum">Phone Number</label><br>
+            <input type="tel" id="phoneNum" name="phoneNum" placeholder="Phone Number" required autofocus autocomplete><br><br>
+            <input type="submit" value="Register" onclick="pwdRequirements"><br>
+    </form>
+
+    <script>
+      var navList = document.getElementById("nav-lists");
+      function Show() {
+      navList.classList.add("_Menus-show");
+      }
+      
+      function Hide(){
+      navList.classList.remove("_Menus-show");
+      }
+      </script>
+    </body>
+
+</html>

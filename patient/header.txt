@@ -1,0 +1,1 @@
+document.write('<div class="container"><div class="logo"><a href="#"><img src="assets/img/pp.png" alt="logo"></a></div><div class="navbar"><ul><li><a href="patientlogout.php?logout">Log Out</a></li><ul><div class="icon-bar" onclick="Show()"><i></i><i></i><i></i></div><ul id="nav-lists"><li class="close"><span onclick="Hide()">×</span></li></ul></div></div><br>')

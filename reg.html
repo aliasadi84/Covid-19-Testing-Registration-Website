@@ -1,0 +1,114 @@
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="assets/css/submit.css">
+</head>
+
+<header>
+    <div class="hero-image">
+        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="100%"></a>
+    </div>
+</header>
+
+		<script type="text/javascript">
+		
+	
+    function validatePassword() {
+			var password = document.getElementById("password")
+            if (password.value.match(/[a-z]/g) && password.value.match(/[A-Z]/g) && password.value.match(/[0-9]/g) && password.value.match(/[^a-zA-Z\d]/g) && password.value.length >= 8) {
+                password.setCustomValidity('');
+				checkMatching();
+			}
+            else {
+                password.setCustomValidity("Password doesn't meet minimum requirements");
+				password.onchange = validatePassword;
+			}				
+			
+		}
+		
+		function checkMatching() {
+			var confirm_password = document.getElementById("confirmPassword");
+			if (password.value != confirm_password.value) {
+				confirm_password.setCustomValidity("Passwords don't match");
+			} 
+			else {
+				confirm_password.setCustomValidity('');
+			}	
+			confirm_password.onkeyup = checkMatching;
+		}
+    
+    </script>
+
+      <header>
+         <h1>Register Account</h1>
+      </header>
+      
+    <body>
+    
+    <div class="bf">
+        <form method="post" action="connection.php" autocomplete="on">
+        
+            <h2>All Fields are Required</h2>
+
+            <label for="patientFirstName">First Name</label><br>
+            <input type="text" id="patientFirstName" name="patientFirstName" placeholder="First Name" required autofocus autocomplete><br>
+            <br>
+            <label for="patientLastName">Last Name</label><br>
+            <input type="text" id="patientLastName" name="patientLastName" placeholder="Last Name" required autofocus autocomplete><br>
+      
+            <br>
+            Gender Assigned at Birth<br>
+            <input type="radio" id="male" name="patientGender" value="male">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="patientGender" value="female">
+            <label for="female">Female</label><br>
+
+            <br>
+            <label for="patientDOB">Date of Birth</label><br>
+            <input type="date" id="patientDOB" name="patientDOB" placeholder="Date of Birth" required autofocus autocomplete><br>
+ 
+            <br>
+           <label for="race">Race</label><br>
+            <select id = "race" name="race">
+              <option value=""  selected disabled hidden></option>
+              <option value="arab">Arab</option>
+	      <option value="asian">Asian</option>
+              <option value="black">Black/African American</option>
+              <option value="indo">Indo-Aryan</option>
+	      <option value="white">White</option>    
+              <option value="other">Other</option>
+            </select>
+
+            <br>
+            <br><label for="patientEmail">E-Mail Address</label><br>
+            <input type="email" id="patientEmail" name="patientEmail" placeholder="E-Mail Address" required autofocus autocomplete><br><br>
+            
+            <label for="patientPhone">Phone Number</label><br>
+            <input type="tel" id="patientPhone" name="patientPhone" placeholder="Phone Number" required autofocus autocomplete><br>
+            
+            <br><label for="icPatient">Username</label><br>
+            <input type="text" id="icPatient" name="icPatient" placeholder="Username" required autofocus><br>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+
+            <label for="password">Confirm Password</label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter Password" required><br>
+        
+        
+        <br><br>
+          <button class="button3" type="submit" onclick="validatePassword()"> Register</button>
+          
+    </form>
+    </div>
+    
+    </body>
+
+</html>

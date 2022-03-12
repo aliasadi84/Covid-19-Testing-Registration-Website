@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Appointment | WCHC</title>
+<link rel="stylesheet" href="../../css/nav_bar.css">
+<link rel="stylesheet" href="../../css/main.css">
+<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<script language="javascript" type="text/javascript" src="header.txt"></script>
+<fieldset>
+  <legend><h4>Appointment</h4></legend>
+      <form>
+          <h3>Instruction: </h3>
+          <p>PLEASE CHOOSE THE ANSWER THAT APPLIES TO YOU AND FOLLOW THE INSTRUCTIONS BASED ON YOUR RESPONSE</p></br>
+          <h3>Health Questionaire:</h3>
+          <p>Regardless of your vaccination status, have
+            you experienced any of the symptoms in
+            the list below in the past 48 hours?
+          </p>
+
+
+        <input type="checkbox" class= "largerCheckbox" id="symptom1" name="symptom1" value="fever or chills">
+        <label for="symptom1"> Fever or chills</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom2" name="symptom2" value="cough">
+        <label for="symptom2"> Cough</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom3" name="symptom3" value="shortness of breath or difficulty breathing">
+        <label for="symptom3"> Shortness of breath or difficulty breathing</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom4" name="symptom4" value="fatigue">
+        <label for="symptom4"> Fatigue</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom5" name="symptom5" value="muscle or body aches">
+        <label for="symptom5"> Muscle or body aches</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom6" name="symptom6" value="headache">
+        <label for="symptom6"> Headache</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom7" name="symptom7" value="new loss of taste or smell">
+        <label for="symptom7"> New loss of taste or smell</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom8" name="symptom8" value="sore throat">
+        <label for="symptom8"> Sore throat</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom9" name="symptom9" value="congestion or runny nose">
+        <label for="symptom9"> Congestion or runny nose</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom10" name="symptom10" value="nausea or vomiting">
+        <label for="symptom10"> Nausea or vomiting</label><br><br>
+        <input type="checkbox" class= "largerCheckbox" id="symptom11" name="symptom11" value="diarrhea">
+        <label for="symptom11"> Diarrhea</label><br><br>
+
+
+        <p>Are you isolating or quarantining because you
+          tested positive for COVID-19 or are worried
+          that you may be sick with COVID-19?</p>
+          <input type="radio" class= "largerRadio" id="yes_isolating" name="isolating" value="yes_isolating">
+          <label for="yes_isolating"> Yes</label><br><br>
+          <input type="radio" class= "largerRadio" id="no_isolating" name="isolating" value="no_isolating">
+          <label for="no_isolating"> No</label><br>
+
+
+        <p>Have you been in close physical contact in
+          the last 14 days with:</p>
+          <input type="radio" class= "largerRadio" id="yes_contact" name="contact" value="yes_contact">
+          <label for="yes_contact"> Yes</label><br><br>
+          <input type="radio" class= "largerRadio" id="no_contact" name="contact" value="no_contact">
+          <label for="no_contact"> No</label><br>
+
+
+        <p>Have you traveled in the past 10 days?</p>
+          <input type="radio" class= "largerRadio" id="yes_travel" name="travel" value="yes_travel">
+          <label for="yes_travel"> Yes</label><br><br>
+          <input type="radio" class= "largerRadio" id="no_travel" name="travel" value="no_travel">
+          <label for="no_travel"> No</label><br>
+
+
+        <p>Are you vaccinated for COVID-19?</p>
+          <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated" value="yes_vaccinated">
+          <label for="yes_travel"> Yes</label><br><br>
+          <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated" value="no_vaccinated">
+          <label for="no_vaccinated"> No</label><br><br>
+        <button type="button" class="next-btn">Next</button>
+        </div>
+      </form>
+      </fieldset>
+      
+  <script src="./main.js"></script>
+
+  <script>
+    var navList = document.getElementById("nav-lists");
+    function Show() {
+    navList.classList.add("_Menus-show");
+    }
+    
+    function Hide(){
+    navList.classList.remove("_Menus-show");
+    }
+    </script>
+</body>
+</html>
