@@ -48,7 +48,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             <a href="appo.php?patientId=<?php echo $userRow['icPatient']; ?>">
                 <button class="button"><i class="fa-solid fa-calendar-days"></i> Schedule</button>
             </a><br><br>
-            <a href="check_in.html">
+            <a href="check_in.php">
                 <button class="button"><i class="fa-solid fa-car-side"></i> Check-In</button>
             </a><br><br>
             <a href="results.html">

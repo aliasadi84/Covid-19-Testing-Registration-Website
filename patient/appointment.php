@@ -22,12 +22,29 @@ $patientEmail = mysqli_real_escape_string($con,$userRow['patientEmail']);
 $scheduleid = mysqli_real_escape_string($con,$appid);
 $symptom = mysqli_real_escape_string($con,$_POST['symptom']);
 $comment = mysqli_real_escape_string($con,$_POST['comment']);
+$isolating = mysqli_real_escape_string($con,$_POST['isolating']);
+$contact = mysqli_real_escape_string($con,$_POST['contact']);
+$travel = mysqli_real_escape_string($con,$_POST['travel']);
+$vaccinated = mysqli_real_escape_string($con,$_POST['vaccinated']);
 $avail = "notavail";
-
-
-$query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment  )
-VALUES ( '$patientIc', '$scheduleid', '$symptom', '$comment') ";
-
+$checkbox1=$_POST['symp'];  
+$chk="";
+ 
+foreach($checkbox1 as $chk1)  
+   {  
+      $chk .= $chk1.",";  
+   }  
+if($in_ch==1)  
+   {  
+      echo'<script>alert("Inserted Successfully")</script>';  
+   }  
+else  
+   {  
+      echo'<script>alert("Failed To Insert")</script>';  
+   }
+   
+   $query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment , symp, isolating , contact , travel , vaccinated )
+   VALUES ( '$patientIc', '$scheduleid', '$symptom', '$comment', '$chk', '$isolating', '$contact', '$travel', '$vaccinated') "; 
 //update table appointment schedule
 $sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid" ;
 
@@ -139,57 +156,57 @@ header("Location: patient.php");
 												the list below in the past 48 hours?
 											</p>
 
-											<input type="checkbox" class= "largerCheckbox" id="symptom1" name="symptom1" value="fever or chills">
+											<input type="checkbox" class= "largerCheckbox" id="symptom1" name="symp[]" value="fever or chills">
 											<label for="symptom1"> Fever or chills</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom2" name="symptom2" value="cough">
+											<input type="checkbox" class= "largerCheckbox" id="symptom2" name="symp[]" value="cough">
 											<label for="symptom2"> Cough</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom3" name="symptom3" value="shortness of breath or difficulty breathing">
+											<input type="checkbox" class= "largerCheckbox" id="symptom3" name="symp[]" value="shortness of breath or difficulty breathing">
 											<label for="symptom3"> Shortness of breath or difficulty breathing</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom4" name="symptom4" value="fatigue">
+											<input type="checkbox" class= "largerCheckbox" id="symptom4" name="symp[]" value="fatigue">
 											<label for="symptom4"> Fatigue</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom5" name="symptom5" value="muscle or body aches">
+											<input type="checkbox" class= "largerCheckbox" id="symptom5" name="symp[]" value="muscle or body aches">
 											<label for="symptom5"> Muscle or body aches</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom6" name="symptom6" value="headache">
+											<input type="checkbox" class= "largerCheckbox" id="symptom6" name="symp[]" value="headache">
 											<label for="symptom6"> Headache</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom7" name="symptom7" value="new loss of taste or smell">
+											<input type="checkbox" class= "largerCheckbox" id="symptom7" name="symp[]" value="new loss of taste or smell">
 											<label for="symptom7"> New loss of taste or smell</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom8" name="symptom8" value="sore throat">
+											<input type="checkbox" class= "largerCheckbox" id="symptom8" name="symp[]" value="sore throat">
 											<label for="symptom8"> Sore throat</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom9" name="symptom9" value="congestion or runny nose">
+											<input type="checkbox" class= "largerCheckbox" id="symptom9" name="symp[]" value="congestion or runny nose">
 											<label for="symptom9"> Congestion or runny nose</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom10" name="symptom10" value="nausea or vomiting">
+											<input type="checkbox" class= "largerCheckbox" id="symptom10" name="symp[]" value="nausea or vomiting">
 											<label for="symptom10"> Nausea or vomiting</label><br><br>
-											<input type="checkbox" class= "largerCheckbox" id="symptom11" name="symptom11" value="diarrhea">
+											<input type="checkbox" class= "largerCheckbox" id="symptom11" name="symp[]" value="diarrhea">
 											<label for="symptom11"> Diarrhea</label><br>
 											</div>
 											<div class="form-group">
 												<p>2. Are you isolating or quarantining because you
 												tested positive for COVID-19 or are worried
 												that you may be sick with COVID-19?</p>
-												  <input type="radio" class= "largerRadio" id="yes_isolating" name="isolating0" value="yes_isolating">
+												  <input type="radio" class= "largerRadio" id="yes_isolating" name="isolating" value="yes">
 												  <label for="yes_isolating"> Yes</label><br><br>
-												  <input type="radio" class= "largerRadio" id="no_isolating" name="isolating1" value="no_isolating">
+												  <input type="radio" class= "largerRadio" id="no_isolating" name="isolating" value="no">
 												  <label for="no_isolating"> No</label><br>
 											</div>
 											<div class="form-group">
 												  <p>3. Have you been in close physical contact in the last 14 days with:</p>
-												  <input type="radio" class= "largerRadio" id="yes_contact" name="contact0" value="yes_contact">
+												  <input type="radio" class= "largerRadio" id="yes_contact" name="contact" value="yes">
 												  <label for="yes_contact"> Yes</label><br><br>
-												  <input type="radio" class= "largerRadio" id="no_contact" name="contact1" value="no_contact">
+												  <input type="radio" class= "largerRadio" id="no_contact" name="contact" value="no">
 												  <label for="no_contact"> No</label><br>
 											</div>
 											<div class="form-group">
 												<p>4. Have you traveled in the past 10 days?</p>
-												  <input type="radio" class= "largerRadio" id="yes_travel" name="travel0" value="yes_travel">
+												  <input type="radio" class= "largerRadio" id="yes_travel" name="travel" value="yes">
 												  <label for="yes_travel"> Yes</label><br><br>
-												  <input type="radio" class= "largerRadio" id="no_travel" name="travel1" value="no_travel">
+												  <input type="radio" class= "largerRadio" id="no_travel" name="travel" value="no">
 												  <label for="no_travel"> No</label><br>
 											</div>
 											<div class="form-group">
 											<p>5. Are you vaccinated for COVID-19?</p>
-											  <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated0" value="yes_vaccinated">
-											  <label for="yes_travel"> Yes</label><br><br>
-											  <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated1" value="no_vaccinated">
+											  <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated" value="yes">
+											  <label for="yes_vaccinated"> Yes</label><br><br>
+											  <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated" value="no">
 											  <label for="no_vaccinated"> No</label><br><br>
 											</div>
 											<div class="form-group">

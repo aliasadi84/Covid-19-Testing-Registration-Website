@@ -2,7 +2,8 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 $q = $_GET['q'];
-$res = mysqli_query($con,"SELECT * FROM doctorschedule WHERE scheduleDate='$q'");
+$statue = 'available';
+$res = mysqli_query($con,"SELECT * FROM doctorschedule WHERE scheduleDate='$q' AND bookAvail='$statue'");
 if (!$res) {
 die("Error running $sql: " . mysqli_error());
 }
