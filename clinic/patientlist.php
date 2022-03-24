@@ -1,9 +1,9 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-// include_once 'connection/server.php';
 if(!isset($_SESSION['doctorSession']))
 {
+//if not logged in it will take you to the below location
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
@@ -78,6 +78,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
            <div class="name_job">
            </div>
          </div>
+         <!-- logout functionality -->
          <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" ></i></a>
      </li>
     </ul>
@@ -106,7 +107,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                             $result=mysqli_query($con,"SELECT * FROM patient");
                             
 
-                                  
+                            //displaying the data from the datebase     
                             while ($patientRow=mysqli_fetch_array($result)) {
                                 
                               

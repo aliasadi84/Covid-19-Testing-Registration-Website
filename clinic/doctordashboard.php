@@ -3,14 +3,16 @@ session_start();
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
 {
-header("Location: ../index.php");
+//if not logged into the admin side it will direct you to the index
+header("Location: ../adminlogin.php");
 }
 $usersession = $_SESSION['doctorSession'];
+//Checking the doctor ID making sure it's still there
 $res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
-
+//html needs to be redone
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -36,6 +38,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+<!-- Sidebar code needs to be changed -->
 <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name">WCHC Clinic</div>
@@ -104,7 +107,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <th>Complete</th>
                     </tr>
                 </thead>
+              
                 
+                
+               <!-- Below code is populating the appointment table -->
+               <!-- First code block is pulling the data and comparing the data -->
                 <?php 
                 $res=mysqli_query($con,"SELECT a.*, b.*,c.*
                                         FROM patient a
@@ -119,7 +126,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     }
                 while ($appointment=mysqli_fetch_array($res)) {
                     
-                    if ($appointment['status']=='process') {
+                
+                  //code for the check in box    
+                  if ($appointment['status']=='process') {
                         $status="danger";
                         $icon='remove';
                         $checked='';
@@ -129,7 +138,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         $icon='ok';
                         $checked = 'disabled';
                     }
-
+                    // Displaying the data, 
                     echo "<tbody>";
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
@@ -157,6 +166,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             ?>
   </section>
                     <!-- panel end -->
+
+<!-- takes all the inputs from the checkbox, send to checkdatabase.php -->
 <script type="text/javascript">
 function chkit(uid, chk) {
    chk = (chk==true ? "1" : "0");
@@ -171,17 +182,21 @@ function chkit(uid, chk) {
    req.send(null);
 }
 </script>
-
-
- 
                 </div>
                 <!-- /.container-fluid -->
             </div>
             <!-- /#page-wrapper -->
-        </div>
+        
+        
+        
+        
+        
+        
+      
+          </div>
 
 
-
+          <!-- This is sidebar code to make it pretty, needs to removed to bettwr fit the theme -->
           <script>
           let sidebar = document.querySelector(".sidebar");
           let closeBtn = document.querySelector("#btn");

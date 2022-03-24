@@ -1,4 +1,5 @@
 <?php
+//main page in the patient side
 session_start();
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['patientSession']))
@@ -22,7 +23,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/button.css">
 </head>
 

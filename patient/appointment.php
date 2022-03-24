@@ -9,12 +9,12 @@ if (isset($_GET['scheduleDate']) && isset($_GET['appid'])) {
 }
 
 $res = mysqli_query($con,"SELECT a.*, b.* FROM doctorschedule a INNER JOIN patient b
-WHERE a.scheduleDate='$appdate' AND scheduleId=$appid AND b.icPatient=$session");
+WHERE a.scheduleDate='$appdate' AND scheduleId=$appid AND b.icPatient='$session'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
 	
-//INSERT
+//The survey answers into the database
 if (isset($_POST['appointment'])) {
 $patientIc = mysqli_real_escape_string($con,$userRow['icPatient']);
 $patientEmail = mysqli_real_escape_string($con,$userRow['patientEmail']);
@@ -51,6 +51,7 @@ $sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $sched
 
 
 
+//email needs to be connected, Salem part imma do that soon
 $scheduleres=mysqli_query($con,$sql);
 
 $receiver = "joseph.pezhathinal1@gmail.com";
@@ -69,7 +70,7 @@ if ($scheduleres) {
 
 
 $result = mysqli_query($con,$query);
-// echo $result;
+//error handeling
 if( $result )
 {
 ?>
@@ -98,8 +99,9 @@ header("Location: patient.php");
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--css files-->
 	<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/button.css">
 </head>
 
@@ -122,12 +124,13 @@ header("Location: patient.php");
 	
 	<form class="form" role="form" method="POST" accept-charset="UTF-8">
 		<div>Appointment Information</div>
+		<!--prints out the details of the appointment chosen-->
 		<div>
 			Day: <?php echo $userRow['scheduleDay'] ?><br>
 			Date: <?php echo $userRow['scheduleDate'] ?><br>
 			Time: <?php echo $userRow['startTime'] ?> - <?php echo $userRow['endTime'] ?><br>
 		</div>
-		
+		<!--covid-19 questionaire starts here-->
 		<div class="form-group">
 			<label>Symptom:</label>
 			<input type="text" class="form-control" name="symptom" required>
@@ -201,11 +204,12 @@ header("Location: patient.php");
 		  <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated" value="no">
 		  <label for="no_vaccinated"> No</label><br><br>
 		</div>
-
+		<!--Covid-19 questionaire ends-->
+        <!--when the submit button is clicked the input will be sent to the php at the top to be entered to the database-->
 		<div class="form-group">
 			<input type="submit" name="appointment" id="submit" class="btn btn-primary" value="Make Appointment">
 		</div>
-
+     
 	</form>
 
 	</div>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+//connect to the database
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['patientSession']))
 {
@@ -8,7 +9,7 @@ header("Location: patient.php");
 
 $usersession = $_SESSION['patientSession'];
 
-
+//checks is the patient username exists
 $res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$usersession'");
 
 if ($res===false) {
@@ -27,7 +28,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="main.css">
+	<!--css files-->
+	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/button.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -50,6 +52,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 	<section id="promo-1" class="content-block">
 
 		<h2> Choose you appointment</h2>
+		<!--Input the date for the appointment which is sent to the script below to populate available appointments-->
 		<input type="date" id="date" name="date" onchange="showUser(this.value)"/>
 
 
@@ -80,7 +83,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 		document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 		}
 		};
-
+        //the input date is sent to getschedule.php to populate available appointments
 		xmlhttp.open("GET","getschedule.php?q="+str,true);
 		console.log(str);
 		xmlhttp.send();
@@ -89,10 +92,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 		</script>
 		
-		<!-- script start end -->
 		
 		<!-- table appointment start -->
-		<!-- <div class="container"> -->
 
 			<div class="row">
 				<div class="col-xs-12 col-md-8">

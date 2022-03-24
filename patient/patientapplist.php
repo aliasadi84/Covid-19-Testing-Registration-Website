@@ -17,7 +17,7 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="main.css" />  
+    <link rel="stylesheet" href="assets/css/main.css" />  
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/css/account.css">
 
@@ -52,7 +52,7 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
     <?php
 
 
-
+    //populates the appointments that you have booked
     echo "<h1>Your appointment list. </h1>";
     echo "<table>";
     echo "<thead>";

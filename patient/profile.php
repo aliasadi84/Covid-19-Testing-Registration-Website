@@ -14,16 +14,15 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 <?php
 if (isset($_POST['submit'])) {
-//variables
+//variables that are gathered when the user change their information
 $patientFirstName = $_POST['patientFirstName'];
 $patientLastName = $_POST['patientLastName'];
 $patientDOB = $_POST['patientDOB'];
 $patientGender = $_POST['patientGender'];
 $patientPhone = $_POST['patientPhone'];
 $patientEmail = $_POST['patientEmail'];
-// mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
 $res=mysqli_query($con,"UPDATE patient SET patientFirstName='$patientFirstName', patientLastName='$patientLastName', patientDOB='$patientDOB', patientGender='$patientGender', patientPhone=$patientPhone, patientEmail='$patientEmail' WHERE icPatient = '$usersession'");
-// $userRow=mysqli_fetch_array($res);
+
 header( 'Location: profile.php' ) ;
 }
 ?>
@@ -44,7 +43,7 @@ $female = "checked";
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <head>
-    <link rel="stylesheet" href="main.css" />  
+    <link rel="stylesheet" href="assets/css/main.css" />  
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/css/account.css">
 </head>
@@ -62,9 +61,18 @@ $female = "checked";
   <div class="wrapper">
     <div class="bf">
 	<section>
+	<div>
+		<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
+		<hr />
+		<a href="patientlogout.php?logout=<?php echo $userRow['icPatient']; ?>"><button>Log Out</button></a>
+		<!--logout button-->
+		<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Your Appointment's</button></a>
+		<!--appointment list button-->
+	</div>
 						
 		<!-- form start -->
 		<form action="<?php $_PHP_SELF ?>" method="post" >
+		<!--patient profile where each input can be edited in order to change patient detail-->
 			<table>
 				<tbody>
 					<tr>

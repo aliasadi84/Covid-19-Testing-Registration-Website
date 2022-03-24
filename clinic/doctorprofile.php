@@ -1,27 +1,36 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-// include_once 'connection/server.php';
 if(!isset($_SESSION['doctorSession']))
+//if your not login it will take you to the admin login
 {
-header("Location: ../index.php");
+header("Location: ../adminlogin.php");
 }
 $usersession = $_SESSION['doctorSession'];
 $res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
+
+
+
+
+
+
+
 if (isset($_POST['submit'])) {
-//variables
+//functionality to allow the admin to change first name, last name, phone, or email and save it into the database
 $doctorFirstName = $_POST['doctorFirstName'];
 $doctorLastName = $_POST['doctorLastName'];
 $doctorPhone = $_POST['doctorPhone'];
 $doctorEmail = $_POST['doctorEmail'];
 $doctorAddress = $_POST['doctorAddress'];
 
+//doing the changing
 $res=mysqli_query($con,"UPDATE doctor SET doctorFirstName='$doctorFirstName', doctorLastName='$doctorLastName', doctorPhone='$doctorPhone', doctorEmail='$doctorEmail', doctorAddress='$doctorAddress' WHERE doctorId=".$_SESSION['doctorSession']);
 // $userRow=mysqli_fetch_array($res);
 
+//After update takes you to this page
 header( 'Location: doctorprofile.php' ) ;
 
 }
@@ -58,6 +67,8 @@ header( 'Location: doctorprofile.php' ) ;
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
+
+<!-- Sidebar that needs to be changed -->
 <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name">WCHC Clinic</div>
@@ -108,6 +119,7 @@ header( 'Location: doctorprofile.php' ) ;
 
                             <h2>
                             Staff Profile
+                            <!-- code it dispalying the data -->
                             </h2><br><br>
  
                                     <h4><?php echo $userRow['doctorFirstName']; ?> <?php echo $userRow['doctorLastName']; ?></h4>
@@ -178,6 +190,9 @@ header( 'Location: doctorprofile.php' ) ;
                                             </form>
 
 
+
+
+<!-- Sidebar code that needs to be removed -->
     </section>
         <script>
           let sidebar = document.querySelector(".sidebar");

@@ -1,4 +1,5 @@
 <?php
+//creating the session
       session_start();
       include_once '../assets/conn/dbconnect.php';
 
@@ -15,6 +16,7 @@
 ?>
 
 <?php
+//checking the appointments that have been made for that day
       $res = mysqli_query($con, "SELECT a.*, b.*,c.*
       FROM patient a
       JOIN appointment b
@@ -30,6 +32,7 @@
       exit();
     }
 
+    //inputting car information into the database
     while ($appointment=mysqli_fetch_array($res)) {
       $app = $appointment['appId'];
     
@@ -39,6 +42,8 @@
       $make = $_POST['make'];
       $color = $_POST['color'];
       $plate = $_POST['plate'];
+      
+      
       // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
       $update=mysqli_query($con,"UPDATE appointment SET status='checked-in', location='$location', make='$make', color='$color', plate='$plate' WHERE appId = '$app'");
       // $userRow=mysqli_fetch_array($res);
@@ -68,7 +73,7 @@
       tr:nth-child(even){background-color: #f2f2f2;}
     </style>
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/submit.css">
 </head>
 
@@ -99,7 +104,7 @@
           <th>Complete</th>
       </tr>
   </thead>
-
+  <!--php below populates the information of the appointment that needs to be checked-in-->
   <?php 
         $res = mysqli_query($con, "SELECT a.*, b.*,c.*
         FROM patient a
@@ -129,6 +134,7 @@
 
       echo "<tbody>";
       echo "<tr>";
+          //appointment details is populated
           echo "<td>" . $appointment['patientFirstName'] . "</td>";
           echo "<td>" . $appointment['patientLastName'] . "</td>";
           echo "<td>" . $appointment['patientPhone'] . "</td>";
@@ -149,7 +155,7 @@
 
       <h2>Instruction: </h2>
       <p>Help Us Find You!</p>
-      
+      <!--Inputs form for the car details starts here-->
       <h2>Parking</h2>
       <img src="assets/img/draw.jpg" width="800px" height="400px"><br><br>
       <label for="location">Location:</label>
@@ -182,10 +188,12 @@
      </div>
 
   </div>
+  <!--input for the car details end here-->
 
 </section>
 
 <br>
+<!--when clicked the submit button it sends the input of the car information to the php at the top inorder for it to be entered to the database-->
 <button class='button2' type='submit' value='Submit' name='submit'>Update</button>
 
 </form>

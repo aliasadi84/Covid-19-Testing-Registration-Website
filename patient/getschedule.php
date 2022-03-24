@@ -1,4 +1,5 @@
 <?php
+//this file is basically used to populate the available appointments in appo.php
 session_start();
 include_once '../assets/conn/dbconnect.php';
 $q = $_GET['q'];

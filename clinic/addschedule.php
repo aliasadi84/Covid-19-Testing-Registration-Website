@@ -3,6 +3,7 @@ session_start();
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
 {
+//if not logged into the admin side it will direct you to the index
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
@@ -11,18 +12,28 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 // insert
 
 
+
+
 if (isset($_POST['submit'])) {
+//date of the month
+//inputting the date into the database
 $date = mysqli_real_escape_string($con,$_POST['date']);
+//Start time
+//inputting the date into the database
 $starttime     = mysqli_real_escape_string($con,$_POST['starttime']);
+//end time inputting the data into the database
 $endtime     = mysqli_real_escape_string($con,$_POST['endtime']);
+//Checking to make sure if it's avaliable or not
 $bookavail         = mysqli_real_escape_string($con,$_POST['bookavail']);
 
-//INSERT
+//Inserting the data into the daabase
 $query = " INSERT INTO doctorschedule (  scheduleDate, startTime, endTime,  bookAvail)
 VALUES ( '$date', '$starttime', '$endtime', '$bookavail' ) ";
 
 $result = mysqli_query($con, $query);
-// echo $result;
+
+
+//error handeling 
 if( $result )
 {
 ?>
@@ -49,6 +60,10 @@ alert('Added fail. Please try again.');
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <style>
+      
+
+
+      /* The main table and it's css */
       table {
         border-collapse: collapse;
         width: 100%;
@@ -66,8 +81,15 @@ alert('Added fail. Please try again.');
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
-<body>
-  <div class="sidebar">
+
+
+
+
+
+   <body>
+  
+  
+   <div class="sidebar">
     <div class="logo-details">
         <div class="logo_name">WCHC Clinic</div>
         <i class='bx bx-menu' id="btn" ></i>
@@ -118,7 +140,7 @@ alert('Added fail. Please try again.');
                             <h3 class="panel-title">Add Schedule</h3>
                         </div>
 
-
+                <!-- The buttons on the top of the table -->
                 <form class="form-horizontal" method="post">
                     <label>Date</label>
                     <input id="date" name="date" type="date" required/>
@@ -153,11 +175,16 @@ alert('Added fail. Please try again.');
                                 </tr>
                             </thead>
                             
+
+
+
+
+                            <!-- Pulling and displaying the data from the database -->
                             <?php 
                             $result=mysqli_query($con,"SELECT * FROM doctorschedule");
                             
 
-                                  
+                 
                             while ($doctorschedule=mysqli_fetch_array($result)) {
                                 
                               
@@ -183,6 +210,12 @@ alert('Added fail. Please try again.');
                         echo "</div>";
                         echo "</div>";
                         ?>
+
+
+
+
+
+<!-- Code to make the sidebar pretty, needs to be removed to be more on theme -->
 </section>
           <script>
           let sidebar = document.querySelector(".sidebar");
