@@ -35,8 +35,6 @@ die("Error running $sql: " . mysqli_error());
                 ?>
                 <tr>
                     <?php
-                    // $avail=null;
-                    // $btnclick="";
                     if ($row['bookAvail']!='available') {
                     $avail="danger";
                     $btnstate="disabled";
@@ -47,25 +45,15 @@ die("Error running $sql: " . mysqli_error());
                     $btnclick="primary";
                     }
 
-                   
-                    // if ($rowapp['bookAvail']!="available") {
-                    // $btnstate="disabled";
-                    // } else {
-                    // $btnstate="";
-                    // }
                     echo "<td>" . $row['scheduleId'] . "</td>";
                     echo "<td>" . $row['scheduleDate'] . "</td>";
                     echo "<td>" . $row['startTime'] . "</td>";
                     echo "<td>" . $row['endTime'] . "</td>";
                     echo "<td> <span class='label label-".$avail."'>". $row['bookAvail'] ."</span></td>";
                     echo "<td><a href='appointment.php?&appid=" . $row['scheduleId'] . "&scheduleDate=".$q."' class='btn btn-".$btnclick." btn-xs' role='button' ".$btnstate.">Book Now</a></td>";
-                    // echo "<td><a href='appointment.php?&appid=" . $row['scheduleId'] . "&scheduleDate=".$q."'>Book</a></td>";
-                    // <td><button type='button' class='btn btn-primary btn-xs' data-toggle='modal' data-target='#exampleModal'>Book Now</button></td>";
-                    //triggered when modal is about to be shown
                     ?>
                     
                     </script>
-                    <!-- ?> -->
                 </tr>
                 
                 <?php
@@ -73,7 +61,6 @@ die("Error running $sql: " . mysqli_error());
                 }
                 ?>
             </tbody>
-            <!-- modal start -->
             
             
             

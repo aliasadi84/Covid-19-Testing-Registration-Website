@@ -39,11 +39,10 @@ header("Location: clinic/doctordashboard.php");
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="assets/css/submit.css">
-<link rel="stylesheet" href="assets/css/account.css">      <!-- account specific css -->
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="assets/css/submit.css">
+    <link rel="stylesheet" href="assets/css/account.css">
 </head>
       
 <header>
@@ -61,18 +60,16 @@ header("Location: clinic/doctordashboard.php");
     }
 </script>
 
- <body>
+<body>
     <div class="bf">
-                        <form class="form" role="form" method="POST" accept-charset="UTF-8">
-                            <label>username</label><br>
-                            <input name="doctorId" type="text" placeholder="Doctor ID" required><br>
-                            <label>password</label><br>
-                            <input name="password" type="password" placeholder="Password" required><br><br>
-                            <button class="button3" type="submit" name="login">Login</button>
-                        </form>
-                    </div>
-                </div>
-            <!-- end -->
-        </div>
-    </body>
+        <form class="form" role="form" method="POST" accept-charset="UTF-8">
+            <label>username</label><br>
+            <input name="doctorId" type="text" placeholder="Doctor ID" required><br>
+            <label>password</label><br>
+            <input name="password" type="password" placeholder="Password" required><br><br>
+            <button class="button3" type="submit" name="login">Login</button>
+        </form>
+    </div>
+
+</body>
 </html>

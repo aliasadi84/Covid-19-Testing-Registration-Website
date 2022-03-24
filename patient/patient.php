@@ -21,10 +21,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="assets/css/button.css">
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="assets/css/button.css">
 </head>
 
 <header>
@@ -35,12 +34,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 <body>
 
-<?php
-			echo "<h1>Welcome to the COVID-19 Testing Portal, " . $userRow['patientFirstName'] . "!</h1>";  
-?>
-</div><br>
+    <?php
+                echo "<h1>Welcome to the COVID-19 Testing Portal, " . $userRow['patientFirstName'] . "!</h1>";  
+    ?>
+    </div><br>
 
- <article>
+    <article>
         <section>
 			<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>">
                 <button class="button" ><i class="fa-solid fa-user"></i> Account</button>
