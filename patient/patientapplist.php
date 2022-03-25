@@ -53,6 +53,7 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
 
 
     //populates the appointments that you have booked
+	  // NOTE FROM TIM: I would recommend changing "Your Appointment List" to say "<user-first-name>'s Appointment List" like we have on the homepage
     echo "<h1>Your Appointment List</h1>";
     echo "<table>";
     echo "<thead>";
