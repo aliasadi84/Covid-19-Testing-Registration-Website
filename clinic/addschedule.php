@@ -4,6 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
 {
 //if not logged into the admin side it will direct you to the index
+// NOTE FROM TIM: But why does it redirect to the patient-side index if you aren't logged in? Why doesn't it redirect to clinic login?
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['doctorSession'];
