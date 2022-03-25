@@ -29,10 +29,11 @@
 
 /* color choices when hovering over button */
 .button:hover {
-  background-color: #F0FFC2; /* original purple e2c3ff96 */
+  background-color: #eaffac; /* original purple e2c3ff96 */
   /* exotic option #fffee9 */
   color: black;
 }
+
 
 /* home button responsive css */
 @media 
