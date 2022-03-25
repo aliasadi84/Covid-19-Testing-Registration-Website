@@ -55,7 +55,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 		<!--Input the date for the appointment which is sent to the script below to populate available appointments-->
 		<input type="date" id="date" name="date" onchange="showUser(this.value)"/>
 
-
+		<!-- NOTE FROM TIM: What does this script section actually do? -->
 		<script>
 
 		function showUser(str) {
