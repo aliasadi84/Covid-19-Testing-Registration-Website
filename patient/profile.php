@@ -76,7 +76,7 @@ $female = "checked";
 			<table>
 				<tbody>
 					<tr>
-						<td>First Name:</td>
+						<td>First Name</td>
 						<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
 					</tr>
 					<tr>
