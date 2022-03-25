@@ -36,7 +36,7 @@ header("Location: patient/patient.php");
 ?>
 
 <script>
-alert('wrong input ');
+alert('Username or Password incorrect. Please try again.');
 </script>
 
 <?php
@@ -82,7 +82,7 @@ Main Page of the WCHC Clinic Website-->
             <!--The link to forgot password-->
             <h4><a href="">Forgot password?</a></h4>
             <!--Log-in button to submit the form-->
-            <button class="button3" name="login" id="login" type="submit"> Login</button><br>
+            <button class="button3" name="login" id="login" type="submit">Login</button><br>
             <!--The link to register user-->
             <a href = 'reg.html'>Register Here!</a>
     
