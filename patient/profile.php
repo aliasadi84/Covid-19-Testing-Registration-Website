@@ -103,11 +103,11 @@ $female = "checked";
 					<!-- radio button end -->
 					
 					<tr>
-						<td>Phone number</td>
+						<td>Phone Number</td>
 						<td><input type="text" class="form-control" name="patientPhone" value="<?php echo $userRow['patientPhone']; ?>"  /></td>
 					</tr>
 					<tr>
-						<td>Email</td>
+						<td>E-mail Address</td>
 						<td><input type="text" class="form-control" name="patientEmail" value="<?php echo $userRow['patientEmail']; ?>"  /></td>
 					</tr>
 					<tr>
