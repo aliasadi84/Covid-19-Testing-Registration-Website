@@ -31,7 +31,7 @@ header("Location: clinic/doctordashboard.php");
 } else {
 ?>
 <script type="text/javascript">
-    alert("Wrong input");
+    alert("Username or password incorrect. Please try again.");
 </script>
 <?php
 }
@@ -67,10 +67,10 @@ Main Page of the WCHC Clinic Website-->
     <div class="bf">
         <form class="form" role="form" method="POST" accept-charset="UTF-8">
             <!--The text field to enter the Username-->
-            <label>username</label><br>
+            <label>Username</label><br>
             <input name="doctorId" type="text" placeholder="Doctor ID" required><br>
             <!--The text field to enter the Password-->
-            <label>password</label><br>
+            <label>Password</label><br>
             <input name="password" type="password" placeholder="Password" required><br><br>
             <!--Log-in button to submit the form-->
             <button class="button3" type="submit" name="login">Login</button>
