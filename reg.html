@@ -108,20 +108,14 @@ Main Page of the WCHC Clinic Website-->
             <br>
 
            <!--This is a section to enter the race of the patient, it uses dropdown as a way to choose Race-->
-           <label for="race">Race</label><br>
+           <label for="race">Race/Ethnicity</label><br>
             <select id = "race" name="race">
               <option value=""  selected disabled hidden></option>
-              <!--The selection to choose 'Arab' for Race-->
+	      <option value="white">White</option>
               <option value="arab">Arab</option>
-              <!--The selection to choose 'Asian' for Race-->
-	          <option value="asian">Asian</option>
-              <!--The selection to choose 'Black/African American' for Race-->
+	      <option value="asian">Asian</option>
               <option value="black">Black/African American</option>
-              <!--The selection to choose 'Indo-Aryan' for Race-->
               <option value="indo">Indo-Aryan</option>
-              <!--The selection to choose 'White' for Race-->
-	          <option value="white">White</option>
-              <!--The selection to choose 'Other' for Race-->
               <option value="other">Other</option>
             </select>
 
@@ -156,7 +150,7 @@ Main Page of the WCHC Clinic Website-->
         <br><br>
           <!--By clicking the submit button, it will check if all required fields have an input and also is sent
               to validate if the password meets requirement and also if the password and confirm password is a match.-->
-          <button class="button3" type="submit" onclick="validatePassword()"> Register</button>
+          <button class="button3" type="submit" onclick="validatePassword()">Register</button>
           
     </form>
     <!--The form ends here-->
