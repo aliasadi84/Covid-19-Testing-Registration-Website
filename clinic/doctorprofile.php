@@ -42,6 +42,7 @@ header( 'Location: doctorprofile.php' ) ;
 ?>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<!-- NOTE FROM TIM: Please remove all references to outside source code like this -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
