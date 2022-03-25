@@ -53,7 +53,7 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
 
 
     //populates the appointments that you have booked
-    echo "<h1>Your appointment list. </h1>";
+    echo "<h1>Your Appointment List</h1>";
     echo "<table>";
     echo "<thead>";
     echo "<tr>";
