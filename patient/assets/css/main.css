@@ -3,20 +3,24 @@
 
 
 /* Hero Image*/
-.hero-image { 
-  background-image: url("wchc/pics/map.png"); /* The image used (origionally map.png*/
-  height: 100%;
+div.hero-image { 
+  background-image: url("wchc/pics/logo.png"); /* The image used (origionally map.png*/
+  height: 60%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:contain;
   position: relative;
+
+  left: 25%;
+  margin: 5px;
  }
 
-  /* Produces Map Backgroun */
+  /* Produces Map Background */
   body {
-    /* background-image: url("map.png"); */
-    background-color:#2f55ff25; 
-    background-repeat:repeat;
+    background-image: url("map.png"); 
+    background-color: #D9D7F1;  /* original purple #98b8fca1 */
+
+    /* option 2 D9D7F1 */
   }
 
   /* Words/Characters/Fonts */
@@ -54,17 +58,20 @@
     border: 3px solid #2f55ff;
   }
 
-  /*Creating Border around Sections*/
-    .bf { /* use div class="bf"*/
+ /*Creating Border around Sections*/
+  div.bf { /* use div class="bf"*/
     padding: 55px;
-    border-radius: 5px 5px;
-    margin: auto;
+    border-radius: 10px 10px;
+    margin: 40px;
+    overflow: auto;
+    width: auto;
+
     text-align: center;
+  
     border-style: solid;
     border-color:black;
-    background-color: white;
-    overflow: auto;
-    width: fit-content;
+    background-color: white; 
+    /* option 2 #FFFDDE */
   }
 
   /* better alignment of gender radio buttons on reg page */
