@@ -70,7 +70,7 @@ Main Page of the WCHC Clinic Website-->
 <!--end of the header-->
  <body>
     <div class="bf">
-
+        
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h1>Log In</h1>
             <!--The text field to enter the Username-->
@@ -82,10 +82,9 @@ Main Page of the WCHC Clinic Website-->
             <!--The link to forgot password-->
             <h4><a href="">Forgot password?</a></h4>
             <!--Log-in button to submit the form-->
-            <button class="button3" name="login" id="login" type="submit">Login</button><br>
+            <button class="button2" name="login" id="login" type="submit">Login</button><br>
             <!--The link to register user-->
             <a href = 'reg.html'>Register Here!</a>
-    
         </form>
 
     </div>
