@@ -54,7 +54,7 @@ alert('Username or Password incorrect. Please try again.');
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/submit.css">
+    <link rel="stylesheet" href="assets/css/loginButton.css">
     <!--end of css design files-->
 </head>
 <!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
