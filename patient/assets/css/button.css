@@ -14,7 +14,7 @@
   text-decoration: none;
 
   cursor: pointer;
-  background: #fff; /* original color #fff */
+  background: rgba(255, 255, 255, 0.925); /* original color #fff */
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -27,7 +27,6 @@
   padding: 18px 18px 17px;
 }
 
-/* color choices when hovering over button */
 .button:hover {
   background-color: #eaffac; /* original purple e2c3ff96 */
   /* exotic option #fffee9 */
@@ -35,7 +34,6 @@
 }
 
 
-/* home button responsive css */
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  
