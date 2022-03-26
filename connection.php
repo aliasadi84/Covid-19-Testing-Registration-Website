@@ -24,7 +24,7 @@
             
         if(mysqli_query($con, $sql)){
             
-                header("location: index.php"); 
+                header("location: regconfirmation.html"); 
 
             } else{
                 echo "ERROR: Hush! Sorry $sql. " 
