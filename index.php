@@ -39,6 +39,11 @@ header("Location: patient/patient.php");
 alert('Username or Password incorrect. Please try again.');
 </script>
 
+<?php
+}
+}
+?>
+
 <!DOCTYPE HTML>
 
 <html>
@@ -56,8 +61,7 @@ alert('Username or Password incorrect. Please try again.');
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="50%"></a>
-        <!--The image is located inside the assets(folder) -> img(folder) -> pp.png -->    
+        <a href="https://www.waynecountyhealthy.com"><img src="assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
@@ -65,7 +69,7 @@ Main Page of the WCHC Clinic Website-->
     <div class="bf">
         
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
-            <h1>Log In</h1>
+            <h1>COVID-19 Testing Portal Log In</h1>
             <!--The text field to enter the Username-->
             <label for="icPatient">Username</label><br>
             <input type="text" id="username" name="icPatient" placeholder="Username" required autofocus autocomplete><br>
@@ -73,7 +77,7 @@ Main Page of the WCHC Clinic Website-->
             <label for="password">Password</label><br>
             <input type="password" id="password" name="password" placeholder="Password" required autofocus autocomplete>
             <!--The link to forgot password-->
-            <h4><a href="">Forgot password?</a></h4>
+            <br><a href="">Forgot password?</a><br><br>
             <!--Log-in button to submit the form-->
             <button class="button3" name="login" id="login" type="submit">Login</button><br>
             <!--The link to register user-->
