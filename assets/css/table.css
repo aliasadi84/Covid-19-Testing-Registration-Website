@@ -1,0 +1,53 @@
+/* table css */
+
+table {
+    padding: 60px;
+    border-radius: 10px 10px;
+    margin: 25px 25px 25px;
+    width: 95%;
+   
+    text-align: center;
+  
+    border-style: solid;
+    border-color:black;
+    background-color: white;  
+  }
+
+  /* responsive below */
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  
+    /* makes table behave not like a table */
+    table, thead, tbody, th, td, tr { 
+      display: block; 
+    }
+    
+    /* Hide table headers */
+    thead tr { 
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    
+    tr { border: 1px solid #ccc; }
+    
+    td { 
+      /* a "row" */
+      border: none;
+      border-bottom: 1px solid #eee; 
+      position: relative;
+      padding-left: 50%; 
+    }
+    
+    td:before { 
+      /*  table header */
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 40%; 
+      padding-right: 10px 20px; 
+      white-space: nowrap;
+      text-align: center;
+    }
+}
