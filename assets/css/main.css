@@ -4,8 +4,8 @@
 
 /* Hero Image*/
 div.hero-image { 
-  background-image: url("pp.png"); /* the logo */
-  height: 60%;
+
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size:contain;
@@ -15,9 +15,9 @@ div.hero-image {
   margin: 5px;
  }
 
- /* Produces Map Background */
+  /* Produces Map Background */
   body {
-    background-image: url("map.png");  /* the map background */
+    background-image: url("../map.png"); /* the map background */
     background-color: #D9D7F1;  /* original purple #98b8fca1 */
 
     /* option 2 D9D7F1 */
@@ -73,4 +73,5 @@ div.hero-image {
 
   /* better alignment of gender radio buttons on reg page */
     .radioAlign { text-align: left; 
-                    padding-left: 29em;}
+                    padding-left: 3.5em;}
+
