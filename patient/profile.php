@@ -43,18 +43,19 @@ $female = "checked";
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <head>
-    <link rel="stylesheet" href="assets/css/main.css" />  
-    <link rel="stylesheet" href="assets/css/nav.css">
-    <link rel="stylesheet" href="assets/css/account.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/patientHomeButton.css">
 </head>
-<title>Account</title>
-       
 
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="100%"></a>
+        <a href="https://www.waynecountyhealthy.com"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<title>Account</title>
 
 <body>
   
@@ -86,7 +87,7 @@ $female = "checked";
 
 					<tr>
 						<td>Date of Birth</td>
-						<td><input type="text" class="form-control" name="patientDOB" value="<?php echo $userRow['patientDOB']; ?>"  /></td>
+						<td><input type="date" class="form-control" name="patientDOB" value="<?php echo $userRow['patientDOB']; ?>"  /></td>
 					</tr>
 					<!-- radio button -->
 					<tr>
