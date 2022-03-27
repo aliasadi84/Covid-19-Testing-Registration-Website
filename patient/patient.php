@@ -23,8 +23,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="Covid-19-Testing-Registration-Website/assets/css/main.css">
-    <link rel="stylesheet" href="Covid-19-Testing-Registration-Website/assets/css/patientHomeButton.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/patientHomeButton.css">
 </head>
 
 <header>
