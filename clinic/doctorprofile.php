@@ -83,13 +83,6 @@ header( 'Location: doctorprofile.php' ) ;
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-       <a href="addschedule.php">
-       <i class='bx bxs-calendar' ></i>
-         <span class="links_name">Schedule</span>
-       </a>
-       <span class="tooltip">Schedule</span>
-     </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>

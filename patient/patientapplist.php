@@ -2,12 +2,10 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 $session=$_SESSION[ 'patientSession'];
-$res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
-	JOIN appointment b
-		On a.icPatient = b.patientIc
-	JOIN doctorschedule c
-		On b.scheduleId=c.scheduleId
-	WHERE b.patientIc ='$session'");
+$res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
+	JOIN bookings b
+		On a.icPatient = b.username
+	WHERE b.username ='$session'");
 	if (!$res) {
 		die( "Error running $sql: " . mysqli_error());
 	}
@@ -58,18 +56,15 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
     echo "<table>";
     echo "<thead>";
     echo "<tr>";
-    echo "<th>scheduleDate </th>";
-    echo "<th>startTime </th>";
-    echo "<th>endTime </th>";
+    echo "<th>Date </th>";
+    echo "<th>Time Slot</th>";
     echo "</tr>";
     echo "</thead>";
-    $res = mysqli_query($con, "SELECT a.*, b.*,c.*
+    $res = mysqli_query($con, "SELECT a.*, b.*
         FROM patient a
-        JOIN appointment b
-        On a.icPatient = b.patientIc
-        JOIN doctorschedule c
-        On b.scheduleId=c.scheduleId
-        WHERE b.patientIc ='$session'");
+        JOIN bookings b
+        On a.icPatient = b.username
+        WHERE b.username ='$session'");
 
     if (!$res) {
     die("Error running $sql: " . mysqli_error());
@@ -79,10 +74,8 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
     while ($userRow = mysqli_fetch_array($res)) {
     echo "<tbody>";
     echo "<tr>";
-    echo "<td>" . $userRow['scheduleDate'] . "</td>";
-    echo "<td>" . $userRow['startTime'] . "</td>";
-    echo "<td>" . $userRow['endTime'] . "</td>";
-    echo "<td><a href='invoice.php?appid=".$userRow['appId']."' target='_blank'><span class='glyphicon glyphicon-print' aria-hidden='true'></span></a> </td>";
+    echo "<td>" . $userRow['date'] . "</td>";
+    echo "<td>" . $userRow['timeslot'] . "</td>";
     }
 
     echo "</tr>";
@@ -94,3 +87,4 @@ $res=mysqli_query($con, "SELECT a.*, b.*,c.* FROM patient a
 
 </body>
 </html>
+

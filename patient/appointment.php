@@ -3,29 +3,20 @@ session_start();
 include_once '../assets/conn/dbconnect.php';
 $session= $_SESSION['patientSession'];
 
-if (isset($_GET['scheduleDate']) && isset($_GET['appid'])) {
-	$appdate =$_GET['scheduleDate'];
-	$appid = $_GET['appid'];
+if (isset($_GET['date']) && isset($_GET['timeslot'])) {
+	$date =$_GET['date'];
+	$timeslot = $_GET['timeslot'];
 }
-
-$res = mysqli_query($con,"SELECT a.*, b.* FROM doctorschedule a INNER JOIN patient b
-WHERE a.scheduleDate='$appdate' AND scheduleId=$appid AND b.icPatient='$session'");
-$userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
 	
 //The survey answers into the database
 if (isset($_POST['appointment'])) {
-$patientIc = mysqli_real_escape_string($con,$userRow['icPatient']);
-$patientEmail = mysqli_real_escape_string($con,$userRow['patientEmail']);
-$scheduleid = mysqli_real_escape_string($con,$appid);
-$symptom = mysqli_real_escape_string($con,$_POST['symptom']);
-$comment = mysqli_real_escape_string($con,$_POST['comment']);
 $isolating = mysqli_real_escape_string($con,$_POST['isolating']);
 $contact = mysqli_real_escape_string($con,$_POST['contact']);
 $travel = mysqli_real_escape_string($con,$_POST['travel']);
 $vaccinated = mysqli_real_escape_string($con,$_POST['vaccinated']);
-$avail = "notavail";
+$status = "appointment booked";
 $checkbox1=$_POST['symp'];  
 $chk="";
  
@@ -43,11 +34,9 @@ else
    {  
       echo'<script>alert("Failed To Insert")</script>';  
    }
-   
-$query = "INSERT INTO appointment (  patientIc , scheduleId , appSymptom , appComment , symp, isolating , contact , travel , vaccinated )
-VALUES ( '$patientIc', '$scheduleid', '$symptom', '$comment', '$chk', '$isolating', '$contact', '$travel', '$vaccinated') "; 
-//update table appointment schedule
-$sql = "UPDATE doctorschedule SET bookAvail = '$avail' WHERE scheduleId = $scheduleid" ;
+$query = "INSERT INTO bookings (  username , symp, isolating , contact , travel , vaccinated, status, date, timeslot)
+VALUES ( '$session', '$chk', '$isolating', '$contact', '$travel', '$vaccinated', '$status', '$date', '$timeslot') "; 
+
 
 
 
@@ -126,20 +115,10 @@ header("Location: patient.php");
 		<div>Appointment Information</div>
 		<!--prints out the details of the appointment chosen-->
 		<div>
-			Day: <?php echo $userRow['scheduleDay'] ?><br>
-			Date: <?php echo $userRow['scheduleDate'] ?><br>
-			Time: <?php echo $userRow['startTime'] ?> - <?php echo $userRow['endTime'] ?><br>
+			Date: <?php echo $date ?><br>
+			Time: <?php echo $timeslot ?><br>
 		</div>
 		<!--covid-19 questionaire starts here-->
-		<div class="form-group">
-			<label>Symptom:</label>
-			<input type="text" class="form-control" name="symptom" required>
-		</div>
-
-		<div class="form-group">
-			<label>Comment:</label>
-			<textarea class="form-control" name="comment" required></textarea>
-		</div>
 
 		<div class="form-group">
 			<p>1. Regardless of your vaccination status, have

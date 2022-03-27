@@ -2,8 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Generation Time: Mar 17, 2022 at 02:57 PM
+-- Host: 127.0.0.1:3308
+-- Generation Time: Mar 27, 2022 at 01:26 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -24,15 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `appointment`
+-- Table structure for table `bookings`
 --
 
-CREATE TABLE `appointment` (
-  `appId` int(3) NOT NULL,
-  `patientIc` varchar(100) NOT NULL,
-  `scheduleId` int(10) NOT NULL,
-  `appSymptom` varchar(100) NOT NULL,
-  `appComment` varchar(100) NOT NULL,
+CREATE TABLE `bookings` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `symp` varchar(10000) NOT NULL,
   `isolating` varchar(4) NOT NULL,
   `contact` varchar(4) NOT NULL,
@@ -42,18 +39,18 @@ CREATE TABLE `appointment` (
   `make` varchar(20) NOT NULL,
   `color` varchar(20) NOT NULL,
   `plate` varchar(20) NOT NULL,
-  `status` varchar(10) NOT NULL DEFAULT 'process'
+  `status` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `timeslot` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `appointment`
+-- Dumping data for table `bookings`
 --
 
-INSERT INTO `appointment` (`appId`, `patientIc`, `scheduleId`, `appSymptom`, `appComment`, `symp`, `isolating`, `contact`, `travel`, `vaccinated`, `location`, `make`, `color`, `plate`, `status`) VALUES
-(86, '920517105553', 40, 'Pening Kepala', 'Bila doktor free?', '', '', '', '', '', '', '', '', '', 'done'),
-(124, '123', 71, 'jkhkhg', 'mjghj', '', '', '', '', '', 'D', 'Tesla', 'Yellow', 'EJ5321', 'checked-in'),
-(125, '123', 72, 'jijd', 'hdkjhd', '', '', '', '', '', 'G', 'Ford', 'Orange', 'KL1234', 'checked-in'),
-(127, '123', 74, 'Sick', 'covid', 'fever or chills,cough,shortness of breath or difficulty breathing,', 'yes', 'yes', 'no', 'no', 'C', 'Ford', 'Yellow', '8967U', 'checked-in');
+INSERT INTO `bookings` (`id`, `username`, `symp`, `isolating`, `contact`, `travel`, `vaccinated`, `location`, `make`, `color`, `plate`, `status`, `date`, `timeslot`) VALUES
+(13, 'johnjacob', 'fever or chills,fatigue,', 'yes', 'yes', 'no', 'no', 'C', 'Ford', 'Orange', 'PL5678', 'sample collected', '2022-03-26', '09:00AM - 09:10AM'),
+(14, 'johnjacob', 'fever or chills,shortness of breath or difficulty breathing,fatigue,', 'yes', 'yes', 'no', 'no', 'B', 'TATA', 'Blue', 'PLK8900', 'sample collected', '2022-03-26', '10:30AM - 10:40AM');
 
 -- --------------------------------------------------------
 
@@ -83,34 +80,6 @@ INSERT INTO `doctor` (`icDoctor`, `password`, `doctorId`, `doctorFirstName`, `do
 -- --------------------------------------------------------
 
 --
--- Table structure for table `doctorschedule`
---
-
-CREATE TABLE `doctorschedule` (
-  `scheduleId` int(11) NOT NULL,
-  `scheduleDate` date NOT NULL,
-  `scheduleDay` varchar(15) NOT NULL,
-  `startTime` time NOT NULL,
-  `endTime` time NOT NULL,
-  `bookAvail` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `doctorschedule`
---
-
-INSERT INTO `doctorschedule` (`scheduleId`, `scheduleDate`, `scheduleDay`, `startTime`, `endTime`, `bookAvail`) VALUES
-(40, '2015-12-13', 'Sunday', '09:00:00', '10:00:00', 'notavail'),
-(69, '2022-03-15', '', '16:21:00', '16:22:00', 'notavail'),
-(70, '2022-03-15', '', '16:55:00', '16:55:00', 'notavail'),
-(71, '2022-03-15', '', '16:58:00', '17:00:00', 'notavail'),
-(72, '2022-03-15', '', '17:10:00', '17:13:00', 'notavail'),
-(73, '2022-03-15', '', '18:13:00', '21:09:00', 'available'),
-(74, '2022-03-16', '', '15:33:00', '15:35:00', 'notavail');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `patient`
 --
 
@@ -131,8 +100,9 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`icPatient`, `password`, `patientFirstName`, `patientLastName`, `patientDOB`, `patientGender`, `patientPhone`, `patientEmail`, `race`) VALUES
-('123', '123', 'Jaco', 'Korangu', '1995-09-14', 'female', '9999999999', 'josephpezhathinal1@gmail.com', ''),
+('123', '123', 'Jaco', 'Korangu', '1995-09-14', 'male', '9999999999', 'josephpezhathinal1@gmail.com', ''),
 ('920517105553', '123', 'Mohd', 'Mazlan', '1992-05-17', 'male', '173567758', 'lan.psis@gmail.com', ''),
+('johnjacob', 'Asweread3214!', 'John', 'Jacob', '2008-02-18', 'male', '2487172198', 'johnjacob@gmail.com', 'asian'),
 ('podapullai', 'Sanjose111!', 'Joseph', 'Pezhathinal', '2015-06-09', 'male', '1234567890', 'jopan@gmail.com', 'asian');
 
 --
@@ -140,25 +110,16 @@ INSERT INTO `patient` (`icPatient`, `password`, `patientFirstName`, `patientLast
 --
 
 --
--- Indexes for table `appointment`
+-- Indexes for table `bookings`
 --
-ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`appId`),
-  ADD UNIQUE KEY `scheduleId_2` (`scheduleId`),
-  ADD KEY `patientIc` (`patientIc`),
-  ADD KEY `scheduleId` (`scheduleId`);
+ALTER TABLE `bookings`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `doctor`
 --
 ALTER TABLE `doctor`
   ADD PRIMARY KEY (`icDoctor`);
-
---
--- Indexes for table `doctorschedule`
---
-ALTER TABLE `doctorschedule`
-  ADD PRIMARY KEY (`scheduleId`);
 
 --
 -- Indexes for table `patient`
@@ -171,29 +132,13 @@ ALTER TABLE `patient`
 --
 
 --
--- AUTO_INCREMENT for table `appointment`
+-- AUTO_INCREMENT for table `bookings`
 --
-ALTER TABLE `appointment`
-  MODIFY `appId` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
-
---
--- AUTO_INCREMENT for table `doctorschedule`
---
-ALTER TABLE `doctorschedule`
-  MODIFY `scheduleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `appointment`
---
-ALTER TABLE `appointment`
-  ADD CONSTRAINT `appointment_ibfk_4` FOREIGN KEY (`patientIc`) REFERENCES `patient` (`icPatient`),
-  ADD CONSTRAINT `appointment_ibfk_5` FOREIGN KEY (`scheduleId`) REFERENCES `doctorschedule` (`scheduleId`);
+ALTER TABLE `bookings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

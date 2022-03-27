@@ -52,13 +52,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-       <a href="addschedule.php">
-       <i class='bx bxs-calendar' ></i>
-         <span class="links_name">Schedule</span>
-       </a>
-       <span class="tooltip">Schedule</span>
-     </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
@@ -99,10 +92,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <th>Last Name</th>
                         <th>Contact No.</th>
                         <th>Email</th>
-                        <th>Day</th>
                         <th>Date</th>
-                        <th>Start</th>
-                        <th>End</th>
+                        <th>Time</th>
                         <th>Status</th>
                         <th>Complete</th>
                     </tr>
@@ -113,13 +104,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                <!-- Below code is populating the appointment table -->
                <!-- First code block is pulling the data and comparing the data -->
                 <?php 
-                $res=mysqli_query($con,"SELECT a.*, b.*,c.*
+                $res=mysqli_query($con,"SELECT a.*, b.*
                                         FROM patient a
-                                        JOIN appointment b
-                                        On a.icPatient = b.patientIc
-                                        JOIN doctorschedule c
-                                        On b.scheduleId=c.scheduleId
-                                        Order By appId desc");
+                                        JOIN bookings b
+                                        On a.icPatient = b.username
+                                        Order By id desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));
                         exit();
@@ -128,7 +117,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     
                 
                   //code for the check in box    
-                  if ($appointment['status']=='process') {
+                  if ($appointment['status']=='checked-in') {
                         $status="danger";
                         $icon='remove';
                         $checked='';
@@ -145,13 +134,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
                         echo "<td>" . $appointment['patientPhone'] . "</td>";
                         echo "<td>" . $appointment['patientEmail'] . "</td>";
-                        echo "<td>" . $appointment['scheduleDay'] . "</td>";
-                        echo "<td>" . $appointment['scheduleDate'] . "</td>";
-                        echo "<td>" . $appointment['startTime'] . "</td>";
-                        echo "<td>" . $appointment['endTime'] . "</td>";
+                        echo "<td>" . $appointment['date'] . "</td>";
+                        echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
-                        echo "<td ><input type='checkbox' name='enable' id='enable' value='".$appointment['appId']."' onclick='chkit(".$appointment['appId'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='checkbox' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
 
                     
                 } 
