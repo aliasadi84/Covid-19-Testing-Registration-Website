@@ -17,8 +17,7 @@
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="100%"></a>
-        <!--The image is located inside the assets(folder) -> img(folder) -> pp.png -->
+        <a href="https://www.waynecountyhealthy.com"><img src="assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
@@ -62,9 +61,7 @@ Main Page of the WCHC Clinic Website-->
     <!--end of the password validation script-->
 
     <!--header stating that it is a Registration page-->
-      <header>
-         <h1>COVID-19 Testing Portal Account Register</h1>
-      </header>
+      
     <!--end of the header-->
 
     <!--body of the page is beginning here-->
@@ -78,58 +75,58 @@ Main Page of the WCHC Clinic Website-->
         <form method="post" action="connection.php" autocomplete="on">
             
             <!--A heading reminding the user that all fields are required-->
-            <h2>All Fields are Required</h2>
+            Register For An Account<br><br>
+            All Fields are Required<br>
 
             <!--The text field to enter the First Name-->
             <label for="patientFirstName">First Name</label><br>
             <input type="text" id="patientFirstName" name="patientFirstName" placeholder="First Name" required autofocus autocomplete><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
-            <br>
             <!--The text field to enter the Last Name-->
             <label for="patientLastName">Last Name</label><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
             <input type="text" id="patientLastName" name="patientLastName" placeholder="Last Name" required autofocus autocomplete><br>
-            <br>
             <!--This is a section to enter the gender of the patient, it uses radio button as a way to choose gender-->
             <label>Gender Assigned at Birth</label><br>
             <!--The selection to choose 'Male' for gender option-->
+
+            <div class="radioAlign">
             <input type="radio" id="male" name="patientGender" value="male">
             <label for="male">Male</label><br>
             <!--The selection to choose 'Female' for gender option-->
             <input type="radio" id="female" name="patientGender" value="female">
             <label for="female">Female</label><br>
+            </div>
 
-            <br>
             <!--This is a section to enter the date of birth of the patient, it uses date type as a way to choose Date of Birth-->
             <label for="patientDOB">Date of Birth</label><br>
             <!--Choose the date for the date of birth-->
             <input type="date" id="patientDOB" name="patientDOB" placeholder="Date of Birth" required autofocus autocomplete><br>
  
-            <br>
+
 
            <!--This is a section to enter the race of the patient, it uses dropdown as a way to choose Race-->
            <label for="race">Race/Ethnicity</label><br>
             <select id = "race" name="race">
-              <option value=""  selected disabled hidden></option>
-	      <option value="white">White</option>
+              <option value="Race/Ethnicity"  selected disabled hidden>Race/Ethnicity</option>
+	          <option value="white">White</option>
               <option value="arab">Arab</option>
-	      <option value="asian">Asian</option>
+	          <option value="asian">Asian</option>
               <option value="black">Black/African American</option>
               <option value="indo">Indo-Aryan</option>
               <option value="other">Other</option>
             </select>
+            <br>
 
-            <br>
-            <br>
             <!--This is a section to enter the Email Address of the patient, it uses a text field as a way to enter the Email Address-->
             <label for="patientEmail">E-Mail Address</label><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
-            <input type="email" id="patientEmail" name="patientEmail" placeholder="E-Mail Address" required autofocus autocomplete><br><br>
+            <input type="email" id="patientEmail" name="patientEmail" placeholder="E-Mail Address" required autofocus autocomplete><br>
             
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
             <label for="patientPhone">Phone Number</label><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
-            <input type="tel" id="patientPhone" name="patientPhone" placeholder="Phone Number" required autofocus autocomplete><br>
+            <input type="tel" id="patientPhone" name="patientPhone" placeholder="Phone Number" required autofocus autocomplete>
             
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
             <br><label for="icPatient">Username</label><br>
@@ -147,7 +144,7 @@ Main Page of the WCHC Clinic Website-->
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter Password" required><br>
         
         
-        <br><br>
+        <br>
           <!--By clicking the submit button, it will check if all required fields have an input and also is sent
               to validate if the password meets requirement and also if the password and confirm password is a match.-->
           <button class="button3" type="submit" onclick="validatePassword()">Register</button>
