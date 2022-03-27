@@ -93,10 +93,10 @@ $female = "checked";
 					<tr>
 						<td>Gender</td>
 						<td>
-							<div class="radio">
+							<div class="radioAlign2">
 								<label><input type="radio" name="patientGender" value="male" <?php echo $male; ?>>Male</label>
 							</div>
-							<div class="radio">
+							<div class="radioAlign2">
 								<label><input type="radio" name="patientGender" value="female" <?php echo $female; ?>>Female</label>
 							</div>
 						</td>
