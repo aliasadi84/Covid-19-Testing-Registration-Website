@@ -29,7 +29,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com"><img src="Covid-19-Testing-Registration-Website/assets/pp.png" width="50%"></a>
+        <a href="https://www.waynecountyhealthy.com"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 
