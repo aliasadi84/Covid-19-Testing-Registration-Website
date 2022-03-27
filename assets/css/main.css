@@ -4,7 +4,7 @@
 
 /* Hero Image*/
 div.hero-image { 
-  background-image: url("assets/img/pp.png"); /* the logo */
+  background-image: url("assets/pp.png"); /* the logo */
   height: 60%;
   background-position: center;
   background-repeat: no-repeat;
