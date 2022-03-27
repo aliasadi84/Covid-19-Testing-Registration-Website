@@ -15,9 +15,9 @@ div.hero-image {
   margin: 5px;
  }
 
-  /* Produces Map Background */
+ /* Produces Map Background */
   body {
-    background-image: url("map.png"); /* the map background */
+    background-image: url("map.png");  /* the map background */
     background-color: #D9D7F1;  /* original purple #98b8fca1 */
 
     /* option 2 D9D7F1 */
