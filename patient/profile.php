@@ -47,7 +47,8 @@ $female = "checked";
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/patientHomeButton.css">
+    <link rel="stylesheet" href="../assets/css/submit.css">
+    <link rel="stylesheet" href="../assets/css/table.css">
 </head>
 
 <header>
@@ -71,11 +72,11 @@ $female = "checked";
 		<!--appointment list button-->
 	</div>
 						
-		<!-- form start -->
-		<form action="<?php $_PHP_SELF ?>" method="post" >
-		<!--patient profile where each input can be edited in order to change patient detail-->
-			<table>
-				<tbody>
+	<!-- form start -->
+	<form action="<?php $_PHP_SELF ?>" method="post" >
+	<!--patient profile where each input can be edited in order to change patient detail-->
+	<table>
+				
 					<tr>
 						<td>First Name</td>
 						<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
@@ -110,17 +111,10 @@ $female = "checked";
 					<tr>
 						<td>E-mail Address</td>
 						<td><input type="text" class="form-control" name="patientEmail" value="<?php echo $userRow['patientEmail']; ?>"  /></td>
-					</tr>
-					<tr>
-						<td><input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
-					</tr>
-					</tbody>
-					
-				</table>
-				
-				
-				
-			</form>
+					</tr>										
+				</table>		
+				<input type="submit" name="submit" class="btn btn-info" value="Update Info">
+	</form>
     </section>
 	</div>
 </div>
