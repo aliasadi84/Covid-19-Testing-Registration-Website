@@ -60,15 +60,17 @@ div.hero-image {
 
   /*Creating Border around Sections*/
     .bf { /* use div class="bf"*/
-    padding: 55px;
+    padding: 120px;
     border-radius: 5px 5px;
     margin: auto;
+    margin-bottom: 5%;
     text-align: center;
     border-style: solid;
     border-color:black;
     background-color: white;
-    overflow: auto;
-    width: fit-content;
+    width: 50%;
+    overflow-x: hidden;
+    
   }
 
   /* better alignment of gender radio buttons on reg page */
@@ -89,4 +91,7 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
+    .uniAlign{ text-align: left;
+      padding-left: 0em;
+      font-size: .65em;}
   }
