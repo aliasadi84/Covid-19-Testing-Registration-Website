@@ -46,9 +46,10 @@ $female = "checked";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/submit.css">
+     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/loginButton.css">
     <link rel="stylesheet" href="../assets/css/table.css">
+    <link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
 <header>
@@ -66,18 +67,17 @@ $female = "checked";
 	<div>
 		<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
 		<hr />
-		<a href="patientlogout.php?logout=<?php echo $userRow['icPatient']; ?>"><button>Log Out</button></a>
 		<!--logout button-->
-		<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Your Appointments</button></a>
-		<!--appointment list button-->
+		<a href="patientlogout.php?logout=<?php echo $userRow['icPatient']; ?>"><button class="button3">Log Out</button></a>
+        	<!--appointment list button-->
+        	<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><button type="button" class="button3" data-toggle="modal" data-target="#myModal">Appointments</button></a>
 	</div>
 						
 	<!-- form start -->
 	<form action="<?php $_PHP_SELF ?>" method="post" >
 	<!--patient profile where each input can be edited in order to change patient detail-->
 	<table>
-				
-					<tr>
+		<tr>
 						<td>First Name</td>
 						<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
 					</tr>
@@ -111,10 +111,10 @@ $female = "checked";
 					<tr>
 						<td>E-mail Address</td>
 						<td><input type="text" class="form-control" name="patientEmail" value="<?php echo $userRow['patientEmail']; ?>"  /></td>
-					</tr>										
-				</table>		
-				<input type="submit" name="submit" class="btn btn-info" value="Update Info">
-	</form>
+					</tr>		
+	</table>
+            </form>
+                <button class="button3" name="submit" type="submit">Update</button>
     </section>
 	</div>
 </div>
