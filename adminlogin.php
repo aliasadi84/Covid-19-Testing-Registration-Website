@@ -22,8 +22,6 @@ if ($row['password'] == $password)
 {
 $_SESSION['doctorSession'] = $row['doctorId'];
 //error checking
-//If a clinic session is already running without loging out from the clinic session,
-//it will be directed toward doctordashboard.php(file) in clinic(folder).
 ?>
 <script type="text/javascript">
 alert('Login Success');
