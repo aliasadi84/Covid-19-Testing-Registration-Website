@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['doctorSession']))
+if(!isset($_SESSION['doctorSession']) || !isset($_SESSION['staffSession']) )
 {
 //if not logged into the admin side it will direct you to the index
 header("Location: ../adminlogin.php");

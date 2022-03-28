@@ -1,9 +1,9 @@
 /* table css */
 
 table {
-    padding: 0px;
+    padding: 60px;
     border-radius: 10px 10px;
-    margin: 10px 10px 10px;
+    margin: 25px 25px 25px;
     width: 95%;
    
     text-align: center;
@@ -16,7 +16,7 @@ table {
   /* responsive below */
   @media 
   only screen and (max-width: 760px),
-  (min-device-width: 375px) and (max-device-width: 1280px)  {
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
   
     /* makes table behave not like a table */
     table, thead, tbody, th, td, tr { 
@@ -35,10 +35,9 @@ table {
     td { 
       /* a "row" */
       border: none;
-      /*border-bottom: 1px solid #eee;*/ 
+      border-bottom: 1px solid #eee; 
       position: relative;
-      padding-left: -20%; 
-      font-size: .8em;
+      padding-left: 50%; 
     }
     
     td:before { 
@@ -50,6 +49,5 @@ table {
       padding-right: 10px 20px; 
       white-space: nowrap;
       text-align: center;
-      
     }
 }

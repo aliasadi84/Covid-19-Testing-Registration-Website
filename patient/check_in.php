@@ -49,34 +49,34 @@
    }
 ?>
 <!DOCTYPE HTML>
-<html> 
-<head>  
-<script type="text/javascript">
-function CheckColors(val){
- var element=document.getElementById('color');
- if(val=='pick a color'||val=='Other')
-   element.style.display='block';
- else  
-   element.style.display='none';
-}
 
-</script> 
-</head>
-</html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        color: #588c7e;
+        font-family: monospace;
+        font-size: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #588c7e;
+        color: white;
+      }
+      tr:nth-child(even){background-color: #f2f2f2;}
+    </style>
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/submit.css">
-    <link rel="stylesheet" href="../assets/css/table.css">
-    <link rel="stylesheet" href="../assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/submit.css">
 </head>
 
 <header>
     <div class="hero-image">
-        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
+        <a href="patient.php" ><img src="assets/img/pp.png" width="100%"></a>
     </div>
 </header>
 
@@ -89,8 +89,13 @@ function CheckColors(val){
   <table>
   <thead>
       <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Contact No.</th>
+          <th>Email</th>
           <th>Date</th>
           <th>Time</th>
+          <th>Status</th>
       </tr>
   </thead>
   <!--php below populates the information of the appointment that needs to be checked-in-->
@@ -118,12 +123,17 @@ function CheckColors(val){
           $icon='ok';
           $checked = 'disabled';
       }
-      
+      echo $today;
       echo "<tbody>";
       echo "<tr>";
           //appointment details is populated
+          echo "<td>" . $appointment['patientFirstName'] . "</td>";
+          echo "<td>" . $appointment['patientLastName'] . "</td>";
+          echo "<td>" . $appointment['patientPhone'] . "</td>";
+          echo "<td>" . $appointment['patientEmail'] . "</td>";
           echo "<td>" . $appointment['date'] . "</td>";
           echo "<td>" . $appointment['timeslot'] . "</td>";
+          echo "<td>" . $appointment['status'] . "</td>";
           echo "<form method='POST'>";
 
       
@@ -133,15 +143,11 @@ function CheckColors(val){
       echo "</table>";
       ?>
 
-      <h3>Help Us Find You!</h3>
-
+      <h2>Instruction: </h2>
+      <p>Help Us Find You!</p>
       <!--Inputs form for the car details starts here-->
       <h2>Parking</h2>
-      
-      <div class="parking">
-        <img class="responsive" src="assets/img/draw.jpg" width="100%" height="auto">
-      </div>
-  
+      <img src="assets/img/draw.jpg" width="800px" height="400px"><br><br>
       <label for="location">Location:</label>
       <select name="location" id="location">
         <option value="A">A</option>
@@ -152,24 +158,24 @@ function CheckColors(val){
         <option value="F">F</option>
         <option value="G">G</option>
         <option value="H">H</option>
-      </select><br>
+      </select><br><br>
       
+     <div id="vehicle" class="info">
         <h2>Car</h2>
-        <input type="select" id="car" name="make" placeholder="Car Type"><br><br>
-        <select name="color" id="carcolor" onchange='CheckColors(this.value);'>
-        <option value="White">White</option>
-        <option value="Black">Black</option>
-        <option value="Silver">Silver</option>
+        <input type="text" id="car" name="make" value="Car Type"><br><br>
+        <select name="color" id="carcolor">
         <option value="Red">Red</option>
+        <option value="Orange">Orange</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Green">Green</option>
         <option value="Blue">Blue</option>
-        <option value="Other">Other (Type Below)</option>
-        </select>
-        <input type="text" name="color" id="color" style='display:none;'/><br><br>
+        <option value="Purple">Purple</option>
+        </select><br><br>
 
       <h2>License Plate: </h2>
-      <input type="text" id="plate" name="plate" placeholder="Plate Number"><br>
+      <input type="text" id="plate" name="plate" value="Plate Number"><br><br>
     
-
+     </div>
 
   </div>
   <!--input for the car details end here-->
@@ -178,7 +184,7 @@ function CheckColors(val){
 
 <br>
 <!--when clicked the submit button it sends the input of the car information to the php at the top inorder for it to be entered to the database-->
-<button class='button2' type='submit' value='Submit' name='submit'>Check In</button>
+<button class='button2' type='submit' value='Submit' name='submit'>Update</button>
 
 </form>
 

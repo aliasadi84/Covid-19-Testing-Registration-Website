@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost:3308","root","","sourcecodester_dadb");
+$con = mysqli_connect("localhost","root","","sourcecodester_dadb");
 // Check connection
 if (mysqli_connect_errno())
   {

@@ -47,14 +47,12 @@ $female = "checked";
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/loginButton.css">
-	<link rel="stylesheet" href="../assets/css/table.css">
-	<link rel="stylesheet" href="../assets/css/input.css">
+    <link rel="stylesheet" href="../assets/css/patientHomeButton.css">
 </head>
 
 <header>
     <div class="hero-image">
-        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
+        <a href="https://www.waynecountyhealthy.com"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 <title>Account</title>
@@ -67,9 +65,9 @@ $female = "checked";
 	<div>
 		<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
 		<hr />
-		<a href="patientlogout.php?logout=<?php echo $userRow['icPatient']; ?>"><button class="button3">Log Out</button></a>
+		<a href="patientlogout.php?logout=<?php echo $userRow['icPatient']; ?>"><button>Log Out</button></a>
 		<!--logout button-->
-		<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><button type="button" class="button3" data-toggle="modal" data-target="#myModal">Appointments</button></a>
+		<a href="patientapplist.php?patientId=<?php echo $userRow['icPatient']; ?>"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Your Appointments</button></a>
 		<!--appointment list button-->
 	</div>
 						
@@ -77,7 +75,7 @@ $female = "checked";
 		<form action="<?php $_PHP_SELF ?>" method="post" >
 		<!--patient profile where each input can be edited in order to change patient detail-->
 			<table>
-				
+				<tbody>
 					<tr>
 						<td>First Name</td>
 						<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
@@ -112,18 +110,19 @@ $female = "checked";
 					<tr>
 						<td>E-mail Address</td>
 						<td><input type="text" class="form-control" name="patientEmail" value="<?php echo $userRow['patientEmail']; ?>"  /></td>
-					</tr>	
+					</tr>
+					<tr>
+						<td><input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
+					</tr>
+					</tbody>
+					
 				</table>
-			<button class="button3" name="submit" type="submit">Update</button>
+				
+				
+				
 			</form>
-				
-				
-	
-	
     </section>
-	
 	</div>
-	
 </div>
 </body>
 </html>

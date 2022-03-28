@@ -19,21 +19,30 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/css/account.css">
 
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/loginButton.css">
-	<link rel="stylesheet" href="../assets/css/table.css">
-	<link rel="stylesheet" href="../assets/css/input.css">
-</head>
+	<style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        color: #588c7e;
+        font-family: monospace;
+        font-size: 16px;
+        text-align: left;
+      }
+      th {
+        background-color: #588c7e;
+        color: white;
+      }
+      tr:nth-child(even){background-color: #f2f2f2;}
+    </style>
 
-<header>
+    <title>Account</title>
+       
+      <!-- Header/ Nav Bar -->
+	  <header>
     <div class="hero-image">
-        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
+        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="100%"></a>
     </div>
-</header>
+    </header>
 
 <body>
   
@@ -43,13 +52,12 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 
     //populates the appointments that you have booked
 	  // NOTE FROM TIM: I would recommend changing "Your Appointment List" to say "<user-first-name>'s Appointment List" like we have on the homepage
-    echo "<h1>" . $userRow['username'] . "'s Appointment List</h1>";
+    echo "<h1>Your Appointment List</h1>";
     echo "<table>";
     echo "<thead>";
     echo "<tr>";
     echo "<th>Date </th>";
     echo "<th>Time Slot</th>";
-    echo "<th>Status</th>";
     echo "</tr>";
     echo "</thead>";
     $res = mysqli_query($con, "SELECT a.*, b.*
@@ -68,7 +76,6 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     echo "<tr>";
     echo "<td>" . $userRow['date'] . "</td>";
     echo "<td>" . $userRow['timeslot'] . "</td>";
-    echo "<td>" . $userRow['status'] . "</td>";
     }
 
     echo "</tr>";
