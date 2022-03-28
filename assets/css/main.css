@@ -77,3 +77,16 @@ div.hero-image {
 
     .radioAlign2 { text-align: left; 
                       padding-left: 2.5em;}
+
+ /* responsive width for bf and unialign */
+@media 
+  only screen and (max-width: 760px),
+  (min-device-width: 100px) and (max-device-width: 1024px)  
+  {
+    .bf {
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+    }
+  }
