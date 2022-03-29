@@ -30,7 +30,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com"><img src="assets/pp.png" width="50%"></a>
+        <a href="https://www.waynecountyhealthy.com"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
