@@ -1,14 +1,14 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['doctorSession']))
+if(!isset($_SESSION['staffSession']))
 {
 //if not logged into the admin side it will direct you to the index
-header("Location: ../adminlogin.php");
+header("Location: ../stafflogin.php");
 }
-$usersession = $_SESSION['doctorSession'];
+$usersession = $_SESSION['staffSession'];
 //Checking the doctor ID making sure it's still there
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM staff WHERE icstaff = '$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
@@ -52,13 +52,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-         <a href="addresults.php">
-         <i class='bx bxs-virus'></i>
-          <span class="links_name">Add Result</span>
-        </a>
-         <span class="tooltip">Result</span>
-      </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
@@ -67,12 +60,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
        <span class="tooltip">Patient List</span>
      </li>
      <li>
-       <a href="staff.php">
-       <i class='bx bx-plus-medical'></i>
-         <span class="links_name">Staff</span>
-       </a>
-       <span class="tooltip">Staff</span>
-     </li>
+         <a href="addresults.php">
+         <i class='bx bxs-virus'></i>
+          <span class="links_name">Add Result</span>
+        </a>
+         <span class="tooltip">Result</span>
+      </li>
      <li>
          <a href="doctorprofile.php">
          <i class='bx bx-user'></i>
@@ -109,7 +102,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
-                        <th>Complete</th>
+                        <th>Positive</th>
+                        <th>Negetive</th>
                     </tr>
                 </thead>
               
@@ -131,7 +125,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     
                 
                   //code for the check in box    
-                  if ($appointment['status']=='checked-in') {
+                  if ($appointment['status']=='sample collected') {
                         $status="danger";
                         $icon='remove';
                         $checked='';
@@ -152,7 +146,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
-                        echo "<td ><input type='checkbox' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable' id='enable' value='".$appointment['id']."' onclick='chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
 
                     
                 } 
@@ -172,7 +167,19 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 <script type="text/javascript">
 function chkit(uid, chk) {
    chk = (chk==true ? "1" : "0");
-   var url = "checkdb.php?userid="+uid+"&chkYesNo="+chk;
+   var url = "resultdb.php?userid="+uid+"&chkYesNo="+chk;
+   if(window.XMLHttpRequest) {
+      req = new XMLHttpRequest();
+   } else if(window.ActiveXObject) {
+      req = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   // Use get instead of post.
+   req.open("GET", url, true);
+   req.send(null);
+}
+function chki(uid, chk) {
+   chk = (chk==true ? "1" : "0");
+   var url = "nresultdb.php?userid="+uid+"&chkYesNo="+chk;
    if(window.XMLHttpRequest) {
       req = new XMLHttpRequest();
    } else if(window.ActiveXObject) {
@@ -222,6 +229,9 @@ function chkit(uid, chk) {
           }
           }
           </script>
+
+    </body>
+</html>
 
     </body>
 </html>

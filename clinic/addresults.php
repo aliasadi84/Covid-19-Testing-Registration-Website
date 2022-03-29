@@ -109,7 +109,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
-                        <th>Complete</th>
+                        <th>Positive</th>
+                        <th>Negetive</th>
                     </tr>
                 </thead>
               
@@ -131,7 +132,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     
                 
                   //code for the check in box    
-                  if ($appointment['status']=='checked-in') {
+                  if ($appointment['status']=='sample collected') {
                         $status="danger";
                         $icon='remove';
                         $checked='';
@@ -152,7 +153,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
-                        echo "<td ><input type='checkbox' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable' id='enable' value='".$appointment['id']."' onclick='chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
 
                     
                 } 
@@ -168,11 +170,24 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
   </section>
                     <!-- panel end -->
 
-<!-- takes all the inputs from the checkbox, send to checkdatabase.php -->
+<!-- takes all the inputs from the checkbox, send to resultdb.php to enter the positive result -->
 <script type="text/javascript">
 function chkit(uid, chk) {
    chk = (chk==true ? "1" : "0");
-   var url = "checkdb.php?userid="+uid+"&chkYesNo="+chk;
+   var url = "resultdb.php?userid="+uid+"&chkYesNo="+chk;
+   if(window.XMLHttpRequest) {
+      req = new XMLHttpRequest();
+   } else if(window.ActiveXObject) {
+      req = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   // Use get instead of post.
+   req.open("GET", url, true);
+   req.send(null);
+}
+//takes all the inputs from the checkbox, send to nresultdb.php to enter the negetive results
+function chki(uid, chk) {
+   chk = (chk==true ? "1" : "0");
+   var url = "nresultdb.php?userid="+uid+"&chkYesNo="+chk;
    if(window.XMLHttpRequest) {
       req = new XMLHttpRequest();
    } else if(window.ActiveXObject) {
@@ -222,6 +237,9 @@ function chkit(uid, chk) {
           }
           }
           </script>
+
+    </body>
+</html>
 
     </body>
 </html>

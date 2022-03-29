@@ -1,14 +1,14 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['doctorSession']))
+if(!isset($_SESSION['staffSession']))
 {
-//if not logged into the admin side it will direct you to the index
-header("Location: ../adminlogin.php");
+//if not logged into the staff side it will direct you to the stafflogin.php
+header("Location: ../stafflogin.php");
 }
-$usersession = $_SESSION['doctorSession'];
-//Checking the doctor ID making sure it's still there
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$usersession = $_SESSION['staffSession'];
+//Checking the staff ID making sure it's still there
+$res=mysqli_query($con,"SELECT * FROM staff WHERE icstaff = '$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
@@ -52,13 +52,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-         <a href="addresults.php">
-         <i class='bx bxs-virus'></i>
-          <span class="links_name">Add Result</span>
-        </a>
-         <span class="tooltip">Result</span>
-      </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
@@ -67,12 +60,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
        <span class="tooltip">Patient List</span>
      </li>
      <li>
-       <a href="staff.php">
-       <i class='bx bx-plus-medical'></i>
-         <span class="links_name">Staff</span>
-       </a>
-       <span class="tooltip">Staff</span>
-     </li>
+         <a href="addresults.php">
+         <i class='bx bxs-virus'></i>
+          <span class="links_name">Add Result</span>
+        </a>
+         <span class="tooltip">Result</span>
+      </li>
      <li>
          <a href="doctorprofile.php">
          <i class='bx bx-user'></i>

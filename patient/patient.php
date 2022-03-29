@@ -51,7 +51,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             <a href="check_in.php">
                 <button class="button"><i class="fa-solid fa-car-side"></i><pre>Check-In</pre></button>
             </a><br>
-            <a href="results.html">
+            <a href="results.php">
                    <button class="button"><i class="fa-solid fa-virus-covid"></i><pre>Results</pre></button>
             </a>
             <br>

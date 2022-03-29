@@ -93,9 +93,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
   <section class="home-section">
 
                             <h2>
-                            Patient List
+                            Staff List
                             </h2>
- 
+                            <a href='staffCreation.php'><button>Add Staff (+)</button></a>
                         <table>
                             <thead>
                                 <tr>
@@ -104,43 +104,35 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
-                                    <th>Gender</th>
-                                    <th>Birthdate</th>
-                                    <th>Race</th>
+                                    <th>Date of Birth</th>
+                                    <th>Edit<th>
+                                    <th>Active/Inactive</th>
+
                                 </tr>
                             </thead>
                             
                             <?php 
-                            $result=mysqli_query($con,"SELECT * FROM patient");
+                            $result=mysqli_query($con,"SELECT * FROM staff");
                             
 
-                            //displaying the data from the datebase     
+                            //displaying staff data from the datebase     
                             while ($patientRow=mysqli_fetch_array($result)) {
                                 
                               
                                 echo "<tbody>";
-                                echo "<tr>";
-                                    echo "<td>" . $patientRow['icPatient'] . "</td>";
-                                    echo "<td>" . $patientRow['patientFirstName'] . "</td>";
-                                    echo "<td>" . $patientRow['patientLastName'] . "</td>";
-                                    echo "<td>" . $patientRow['patientEmail'] . "</td>";
-                                    echo "<td>" . $patientRow['patientPhone'] . "</td>";
-                                    echo "<td>" . $patientRow['patientGender'] . "</td>";
-                                    echo "<td>" . $patientRow['patientDOB'] . "</td>";
-                                    echo "<td>" . $patientRow['race'] . "</td>";
-                                    echo "<form method='POST'>";
-                                    echo "<td class='text-center'><a href='#' id='".$patientRow['icPatient']."' class='delete'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>
-                            </td>";
-                               
+                                echo '<tr>
+                                <td>'.$patientRow['icstaff'].'</td>
+                                <td>'.$patientRow['staffFirstName'].'</td>
+                                <td>'.$patientRow['staffLastName'].'</td>
+                                <td>'.$patientRow['staffEmail'].'</td>
+                                <td>'.$patientRow['staffPhone'].'</td>
+                                <td>'.$patientRow['staffDOB'].'</td>
+                                <td>'.'<a href="editstaff.php?username='.$patientRow['icstaff'].'">'.'Edit'.'</a>'.'</td>
+                                <td>'.'<a href="active.php?username='.$patientRow['icstaff'].'&active='.$patientRow['active'].'">'.$patientRow['active'].'</a>'.'</td>';
                             } 
                                 echo "</tr>";
                            echo "</tbody>";
                        echo "</table>";
-                       echo "<div>";
-                       echo "<div>";
-                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Update</button>";
-                        echo "</div>";
-                        echo "</div>";
                         ?>
 
                         </section>

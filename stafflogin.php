@@ -18,7 +18,7 @@ $res = mysqli_query($con,"SELECT * FROM staff WHERE icstaff = '$icstaff'");
 //check and get if the username is present in the database.
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 //if statement check if password matches with what is present for the username.
-if ($row['password'] == $password)
+if ($row['password'] == $password && $row['active'] == 'active')
 {
 $_SESSION['staffSession'] = $row['icstaff'];
 //error checking
@@ -29,11 +29,11 @@ $_SESSION['staffSession'] = $row['icstaff'];
 alert('Login Success');
 </script>
 <?php
-header("Location: clinic/staffpatientlist.php");
+header("Location: staff/doctordashboard.php");
 } else {
 ?>
 <script type="text/javascript">
-    alert("Username or password incorrect. Please try again.");
+    alert("Account deactivated or information entered is incorrect. Please try again.");
 </script>
 <?php
 }
@@ -58,7 +58,7 @@ header("Location: clinic/staffpatientlist.php");
 Main Page of the WCHC Clinic Website-->   
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="100%"></a>
+        <a href="https://www.waynecountyhealthy.com" ><img src="assets/pp.png" width="50%"></a>
         <!--The image is located inside the assets(folder) -> img(folder) -> pp.png --> 
     </div>
 </header>

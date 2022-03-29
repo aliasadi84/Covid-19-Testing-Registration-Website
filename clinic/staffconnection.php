@@ -22,7 +22,7 @@
             
         if(mysqli_query($con, $sql)){
             
-                header("location: regconfirmation.html"); 
+                header("location: ../stafflogin.php"); 
 
             } else{
                 echo "ERROR: Hush! Sorry $sql. " 
