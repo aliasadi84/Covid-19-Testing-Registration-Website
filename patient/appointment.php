@@ -41,21 +41,21 @@ VALUES ( '$session', '$chk', '$isolating', '$contact', '$travel', '$vaccinated',
 
 
 //email needs to be connected, Salem part imma do that soon
-$scheduleres=mysqli_query($con,$sql);
+// $scheduleres=mysqli_query($con,$sql);
 
-$receiver = "joseph.pezhathinal1@gmail.com";
-$subject = "Email Test via PHP using Localhost";
-$body = "Hi, there...This is a test email send from Localhost.";
-$sender = "From:seniorprojectwchc@gmail.com";
-if(mail($receiver, $subject, $body, $sender)){
-    echo "Email sent successfully to $receiver";
-}else{
-    echo "Sorry, failed while sending mail!";
-}
+// $receiver = "joseph.pezhathinal1@gmail.com";
+// $subject = "Email Test via PHP using Localhost";
+// $body = "Hi, there...This is a test email send from Localhost.";
+// $sender = "From:seniorprojectwchc@gmail.com";
+// if(mail($receiver, $subject, $body, $sender)){
+//     echo "Email sent successfully to $receiver";
+// }else{
+//     echo "Sorry, failed while sending mail!";
+// }
 
-if ($scheduleres) {
-	$btn= "disable";
-} 
+// if ($scheduleres) {
+// 	$btn= "disable";
+// } 
 
 
 $result = mysqli_query($con,$query);
@@ -67,7 +67,7 @@ if( $result )
 alert('Appointment made successfully.');
 </script>
 <?php
-header("Location: patientapplist.php");
+header("Location: appconfirmation.php?&date=$date&timeslot=$timeslot");
 }
 else
 {
