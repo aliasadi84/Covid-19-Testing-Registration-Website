@@ -75,8 +75,8 @@ Main Page of the WCHC Clinic Website-->
         <form method="post" action="connection.php" autocomplete="on">
             
             <!--A heading reminding the user that all fields are required-->
-            Register For An Account<br><br>
-            All Fields are Required<br>
+            Register For An Account
+            <h4>All Fields are Required<br></h4>
 
             <!--The text field to enter the First Name-->
             <label for="patientFirstName">First Name</label><br>
@@ -90,6 +90,7 @@ Main Page of the WCHC Clinic Website-->
             <label>Gender Assigned at Birth</label><br>
             <!--The selection to choose 'Male' for gender option-->
 
+            
             <div class="radioAlign">
             <input type="radio" id="male" name="patientGender" value="male">
             <label for="male">Male</label><br>
@@ -97,6 +98,7 @@ Main Page of the WCHC Clinic Website-->
             <input type="radio" id="female" name="patientGender" value="female">
             <label for="female">Female</label><br>
             </div>
+            
 
             <!--This is a section to enter the date of birth of the patient, it uses date type as a way to choose Date of Birth-->
             <label for="patientDOB">Date of Birth</label><br>
@@ -134,7 +136,8 @@ Main Page of the WCHC Clinic Website-->
             <input type="text" id="icPatient" name="icPatient" placeholder="Username" required autofocus><br>
 
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
-            <label for="password">Password</label><br>
+            <label for="password">Password</label>
+            <h5>Requires at least 8 characters, including at least one uppercase, one number, and one special character</h5>
             <!--This text field is set to be required-->
             <input type="password" id="password" name="password" placeholder="Password" required><br>
 
