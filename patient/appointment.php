@@ -67,7 +67,7 @@ if( $result )
 alert('Appointment made successfully.');
 </script>
 <?php
-header("Location: patientapplist.php");
+header("Location: appconfirmation.php?&date=$date&timeslot=$timeslot");
 }
 else
 {
@@ -155,7 +155,7 @@ header("Location: patient.php");
 			tested positive for COVID-19 or are worried
 			that you may be sick with COVID-19?</p>
 			
-			  <input type="radio" class= "largerRadio" id="yes_isolating" name="isolating" value="yes">
+			  <input type="radio" class= "largerRadio" id="yes_isolating" name="isolating" value="yes" required>
 			  <label for="yes_isolating"> Yes</label><br>
 			  <input type="radio" class= "largerRadio" id="no_isolating" name="isolating" value="no">
 			  <label for="no_isolating"> No</label><br>
@@ -163,7 +163,7 @@ header("Location: patient.php");
 		
 			<p>3. Have you been in close physical contact in the last 14 days with someone who has tested positive for COVID-19?</p>
 			 
-			  <input type="radio" class= "largerRadio" id="yes_contact" name="contact" value="yes">
+			  <input type="radio" class= "largerRadio" id="yes_contact" name="contact" value="yes" required>
 			  <label for="yes_contact"> Yes</label><br>
 			  <input type="radio" class= "largerRadio" id="no_contact" name="contact" value="no">
 			  <label for="no_contact"> No</label><br>
@@ -172,7 +172,7 @@ header("Location: patient.php");
 
 			<p>4. Have you traveled in the past 10 days?</p>
 			
-			  <input type="radio" class= "largerRadio" id="yes_travel" name="travel" value="yes">
+			  <input type="radio" class= "largerRadio" id="yes_travel" name="travel" value="yes" required>
 			  <label for="yes_travel"> Yes</label><br>
 			  <input type="radio" class= "largerRadio" id="no_travel" name="travel" value="no">
 			  <label for="no_travel"> No</label><br>
@@ -181,7 +181,7 @@ header("Location: patient.php");
 
 
 		<p>5. Are you vaccinated for COVID-19?</p>
-		  <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated" value="yes">
+		  <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated" value="yes" required>
 		  <label for="yes_vaccinated"> Yes</label><br>
 		  <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated" value="no">
 		  <label for="no_vaccinated"> No</label><br><br>
