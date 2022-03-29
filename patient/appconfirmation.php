@@ -19,7 +19,14 @@ $res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$usersession'")
 
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
-?>
+
+
+$to = $userRow['patientEmail'];
+$subject = "Scheduling Confirmation Email";
+$body ="Hello " .$userRow['patientFirstName']. ",\n\nThank you for scheduling an appointment with Wayne County Healthy Communities! You have scheduled an appointment for $date from $timeslot.\n\nWe look forward to seeing you!";
+$header = "From: from@email";
+mail($to, $subject, $body, $header)
+?>  
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Mar 27, 2022 at 01:26 AM
+-- Generation Time: Mar 29, 2022 at 04:39 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -41,16 +41,22 @@ CREATE TABLE `bookings` (
   `plate` varchar(20) NOT NULL,
   `status` varchar(30) NOT NULL,
   `date` date NOT NULL,
-  `timeslot` varchar(255) DEFAULT NULL
+  `timeslot` varchar(255) DEFAULT NULL,
+  `result` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bookings`
 --
 
-INSERT INTO `bookings` (`id`, `username`, `symp`, `isolating`, `contact`, `travel`, `vaccinated`, `location`, `make`, `color`, `plate`, `status`, `date`, `timeslot`) VALUES
-(13, 'johnjacob', 'fever or chills,fatigue,', 'yes', 'yes', 'no', 'no', 'C', 'Ford', 'Orange', 'PL5678', 'sample collected', '2022-03-26', '09:00AM - 09:10AM'),
-(14, 'johnjacob', 'fever or chills,shortness of breath or difficulty breathing,fatigue,', 'yes', 'yes', 'no', 'no', 'B', 'TATA', 'Blue', 'PLK8900', 'sample collected', '2022-03-26', '10:30AM - 10:40AM');
+INSERT INTO `bookings` (`id`, `username`, `symp`, `isolating`, `contact`, `travel`, `vaccinated`, `location`, `make`, `color`, `plate`, `status`, `date`, `timeslot`, `result`) VALUES
+(13, 'johnjacob', 'fever or chills,fatigue,', 'yes', 'yes', 'no', 'no', 'C', 'Ford', 'Orange', 'PL5678', 'result entered', '2022-03-26', '09:00AM - 09:10AM', 'positive'),
+(14, 'johnjacob', 'fever or chills,shortness of breath or difficulty breathing,fatigue,', 'yes', 'yes', 'no', 'no', 'B', 'TATA', 'Blue', 'PLK8900', 'result entered', '2022-03-26', '10:30AM - 10:40AM', 'positive'),
+(15, '123', 'fever or chills,cough,shortness of breath or difficulty breathing,', 'yes', 'yes', 'no', 'no', 'C', 'Tesla', '', 'EJ53', 'sample collected', '2022-03-28', '10:10AM - 10:20AM', 'processing'),
+(16, '123', 'fever or chills,cough,', 'no', 'yes', 'no', 'no', 'C', 'Tesla', '', 'EJ53', 'result entered', '2022-03-28', '9:00AM - 9:10AM', 'positive'),
+(17, '123', 'fever or chills,cough,', 'no', 'yes', 'no', 'no', 'C', 'Tesla', '', 'EJ53', 'result entered', '2022-03-28', '9:00AM - 9:10AM', 'negetive'),
+(18, '123', 'fever or chills,cough,', 'no', 'yes', 'no', 'yes', 'C', 'Tesla', '', 'EJ53', 'result entered', '2022-03-28', '9:10AM - 9:20AM', 'positive'),
+(19, '123', 'fever or chills,cough,', 'no', 'yes', 'no', 'yes', '', '', '', '', 'appointment booked', '2022-03-29', '9:00AM - 9:10AM', '');
 
 -- --------------------------------------------------------
 
@@ -105,6 +111,30 @@ INSERT INTO `patient` (`icPatient`, `password`, `patientFirstName`, `patientLast
 ('johnjacob', 'Asweread3214!', 'John', 'Jacob', '2008-02-18', 'male', '2487172198', 'johnjacob@gmail.com', 'asian'),
 ('podapullai', 'Sanjose111!', 'Joseph', 'Pezhathinal', '2015-06-09', 'male', '1234567890', 'jopan@gmail.com', 'asian');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `icstaff` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `staffFirstName` varchar(50) NOT NULL,
+  `staffLastName` varchar(50) NOT NULL,
+  `staffPhone` varchar(100) NOT NULL,
+  `staffEmail` varchar(100) NOT NULL,
+  `staffDOB` date NOT NULL,
+  `active` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`icstaff`, `password`, `staffFirstName`, `staffLastName`, `staffPhone`, `staffEmail`, `staffDOB`, `active`) VALUES
+('josephthomas', 'Sanjose111!', 'Joseph', 'Thomas', '2489434012', 'joseph@gmail.com', '2022-03-10', 'active');
+
 --
 -- Indexes for dumped tables
 --
@@ -128,6 +158,12 @@ ALTER TABLE `patient`
   ADD PRIMARY KEY (`icPatient`);
 
 --
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`icstaff`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -135,10 +171,11 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
