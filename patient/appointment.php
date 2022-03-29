@@ -67,7 +67,7 @@ if( $result )
 alert('Appointment made successfully.');
 </script>
 <?php
-header("Location: appconfirmation.php?&date=$date&timeslot=$timeslot");
+header("Location: patientapplist.php");
 }
 else
 {

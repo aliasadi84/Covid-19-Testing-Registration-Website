@@ -17,13 +17,12 @@
         $icstaff = $_REQUEST['icstaff'];
         $password = $_REQUEST['password'];
         $staffPhone = $_REQUEST['staffPhone'];
-        $active = 'active';
         
-        $sql = "INSERT INTO staff VALUES ('$icstaff', '$password', '$staffFirstName', '$staffLastName', '$staffPhone','$staffEmail', '$staffDOB','$active')";
+        $sql = "INSERT INTO staff VALUES ('$icstaff', '$password', '$staffFirstName', '$staffLastName', '$staffPhone','$staffEmail', '$staffDOB')";
             
         if(mysqli_query($con, $sql)){
             
-                header("location: staff.php"); 
+                header("location: regconfirmation.html"); 
 
             } else{
                 echo "ERROR: Hush! Sorry $sql. " 

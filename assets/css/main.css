@@ -59,11 +59,6 @@ div.hero-image {
 
   h4 {font-size: .85em;}
 
-  h5 {font-size: .4em;
-        line-height: 0px;
-        margin: 0px;
-        padding: 10px; }
-
   .center {
     text-align: center;
     border: 3px solid #2f55ff;
@@ -85,11 +80,9 @@ div.hero-image {
     
   }
 
- 
-
   /* better alignment of gender radio buttons on reg page */
     .radioAlign { text-align: left; 
-                    padding-left: 11em;}
+                    padding-left: 3.5em;}
 
     .radioAlign2 { text-align: left; 
                       padding-left: 2.5em;}
@@ -109,13 +102,7 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
-    .radioAlign { text-align: left; 
-      padding-left: 4em;}
     .uniAlign{ text-align: left;
       padding-left: 0em;
       font-size: .65em;}
-    h5 {font-size: .4em;
-      line-height: 14px;}
-    
-        
   }

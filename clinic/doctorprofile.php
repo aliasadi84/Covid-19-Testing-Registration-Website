@@ -83,26 +83,12 @@ header( 'Location: doctorprofile.php' ) ;
         </a>
          <span class="tooltip">Dashboard</span>
       </li>
-      <li>
-         <a href="addresults.php">
-         <i class='bx bxs-virus'></i>
-          <span class="links_name">Add Result</span>
-        </a>
-         <span class="tooltip">Result</span>
-      </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
          <span class="links_name">Patient List</span>
        </a>
        <span class="tooltip">Patient List</span>
-     </li>
-     <li>
-       <a href="staff.php">
-       <i class='bx bx-plus-medical'></i>
-         <span class="links_name">Staff</span>
-       </a>
-       <span class="tooltip">Staff</span>
      </li>
      <li>
          <a href="doctorprofile.php">

@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost:3308', 'root', '', 'sourcecodester_dadb');
+$mysqli = new mysqli('localhost', 'root', '', 'sourcecodester_dadb');
 if(isset($_GET['q'])){
     $date = $_GET['q'];
     $stmt = $mysqli->prepare("select * from bookings where date = ? ");
@@ -28,12 +28,12 @@ function timeslots($duration, $cleanup, $start, $end){
             break;
         }
         
-        $slots[] = $intStart->format("g:iA")." - ". $endPeriod->format("g:iA");
+        $slots[] = $intStart->format("H:iA")." - ". $endPeriod->format("H:iA");
         
     }
+    
     return $slots;
 }
-
 
 
 ?>
@@ -59,26 +59,6 @@ function timeslots($duration, $cleanup, $start, $end){
         <?php echo(isset($msg))?$msg:""; ?>
         </div>
         <?php $timeslots = timeslots($duration, $cleanup, $start, $end); 
-            $res = "SELECT * FROM bookings WHERE date ='$date'";
-            $result = $mysqli -> query($res);
-            
-            if (!$res) {
-                die("Error running $sql: " . mysqli_error());
-                }
-            
-            
-                while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-                    $ti = $row['timeslot'];
-                    $y = count($timeslots) - 1;
-                    for ($x = 0; $x <= $y; $x++) {
-
-                        if ($timeslots[$x] == $ti) {
-                            $y = $y - 1;
-                            unset($timeslots[$x]);
-                            $timeslots = array_values($timeslots);
-                        }
-                      }
-                }
             foreach($timeslots as $ts){
         ?>
         <div class="col-md-2">
@@ -86,7 +66,7 @@ function timeslots($duration, $cleanup, $start, $end){
             <?php if(in_array($ts, $bookings)){ ?>
             <button class="btn btn-danger"><?php echo $ts; ?></button>
             <?php }else{ ?>
-                <a href='appointment.php?&date=<?php echo $date; ?>&timeslot=<?php echo $ts; ?>'><button class="btn btn-success book" data-timeslot="<?php echo $ts; ?>"><?php echo $ts; ?></button></a>
+            <button class="btn btn-success book" data-timeslot="<?php echo $ts; ?>"><a href='appointment.php?&date=<?php echo $date; ?>&timeslot=<?php echo $ts; ?>'><?php echo $ts; ?></a></button>
             <?php }  ?>
             </div>
         </div>
