@@ -6,7 +6,7 @@ session_start();
 //If a clinic session is already running without loging out from the clinic session,
 //it will be directed toward doctordashboard.php(file) in clinic(folder).
 if (isset($_SESSION['staffSession']) != "") {
-header("Location: clinic/staffpatientlist.php");
+header("Location: staff/doctordasboard.php");
 }
 if (isset($_POST['login']))
 {
