@@ -114,7 +114,7 @@ header("Location: patient.php");
 		<div>Appointment Information</div>
 		<!--prints out the details of the appointment chosen-->
 		<div>
-			Date: <?php echo date('m/d/Y', strtotime($date)); ?><br>
+			Date: <?php echo date('F d, Y', strtotime($date)); ?><br>
 			Time: <?php echo $timeslot ?><br>
 		</div>
 		<!--covid-19 questionaire starts here-->
