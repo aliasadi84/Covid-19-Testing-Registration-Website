@@ -52,7 +52,7 @@ header("Location: clinic/doctordashboard.php");
 
 <header>
     <div class="hero-image">
-        <a href="patientLogin.php"><img src="assets/pp.png" width="50%"></a>
+        <a href="index.html"><img src="assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
