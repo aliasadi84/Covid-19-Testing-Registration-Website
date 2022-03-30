@@ -99,7 +99,7 @@ div.hero-image {
     
   }
 
-  .bf-smol { /* use div class="bf"*/
+  .bf-small { /* use div class="bf"*/
     padding: 20px;
     border-radius: 5px 5px;
     margin: auto;
@@ -108,18 +108,10 @@ div.hero-image {
     border-style: solid;
     border-color:black;
     background-color: white;
-    width: 10%;
+    width: 60%;
     
     overflow-x: hidden;
     
-  }
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(33, 164, 224);
   }
 
   /* better alignment of gender radio buttons on reg page */
