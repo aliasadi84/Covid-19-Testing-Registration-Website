@@ -122,7 +122,7 @@ function CheckColors(val){
       echo "<tbody>";
       echo "<tr>";
           //appointment details is populated
-          echo "<td>" . $appointment['date'] . "</td>";
+          echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
           echo "<td>" . $appointment['timeslot'] . "</td>";
           echo "<form method='POST'>";
 
