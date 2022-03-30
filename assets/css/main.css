@@ -85,12 +85,27 @@ div.hero-image {
     
   }
 
+  .bf-smol { /* use div class="bf"*/
+    padding: 20px;
+    border-radius: 5px 5px;
+    margin: auto;
+    margin-bottom: 0;
+    text-align: center;
+    border-style: solid;
+    border-color:black;
+    background-color: white;
+    width: 10%;
+    
+    overflow-x: hidden;
+    
+  }
+
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(33, 164, 224);
   }
   
   li {
@@ -103,6 +118,11 @@ div.hero-image {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+  }
+
+  .active {
+    background-color: #32af00;
+    color: white;
   }
   
   li a:hover {
