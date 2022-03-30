@@ -20,10 +20,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/loginButton.css">
-	<link rel="stylesheet" href="css/table.css">
-	<link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/submit.css">
+	<link rel="stylesheet" href="../assets/css/table.css">
+	<link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
 <header>
@@ -32,66 +32,29 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     </div>
 </header>
 <body>
-<!-- Sidebar code needs to be changed -->
-<div class="sidebar">
-    <ul class="nav-list">
-      <li>
-         <a href="doctordashboard.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-      </li>
-     <li>
-       <a href="patientlist.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Patient List</span>
-       </a>
-     </li>
-     <li>
-       <a href="addresults.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Add Result</span>
-       </a>
-     </li>
-     <li>
-         <a href="staff.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Staff</span>
-        </a>
-      </li>
-     <li>
-         <a href="doctorprofile.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Profile</span>
-        </a>
-      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-           </div>
-         </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" >Log Out</i></a>
-     </li>
+<ul>
+      <li><a href="doctordashboard.php">Dashboard</a></li>
+      <li><a class="active" href="addresults.php">Add Result</a></li>
+      <li><a href="patientlist.php">Patient List</a></li>
+      <li><a href="staff.php">Staff List</a></li>
+      <li><a href="doctorprofile.php">Your Account</a></li>
+      <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
-  </div>
-  <section class="home-section"><br>
-              
-    
-            <h3>Add Result List</h3>
-
+  <section class="home-section">
+            
             <table>
                 <thead>
+                <th colspan="7"><h2>Add Results</h2></th>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Contact No.</th>
-                        <th>Email</th>
+                        <!--<th>Contact No.</th>
+                        <th>Email</th>-->
                         <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
                         <th>Positive</th>
-                        <th>Negetive</th>
+                        <th>Negative</th>
                     </tr>
                 </thead>
               
@@ -104,8 +67,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         FROM patient a
                                         JOIN bookings b
                                         On a.icPatient = b.username
-                                        WHERE b.status = 'sample collected'
-                                        OR b.status = 'result entered'
                                         Order By id desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));
@@ -127,16 +88,14 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         $checked = 'disabled';
                     }
                     $cal= $cal+1;
-                    // Displaying the data,
-                    $test1 = $appointment['date'];
-                    $test1 = date('m/d/Y',strtotime($test1));
+                    // Displaying the data, 
                     echo "<tbody>";
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
-                        echo "<td>" . $appointment['patientPhone'] . "</td>";
-                        echo "<td>" . $appointment['patientEmail'] . "</td>";
-                        echo "<td>" . $test1 . "</td>";
+                        /*echo "<td>" . $appointment['patientPhone'] . "</td>";
+                        echo "<td>" . $appointment['patientEmail'] . "</td>";*/
+                        echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
@@ -150,7 +109,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             echo "</table>";
             echo "<div>";
             echo "<div>";
-            echo "<button type='submit' value='Submit' name='submit'>Update</button>";
+            echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
             echo "</div>";
             echo "</div>";
             ?>
