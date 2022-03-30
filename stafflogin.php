@@ -6,7 +6,7 @@ session_start();
 //If a clinic session is already running without loging out from the clinic session,
 //it will be directed toward doctordashboard.php(file) in clinic(folder).
 if (isset($_SESSION['staffSession']) != "") {
-header("Location: staff/doctordasboard.php");
+header("Location: staff/doctordashboard.php");
 }
 if (isset($_POST['login']))
 {
@@ -50,7 +50,7 @@ header("Location: staff/doctordashboard.php");
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/submit.css">
+    <link rel="stylesheet" href="assets/css/button.css">
     <link rel="stylesheet" href="assets/css/account.css">
     <!--end of css design files-->
 </head>
@@ -58,7 +58,7 @@ header("Location: staff/doctordashboard.php");
 Main Page of the WCHC Clinic Website-->   
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/pp.png" width="50%"></a>
+        <a href="index.php" ><img src="assets/pp.png" width="50%"></a>
         <!--The image is located inside the assets(folder) -> img(folder) -> pp.png --> 
     </div>
 </header>
@@ -67,6 +67,7 @@ Main Page of the WCHC Clinic Website-->
 
 <body>
     <div class="bf">
+        <h2>Clinic Staff Login</h2>
         <form class="form" role="form" method="POST" accept-charset="UTF-8">
             <!--The text field to enter the Username-->
             <label>Username</label><br>
