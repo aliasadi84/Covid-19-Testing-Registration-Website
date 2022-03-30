@@ -97,7 +97,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                 </h2>
               
     
-            <h3>Appointment List</h3>
+            <h3>Add Result List</h3>
 
             <table>
                 <thead>
@@ -128,6 +128,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         printf("Error: %s\n", mysqli_error($con));
                         exit();
                     }
+                    $cal= 0;
                 while ($appointment=mysqli_fetch_array($res)) {
                     
                 
@@ -142,6 +143,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         $icon='ok';
                         $checked = 'disabled';
                     }
+                    $cal= $cal+1;
                     // Displaying the data, 
                     echo "<tbody>";
                     echo "<tr>";
@@ -153,9 +155,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
-                        echo "<td ><input type='radio' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
-                        echo "<td ><input type='radio' name='enable' id='enable' value='".$appointment['id']."' onclick='chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
-
+                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                
                     
                 } 
                     echo "</tr>";
@@ -237,9 +239,6 @@ function chki(uid, chk) {
           }
           }
           </script>
-
-    </body>
-</html>
 
     </body>
 </html>
