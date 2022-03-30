@@ -16,94 +16,44 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <style>
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        color: #588c7e;
-        font-family: monospace;
-        font-size: 12px;
-        text-align: left;
-      }
-      th {
-        background-color: #588c7e;
-        color: white;
-      }
-      tr:nth-child(even){background-color: #f2f2f2;}
-    </style>
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
-<!-- Sidebar code needs to be changed -->
-<div class="sidebar">
-    <div class="logo-details">
-        <div class="logo_name">WCHC Clinic</div>
-        <i class='bx bx-menu' id="btn" ></i>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/submit.css">
+	<link rel="stylesheet" href="../assets/css/table.css">
+	<link rel="stylesheet" href="../assets/css/input.css">
+</head>
+
+<header>
+    <div class="hero-image">
+        <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
-    <ul class="nav-list">
-      <li>
-         <a href="doctordashboard.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-         <span class="tooltip">Dashboard</span>
-      </li>
-     <li>
-       <a href="patientlist.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Patient List</span>
-       </a>
-       <span class="tooltip">Patient List</span>
-     </li>
-     <li>
-         <a href="addresults.php">
-         <i class='bx bxs-virus'></i>
-          <span class="links_name">Add Result</span>
-        </a>
-         <span class="tooltip">Result</span>
-      </li>
-     <li>
-         <a href="doctorprofile.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Staff Profile</span>
-        </a>
-         <span class="tooltip">Staff Profile</span>
-      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-           </div>
-         </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" ></i></a>
-     </li>
+</header>
+<body>
+<ul>
+      <li><a href="doctordashboard.php">Dashboard</a></li>
+      <li><a class="active" href="addresults.php">Add Result</a></li>
+      <li><a href="patientlist.php">Patient List</a></li>
+      <li><a href="doctorprofile.php">Your Account</a></li>
+      <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
-  </div>
   <section class="home-section">
-
-                <h2>
-                Dashboard
-                </h2>
-              
-    
-            <h3>Add Test Result List</h3>
-
+            
             <table>
                 <thead>
+                <th colspan="7"><h2>Add Results</h2></th>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Contact No.</th>
-                        <th>Email</th>
+                        <!--<th>Contact No.</th>
+                        <th>Email</th>-->
                         <th>Date</th>
                         <th>Time</th>
                         <th>Status</th>
                         <th>Positive</th>
-                        <th>Negetive</th>
+                        <th>Negative</th>
                     </tr>
                 </thead>
               
@@ -111,7 +61,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                 
                <!-- Below code is populating the appointment table -->
                <!-- First code block is pulling the data and comparing the data -->
-               <?php 
+                <?php 
                 $res=mysqli_query($con,"SELECT a.*, b.*
                                         FROM patient a
                                         JOIN bookings b
@@ -142,9 +92,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
-                        echo "<td>" . $appointment['patientPhone'] . "</td>";
-                        echo "<td>" . $appointment['patientEmail'] . "</td>";
-                        echo "<td>" . $appointment['date'] . "</td>";
+                        /*echo "<td>" . $appointment['patientPhone'] . "</td>";
+                        echo "<td>" . $appointment['patientEmail'] . "</td>";*/
+                        echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
@@ -158,14 +108,14 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             echo "</table>";
             echo "<div>";
             echo "<div>";
-            echo "<button type='submit' value='Submit' name='submit'>Update</button>";
+            echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
             echo "</div>";
             echo "</div>";
             ?>
   </section>
                     <!-- panel end -->
 
-<!-- takes all the inputs from the checkbox, send to checkdatabase.php -->
+<!-- takes all the inputs from the checkbox, send to resultdb.php to enter the positive result -->
 <script type="text/javascript">
 function chkit(uid, chk) {
    chk = (chk==true ? "1" : "0");
@@ -179,6 +129,7 @@ function chkit(uid, chk) {
    req.open("GET", url, true);
    req.send(null);
 }
+//takes all the inputs from the checkbox, send to nresultdb.php to enter the negetive results
 function chki(uid, chk) {
    chk = (chk==true ? "1" : "0");
    var url = "nresultdb.php?userid="+uid+"&chkYesNo="+chk;
