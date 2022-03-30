@@ -157,7 +157,7 @@ function CheckColors(val){
       
         <h2>Car</h2>
         <input type="select" id="car" name="make" placeholder="Car Type"><br><br>
-        <select name="color" id="carcolor" onchange='CheckColors(this.value);'>
+        <select name="color" id="color" onchange='CheckColors(this.value);'>
         <option value="White">White</option>
         <option value="Black">Black</option>
         <option value="Silver">Silver</option>
