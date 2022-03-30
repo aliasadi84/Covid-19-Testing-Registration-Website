@@ -44,6 +44,7 @@
       // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
       $update=mysqli_query($con,"UPDATE bookings SET status='checked-in', location='$location', make='$make', color='$color', plate='$plate' WHERE id = '$app'");
       // $userRow=mysqli_fetch_array($res);
+      header("Location: checkinconf.html");
       }
 
    }
@@ -122,9 +123,9 @@ function CheckColors(val){
       echo "<tbody>";
       echo "<tr>";
           //appointment details is populated
-          echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
+          echo "<td>" . $appointment['date'] . "</td>";
           echo "<td>" . $appointment['timeslot'] . "</td>";
-          echo "<form action='checkinconf.html' method='POST'>";
+          echo "<form method='POST'>";
 
       
       } 
