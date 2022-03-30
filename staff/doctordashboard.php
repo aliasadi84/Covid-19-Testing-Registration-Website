@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['staffSession']))
 {
 //if not logged into the staff side it will direct you to the stafflogin.php
-header("Location: ../index.html");
+header("Location: ../stafflogin.php");
 }
 $usersession = $_SESSION['staffSession'];
 //Checking the staff ID making sure it's still there
@@ -23,7 +23,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
+	  <link rel="stylesheet" href="../assets/css/table.css">
 	  <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
@@ -69,8 +69,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         FROM patient a
                                         JOIN bookings b
                                         On a.icPatient = b.username
-                                        WHERE b.status = 'checked-in'
-                                        OR b.status = 'appointment booked'
                                         Order By id desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));

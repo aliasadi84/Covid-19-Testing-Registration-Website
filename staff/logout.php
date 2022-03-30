@@ -3,11 +3,11 @@ session_start();
 
 if(!isset($_SESSION['staffSession']))
 {
- header("Location: doctordashboard.html");
+ header("Location: doctordashboard.php");
 }
 else if(isset($_SESSION['staffSession'])!="")
 {
- header("Location: ../index.php");
+ header("Location: ../index.html");
 }
 
 if(isset($_GET['logout']))

@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['staffSession']))
 {
 //if not logged into the admin side it will direct you to the index
-header("Location: ../index.html");
+header("Location: ../stafflogin.php");
 }
 $usersession = $_SESSION['staffSession'];
 //Checking the doctor ID making sure it's still there
@@ -22,7 +22,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
+	  <link rel="stylesheet" href="../assets/css/table.css">
 	  <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
@@ -33,7 +33,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     </div>
 </header>
 <body>
-<ul>
+    <ul>
       <li><a href="doctordashboard.php">Dashboard</a></li>
       <li><a class="active" href="addresults.php">Add Result</a></li>
       <li><a href="patientlist.php">Patient List</a></li>
@@ -67,8 +67,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         FROM patient a
                                         JOIN bookings b
                                         On a.icPatient = b.username
-                                        WHERE b.status = 'sample collected'
-                                        OR b.status = 'result entered'
                                         Order By id desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));

@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['staffSession']))
 {
 //if not logged in it will take you to the below location
-header("Location: ../index.html");
+header("Location: ../stafflogin.php");
 }
 $usersession = $_SESSION['staffSession'];
 $res=mysqli_query($con,"SELECT * FROM staff WHERE icstaff = '$usersession'");
@@ -22,7 +22,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
+	  <link rel="stylesheet" href="../assets/css/table.css">
 	  <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
@@ -33,11 +33,11 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     </div>
 </header>
 <body>
-<ul>
-      <li><a href="doctordashboard.php">Dashboard</a></li>
+    <ul>
+      <li><a  href="doctordashboard.php">Dashboard</a></li>
       <li><a href="addresults.php">Add Result</a></li>
       <li><a class="active" href="patientlist.php">Patient List</a></li>
-      <li><a  href="doctorprofile.php" >Your Account</a></li>
+      <li><a href="doctorprofile.php">Your Account</a></li>
       <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
   <section class="home-section">
@@ -83,9 +83,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                            echo "</tbody>";
                        echo "</table>";
                        echo "<div>";
-                       echo "<div>";
-                       echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
-                        echo "</div>";
+                       
                         echo "</div>";
                         ?>
 
