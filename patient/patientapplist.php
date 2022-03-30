@@ -50,6 +50,7 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     echo "<th>Date </th>";
     echo "<th>Time Slot</th>";
     echo "<th>Status</th>";
+    echo "<th>Cancel</th>";
     echo "</tr>";
     echo "</thead>";
     $res = mysqli_query($con, "SELECT a.*, b.*
@@ -69,6 +70,12 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     echo "<td>" . $userRow['date'] . "</td>";
     echo "<td>" . $userRow['timeslot'] . "</td>";
     echo "<td>" . $userRow['status'] . "</td>";
+    if ($userRow['status'] == 'appointment booked'){
+        echo '<td>'.'<a href="cancelappt.php?username='.$userRow['id'].'">Cancel</a>'.'</td>';
+    }
+    if ($userRow['status'] != 'appointment booked'){
+        echo "<td><a>Not available</a></td>";
+    }
     }
 
     echo "</tr>";
