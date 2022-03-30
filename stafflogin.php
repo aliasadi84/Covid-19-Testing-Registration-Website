@@ -58,7 +58,7 @@ header("Location: staff/doctordashboard.php");
 Main Page of the WCHC Clinic Website-->   
 <header>
     <div class="hero-image">
-        <a href="index.php" ><img src="assets/pp.png" width="50%"></a>
+        <a href="index.html" ><img src="assets/pp.png" width="50%"></a>
         <!--The image is located inside the assets(folder) -> img(folder) -> pp.png --> 
     </div>
 </header>
