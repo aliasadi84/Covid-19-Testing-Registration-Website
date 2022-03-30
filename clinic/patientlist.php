@@ -20,10 +20,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/loginButton.css">
-	<link rel="stylesheet" href="css/table.css">
-	<link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/submit.css">
+	<link rel="stylesheet" href="../assets/css/table.css">
+	<link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
 <header>
@@ -32,57 +32,18 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     </div>
 </header>
 <body>
-<!-- Sidebar code needs to be changed -->
-<div class="sidebar">
-    <ul class="nav-list">
-      <li>
-         <a href="doctordashboard.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-      </li>
-      <li>
-       <a href="addresults.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Add Result</span>
-       </a>
-     </li>
-     <li>
-       <a href="patientlist.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Patient List</span>
-       </a>
-     </li>
-     <li>
-         <a href="staff.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Staff</span>
-        </a>
-      </li>
-     <li>
-         <a href="doctorprofile.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Profile</span>
-        </a>
-      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-           </div>
-         </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" >Log Out</i></a>
-     </li>
+<ul>
+      <li><a href="doctordashboard.php">Dashboard</a></li>
+      <li><a href="addresults.php">Add Result</a></li>
+      <li><a class="active" href="patientlist.php">Patient List</a></li>
+      <li><a href="staff.php">Staff List</a></li>
+      <li><a  href="doctorprofile.php" >Your Account</a></li>
+      <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
-  </div>
   <section class="home-section">
-
-                            <h2>
-                            Patient List
-                            </h2>
- 
                         <table>
                             <thead>
+                            <th colspan="8"><h2>Patient List</h2></th>
                                 <tr>
                                     <th>Username</th>
                                     <th>First Name</th>
@@ -102,8 +63,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                             //displaying the data from the datebase     
                             while ($patientRow=mysqli_fetch_array($result)) {
                                 
-                              $test1 = $patientRow['patientDOB'];
-                              $test1 = date('m/d/Y',strtotime($test1));
+                              
                                 echo "<tbody>";
                                 echo "<tr>";
                                     echo "<td>" . $patientRow['icPatient'] . "</td>";
@@ -112,7 +72,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                     echo "<td>" . $patientRow['patientEmail'] . "</td>";
                                     echo "<td>" . $patientRow['patientPhone'] . "</td>";
                                     echo "<td>" . $patientRow['patientGender'] . "</td>";
-                                    echo "<td>" . $test1 . "</td>";
+                                    echo "<td>" . $patientRow['patientDOB'] . "</td>";
                                     echo "<td>" . $patientRow['race'] . "</td>";
                                     echo "<form method='POST'>";
                                     echo "<td class='text-center'><a href='#' id='".$patientRow['icPatient']."' class='delete'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>
@@ -124,7 +84,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                        echo "</table>";
                        echo "<div>";
                        echo "<div>";
-                       echo "<button class='btn btn-primary' type='submit' value='Submit' name='submit'>Update</button>";
+                       echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
                         echo "</div>";
                         echo "</div>";
                         ?>
