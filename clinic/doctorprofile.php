@@ -55,7 +55,7 @@ header( 'Location: doctorprofile.php' ) ;
 
 <header>
     <div class="hero-image">
-        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
+        <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 <body>
