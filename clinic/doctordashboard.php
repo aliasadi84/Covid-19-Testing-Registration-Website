@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
 {
 //if not logged into the admin side it will direct you to the index
-header("Location: ../index.php");
+header("Location: ../index.html");
 }
 $usersession = $_SESSION['doctorSession'];
 //Checking the doctor ID making sure it's still there
@@ -21,9 +21,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/submit.css">
-	<link rel="stylesheet" href="table.css">
-	<link rel="stylesheet" href="../assets/css/input.css">
+    <link rel="stylesheet" href="../assets/css/button.css">
+	  <link rel="stylesheet" href="table.css">
+	  <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
 <header>
