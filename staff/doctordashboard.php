@@ -22,66 +22,38 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/loginButton.css">
+    <link rel="stylesheet" href="../assets/css/submit.css">
 	<link rel="stylesheet" href="../assets/css/table.css">
 	<link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
 <header>
     <div class="hero-image">
-        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
+        <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 <body>
-<!-- Sidebar code needs to be changed -->
-<div class="sidebar">
-    <ul class="nav-list">
-      <li>
-         <a href="doctordashboard.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-      </li>
-     <li>
-       <a href="patientlist.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Patient List</span>
-       </a>
-     </li>
-     <li>
-         <!-- <a href="doctorprofile.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Staff Profile</span>
-        </a> -->
-      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-           </div>
-         </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" >Log Out</i></a>
-     </li>
+    <ul>
+      <li><a class="active" href="doctordashboard.php">Dashboard</a></li>
+      <li><a href="addresults.php">Add Result</a></li>
+      <li><a href="patientlist.php">Patient List</a></li>
+      <li><a href="doctorprofile.php">Your Account</a></li>
+      <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
-  </div>
-  <section class="home-section">
-
-                <h2>
-                Dashboard
-                </h2>
-              
-    
-            <h3>Appointment List</h3>
-
+  <section>
             <table>
                 <thead>
+                <th colspan="9"><h2>Appointment List</h2></th>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Contact No.</th>
-                        <th>Email</th>
+                        <!--<th>Contact No.</th>
+                        <th>Email</th>-->
                         <th>Date</th>
-                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Car Type</th>
+                        <th>Car Color</th>
+                        <th>Time Slot</th>
                         <th>Status</th>
                         <th>Complete</th>
                     </tr>
@@ -120,9 +92,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
-                        echo "<td>" . $appointment['patientPhone'] . "</td>";
-                        echo "<td>" . $appointment['patientEmail'] . "</td>";
-                        echo "<td>" . $appointment['date'] . "</td>";
+                        /*echo "<td>" . $appointment['patientPhone'] . "</td>";
+                        echo "<td>" . $appointment['patientEmail'] . "</td>";*/
+                        echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
+                        echo "<td>" . $appointment['location'] . "</td>";
+                        echo "<td>" . $appointment['make'] . "</td>";
+                        echo "<td>" . $appointment['color'] . "</td>";
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
@@ -135,7 +110,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             echo "</table>";
             echo "<div>";
             echo "<div>";
-            echo "<button type='submit' value='Submit' name='submit'>Update</button>";
+            echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
             echo "</div>";
             echo "</div>";
             ?>
