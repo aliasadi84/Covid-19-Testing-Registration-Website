@@ -46,14 +46,13 @@ header("Location: clinic/doctordashboard.php");
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/loginButton.css">
-	<link rel="stylesheet" href="assets/css/table.css">
-	<link rel="stylesheet" href="assets/css/input.css">
+    <link rel="stylesheet" href="assets/css/button.css">
+    <link rel="stylesheet" href="assets/css/account.css">
 </head>
 
 <header>
     <div class="hero-image">
-        <a href="patient.php"><img src="assets/pp.png" width="50%"></a>
+        <a href="index.php"><img src="assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
@@ -61,6 +60,7 @@ header("Location: clinic/doctordashboard.php");
 
 <body>
     <div class="bf">
+        <h2>Administrator Login</h2>
         <form class="form" role="form" method="POST" accept-charset="UTF-8">
             <!--The text field to enter the Username-->
             <label>Username</label><br>
