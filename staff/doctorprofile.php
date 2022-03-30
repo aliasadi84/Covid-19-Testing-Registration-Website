@@ -24,9 +24,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/loginButton.css">
-	<link rel="stylesheet" href="../assets/css/table.css">
-	<link rel="stylesheet" href="../assets/css/input.css">
+    <link rel="stylesheet" href="../assets/css/button.css">
+	  <link rel="stylesheet" href="../assets/css/table.css">
+	  <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
 <header>
@@ -35,8 +36,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     </div>
 </header>
 <body>
-<ul>
-      <li><a href="doctordashboard.php">Dashboard</a></li>
+    <ul>
+      <li><a  href="doctordashboard.php">Dashboard</a></li>
       <li><a href="addresults.php">Add Result</a></li>
       <li><a href="patientlist.php">Patient List</a></li>
       <li><a class="active" href="doctorprofile.php">Your Account</a></li>
