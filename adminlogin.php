@@ -44,20 +44,16 @@ header("Location: clinic/doctordashboard.php");
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/submit.css">
-    <link rel="stylesheet" href="assets/css/account.css">
-    <!--end of css design files-->
+    <link rel="stylesheet" href="assets/css/loginButton.css">
+	<link rel="stylesheet" href="assets/css/table.css">
+	<link rel="stylesheet" href="assets/css/input.css">
 </head>
-<!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
-Main Page of the WCHC Clinic Website-->   
+
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/pp.png" width="50%"></a>
-        <!--The image is located inside the assets(folder) -> img(folder) -> pp.png --> 
+        <a href="patient.php"><img src="assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
