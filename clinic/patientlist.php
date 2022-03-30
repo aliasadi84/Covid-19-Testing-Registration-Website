@@ -84,9 +84,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                            echo "</tbody>";
                        echo "</table>";
                        echo "<div>";
-                       echo "<div>";
-                       echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
-                        echo "</div>";
                         echo "</div>";
                         ?>
 
