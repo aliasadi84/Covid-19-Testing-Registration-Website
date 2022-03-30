@@ -59,95 +59,44 @@ header( 'Location: doctorprofile.php' ) ;
     </div>
 </header>
 <body>
-<!-- Sidebar code needs to be changed -->
-<div class="sidebar">
-    <ul class="nav-list">
-      <li>
-         <a href="doctordashboard.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-      </li>
-      <li>
-       <a href="addresults.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Add Result</span>
-       </a>
-     </li>
-     <li>
-       <a href="patientlist.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Patient List</span>
-       </a>
-     </li>
-     <li>
-         <a href="staff.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Staff</span>
-        </a>
-      </li>
-     <li>
-         <a href="doctorprofile.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Profile</span>
-        </a>
-      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-           </div>
-         </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" >Log Out</i></a>
-     </li>
+<ul>
+      <li><a href="doctordashboard.php">Dashboard</a></li>
+      <li><a href="addresults.php">Add Result</a></li>
+      <li><a href="patientlist.php">Patient List</a></li>
+      <li><a href="staff.php">Staff List</a></li>
+      <li><a class="active" href="doctorprofile.php">Your Account</a></li>
+      <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
-  </div>
-  <section class="home-section">
+    <form action="<?php $_PHP_SELF ?>" method="post" >
+        <table>
+            <tbody>
+            <th colspan="7"><h2><?php echo $userRow['doctorFirstName']; ?> <?php echo $userRow['doctorLastName'];?>  </h2></th>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"  /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"  /></td>
+                </tr>
 
+                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="text" class="form-control" name="doctorPhone" value="<?php echo $userRow['doctorPhone']; ?>"  /></td>
+                </tr>
+                <tr>
+                    <td>E-mail Address</td>
+                    <td><input type="text" class="form-control" name="doctorEmail" value="<?php echo $userRow['doctorEmail']; ?>"  /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
+                    </tr>
+                </tbody>
+                
+            </table>
 
-                            <h2>
-                            Staff Profile
-                            <!-- code it dispalying the data -->
-                            </h2>
- 
-                                    <h4><?php echo $userRow['doctorFirstName']; ?> <?php echo $userRow['doctorLastName']; ?></h4>
-
-                                <hr />
-                                        <form action="<?php $_PHP_SELF ?>" method="post" >
-                                            <table>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>First Name:</td>
-                                                        <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"  /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Last Name</td>
-                                                        <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"  /></td>
-                                                    </tr>
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    <tr>
-                                                        <td>Phone number</td>
-                                                        <td><input type="text" class="form-control" name="doctorPhone" value="<?php echo $userRow['doctorPhone']; ?>"  /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Email</td>
-                                                        <td><input type="text" class="form-control" name="doctorEmail" value="<?php echo $userRow['doctorEmail']; ?>"  /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
-                                                        </tr>
-                                                    </tbody>
-                                                    
-                                                </table>
-                                                
-                                                
-                                                
-                                            </form>
+        </form>
 
 
 
