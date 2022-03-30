@@ -68,6 +68,12 @@ header( 'Location: doctorprofile.php' ) ;
           <span class="links_name">Dashboard</span>
         </a>
       </li>
+      <li>
+       <a href="addresults.php">
+       <i class='bx bx-user-pin'></i>
+         <span class="links_name">Add Result</span>
+       </a>
+     </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
@@ -75,9 +81,15 @@ header( 'Location: doctorprofile.php' ) ;
        </a>
      </li>
      <li>
+         <a href="staff.php">
+         <i class='bx bx-user'></i>
+          <span class="links_name">Staff</span>
+        </a>
+      </li>
+     <li>
          <a href="doctorprofile.php">
          <i class='bx bx-user'></i>
-          <span class="links_name">Staff Profile</span>
+          <span class="links_name">Profile</span>
         </a>
       </li>
      <li class="profile">

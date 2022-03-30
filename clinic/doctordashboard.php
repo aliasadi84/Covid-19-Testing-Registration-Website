@@ -20,10 +20,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/loginButton.css">
-	<link rel="stylesheet" href="../assets/css/table.css">
-	<link rel="stylesheet" href="../assets/css/input.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/loginButton.css">
+	<link rel="stylesheet" href="css/table.css">
+	<link rel="stylesheet" href="css/input.css">
 </head>
 
 <header>
@@ -41,6 +41,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
           <span class="links_name">Dashboard</span>
         </a>
       </li>
+      <li>
+       <a href="addresults.php">
+       <i class='bx bx-user-pin'></i>
+         <span class="links_name">Add Result</span>
+       </a>
+     </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
@@ -48,9 +54,15 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
        </a>
      </li>
      <li>
+         <a href="staff.php">
+         <i class='bx bx-user'></i>
+          <span class="links_name">Staff</span>
+        </a>
+      </li>
+     <li>
          <a href="doctorprofile.php">
          <i class='bx bx-user'></i>
-          <span class="links_name">Staff Profile</span>
+          <span class="links_name">Profile</span>
         </a>
       </li>
      <li class="profile">
@@ -65,9 +77,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
   </div>
   <section class="home-section">
 
-                <h2>
-                Dashboard
-                </h2>
+            <h2>Dashboard</h2>
               
     
             <h3>Appointment List</h3>
@@ -95,6 +105,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         FROM patient a
                                         JOIN bookings b
                                         On a.icPatient = b.username
+                                        WHERE b.status = 'checked-in'
+                                        OR b.status = 'appointment booked'
                                         Order By id desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));
@@ -114,14 +126,16 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         $icon='ok';
                         $checked = 'disabled';
                     }
-                    // Displaying the data, 
+                    // Displaying the data,
+                    $test1 = $appointment['date'];
+                    $test1 = date('m/d/Y',strtotime($test1));
                     echo "<tbody>";
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
                         echo "<td>" . $appointment['patientPhone'] . "</td>";
                         echo "<td>" . $appointment['patientEmail'] . "</td>";
-                        echo "<td>" . $appointment['date'] . "</td>";
+                        echo "<td>" . $test1 . "</td>";
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
