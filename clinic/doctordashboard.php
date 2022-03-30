@@ -71,7 +71,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         On a.icPatient = b.username
                                         WHERE b.status = 'checked-in'
                                         OR b.status = 'appointment booked'
-                                        Order By id desc");
+                                        Order By date desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));
                         exit();

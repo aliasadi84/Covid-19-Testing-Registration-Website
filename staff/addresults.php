@@ -22,7 +22,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="../assets/css/table.css">
+	  <link rel="stylesheet" href="table.css">
 	  <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
@@ -67,7 +67,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         FROM patient a
                                         JOIN bookings b
                                         On a.icPatient = b.username
-                                        Order By id desc");
+                                        WHERE b.status = 'sample collected'
+                                        OR b.status = 'result entered'
+                                        Order By date desc");
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));
                         exit();
