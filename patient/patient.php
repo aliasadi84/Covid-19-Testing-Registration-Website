@@ -43,16 +43,16 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <article>
         <section>
 	<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>">
-                 <button class="button" ><i class="fa-solid fa-user"></i><pre>Account</pre></button>
+                 <button class="button1" ><i class="fa-solid fa-user"></i><pre>Account</pre></button>
             </a><br>
             <a href="appo.php?patientId=<?php echo $userRow['icPatient']; ?>">
-                <button class="button"><i class="fa-solid fa-calendar-days"></i><pre>Schedule</pre></button>
+                <button class="button1"><i class="fa-solid fa-calendar-days"></i><pre>Schedule</pre></button>
             </a><br>
             <a href="check_in.php">
-                <button class="button"><i class="fa-solid fa-car-side"></i><pre>Check-In</pre></button>
+                <button class="button1"><i class="fa-solid fa-car-side"></i><pre>Check-In</pre></button>
             </a><br>
             <a href="results.php">
-                   <button class="button"><i class="fa-solid fa-virus-covid"></i><pre>Results</pre></button>
+                   <button class="button1"><i class="fa-solid fa-virus-covid"></i><pre>Results</pre></button>
             </a>
             <br>
             
