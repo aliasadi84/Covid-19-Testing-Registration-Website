@@ -54,8 +54,8 @@
 <head>  
 <script type="text/javascript">
 function CheckColors(val){
- var element=document.getElementById('color');
- if(val=='pick a color'||val=='Other')
+ var element=document.getElementById('carcolor');
+ if(val=='Other')
    element.style.display='block';
  else  
    element.style.display='none';
@@ -82,10 +82,10 @@ function CheckColors(val){
 </header>
 
 <body>
-  <section>
   <div class="bf">
 
   <h3>Check-In</h3>
+  <h5>You will not be able to check in if you don't have an appointment scheduled today.</h5>
 
   <table>
   <thead>
@@ -123,7 +123,7 @@ function CheckColors(val){
       echo "<tbody>";
       echo "<tr>";
           //appointment details is populated
-          echo "<td>" . $appointment['date'] . "</td>";
+          echo "<td>" . date('F d, Y', strtotime($appointment['date'])) . "</td>";
           echo "<td>" . $appointment['timeslot'] . "</td>";
           echo "<form method='POST'>";
 
@@ -156,8 +156,10 @@ function CheckColors(val){
       </select><br>
       
         <h2>Car</h2>
-        <input type="select" id="car" name="make" placeholder="Car Type"><br><br>
+        <input type="text" id="car" name="make" placeholder="Car Type"><br><br>
+
         <select name="color" id="color" onchange='CheckColors(this.value);'>
+        <option default selected disabled>Car Color</option>
         <option value="White">White</option>
         <option value="Black">Black</option>
         <option value="Silver">Silver</option>
@@ -165,22 +167,15 @@ function CheckColors(val){
         <option value="Blue">Blue</option>
         <option value="Other">Other (Type Below)</option>
         </select>
-        <input type="text" name="color" id="color" style='display:none;'/><br><br>
+        <input type="text" name="color" id="carcolor" style='display:none;'/><br><br>
 
-      <h2>License Plate: </h2>
-      <input type="text" id="plate" name="plate" placeholder="Plate Number"><br>
-    
-
-
+      <h2>License Plate</h2>
+      <input type="text" id="plate" name="plate" placeholder="Plate Number">
   </div>
   <!--input for the car details end here-->
-
-</section>
-
-<br>
 <!--when clicked the submit button it sends the input of the car information to the php at the top inorder for it to be entered to the database-->
 <button class='button2' type='submit' value='Submit' name='submit'>Check In</button>
-
+<h2></h2>
 </form>
 
 </body>
