@@ -69,7 +69,7 @@ Main Page of the WCHC Clinic Website-->
     <div class="bf">
         
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
-            <h1>COVID-19 Testing PortalLog In</h1>
+            <h1>COVID-19 Testing Portal Log In</h1>
             <!--The text field to enter the Username-->
             <label for="icPatient">Username</label><br>
             <input type="text" id="username" name="icPatient" placeholder="Username" required autofocus autocomplete><br>
@@ -83,8 +83,8 @@ Main Page of the WCHC Clinic Website-->
             <!--The link to register user-->
             <a href = 'reg.html'>Register Here!</a>
         </form>
-
+        <br><br>
+        <h5><a href="clinicloginselect.html">If you are a clinician with Wayne County Healthy Communities, click here to sign in.</a></h5>
     </div>
-
 </body>  
 </html>
