@@ -17,116 +17,62 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 ?>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <style>
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        color: #588c7e;
-        font-family: monospace;
-        font-size: 12px;
-        text-align: left;
-      }
-      th {
-        background-color: #588c7e;
-        color: white;
-      }
-      tr:nth-child(even){background-color: #f2f2f2;}
-    </style>
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<!-- NOTE FROM TIM: Please remove all references to outside source code like this -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/loginButton.css">
+	<link rel="stylesheet" href="../assets/css/table.css">
+	<link rel="stylesheet" href="../assets/css/input.css">
+</head>
 
-<!-- Sidebar that needs to be changed -->
-<div class="sidebar">
-    <div class="logo-details">
-        <div class="logo_name">WCHC Clinic</div>
-        <i class='bx bx-menu' id="btn" ></i>
+<header>
+    <div class="hero-image">
+        <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
-    <ul class="nav-list">
-      <li>
-         <a href="doctordashboard.php">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-         <span class="tooltip">Dashboard</span>
-      </li>
-     <li>
-       <a href="patientlist.php">
-       <i class='bx bx-user-pin'></i>
-         <span class="links_name">Patient List</span>
-       </a>
-       <span class="tooltip">Patient List</span>
-     </li>
-     <li>
-         <a href="addresults.php">
-         <i class='bx bxs-virus'></i>
-          <span class="links_name">Add Result</span>
-        </a>
-         <span class="tooltip">Result</span>
-      </li>
-     <li>
-         <a href="doctorprofile.php">
-         <i class='bx bx-user'></i>
-          <span class="links_name">Staff Profile</span>
-        </a>
-         <span class="tooltip">Staff Profile</span>
-      </li>
-     <li class="profile">
-         <div class="profile-details">
-           <!--<img src="profile.jpg" alt="profileImg">-->
-           <div class="name_job">
-
-           </div>
-         </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" ></i></a>
-     </li>
+</header>
+<body>
+<ul>
+      <li><a href="doctordashboard.php">Dashboard</a></li>
+      <li><a href="addresults.php">Add Result</a></li>
+      <li><a href="patientlist.php">Patient List</a></li>
+      <li><a class="active" href="doctorprofile.php">Your Account</a></li>
+      <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
-  </div>
-  <section class="home-section">
+    <form action="<?php $_PHP_SELF ?>" method="post" >
+        <table>
+            <tbody>
+            <th colspan="7"><h2><?php echo $userRow['staffFirstName']; ?> <?php echo $userRow['staffLastName'];?>  </h2></th>
+                <tr>
+                    <td>First Name</td>
+                    <td><input type="text" class="form-control" name="staffFirstName" value="<?php echo $userRow['staffFirstName']; ?>"  /></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" class="form-control" name="staffLastName" value="<?php echo $userRow['staffLastName']; ?>"  /></td>
+                </tr>
 
+                <tr>
+                    <td>Phone Number</td>
+                    <td><input type="text" class="form-control" name="staffPhone" value="<?php echo $userRow['staffPhone']; ?>"  /></td>
+                </tr>
+                <tr>
+                    <td>E-mail Address</td>
+                    <td><input type="text" class="form-control" name="staffEmail" value="<?php echo $userRow['staffEmail']; ?>"  /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
+                    </tr>
+                </tbody>
+                
+            </table>
 
-                            <h2>
-                            Staff Profile
-                            <!-- code it dispalying the data -->
-                            </h2><br><br>
- 
-                                    <h4><?php echo $userRow['staffFirstName']; ?> <?php echo $userRow['staffLastName']; ?></h4>
+        </form>
 
-                                <hr />
-                                        
-                                        
-                                        <table>
-                                            <tbody>
-                                                
-                                                
-                                                <tr>
-                                                    <td>Username</td>
-                                                    <td><?php echo $userRow['icstaff']; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Contact Number</td>
-                                                    <td><?php echo $userRow['staffPhone']; ?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Email</td>
-                                                    <td><?php echo $userRow['staffEmail']; ?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Birthdate</td>
-                                                    <td><?php echo $userRow['staffDOB']; ?>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table><br><br><br>
-
-                                        
 
 
 
