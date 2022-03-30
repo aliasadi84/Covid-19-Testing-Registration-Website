@@ -61,7 +61,7 @@ alert('Username or Password incorrect. Please try again.');
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com"><img src="assets/pp.png" width="50%"></a>
+        <a href="index.html"><img src="assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
