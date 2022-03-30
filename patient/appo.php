@@ -27,31 +27,23 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
-	<!--css files-->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/button.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/button.css">
 </head>
 
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com" ><img src="assets/img/pp.png" width="100%"></a>
+        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
-
-<header>
-	<h1>Appointment</h1>
-</header>
-    
         
 <body>
 	<section>
     <div class="bf">
-    <div class="center">
 	<section id="promo-1" class="content-block">
 
-		<h2> Choose you appointment</h2>
+		<h2> Choose your appointment</h2>
 		<!--Input the date for the appointment which is sent to the script below to populate available appointments-->
 		<input type="date" id="date" name="date" onchange="showUser(this.value)"/>
 
@@ -104,7 +96,6 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 		<!-- </div> -->
 		<!-- table appointment end -->
 	</section>
-	</div>
 	</div>
   
 </body>
