@@ -43,82 +43,50 @@ header( 'Location: doctorprofile.php' ) ;
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <!-- NOTE FROM TIM: Please remove all references to outside source code like this -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
-    <link rel="stylesheet" href="style.css">
-    <!-- Boxicons CDN Link -->
-    <style>
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        color: #588c7e;
-        font-family: monospace;
-        font-size: 12px;
-        text-align: left;
-      }
-      th {
-        background-color: #588c7e;
-        color: white;
-      }
-      tr:nth-child(even){background-color: #f2f2f2;}
-    </style>
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/loginButton.css">
+	<link rel="stylesheet" href="../assets/css/table.css">
+	<link rel="stylesheet" href="../assets/css/input.css">
+</head>
 
-<!-- Sidebar that needs to be changed -->
-<div class="sidebar">
-    <div class="logo-details">
-        <div class="logo_name">WCHC Clinic</div>
-        <i class='bx bx-menu' id="btn" ></i>
+<header>
+    <div class="hero-image">
+        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
+</header>
+<body>
+<!-- Sidebar code needs to be changed -->
+<div class="sidebar">
     <ul class="nav-list">
       <li>
          <a href="doctordashboard.php">
           <i class='bx bx-grid-alt'></i>
           <span class="links_name">Dashboard</span>
         </a>
-         <span class="tooltip">Dashboard</span>
-      </li>
-      <li>
-         <a href="addresults.php">
-         <i class='bx bxs-virus'></i>
-          <span class="links_name">Add Result</span>
-        </a>
-         <span class="tooltip">Result</span>
       </li>
      <li>
        <a href="patientlist.php">
        <i class='bx bx-user-pin'></i>
          <span class="links_name">Patient List</span>
        </a>
-       <span class="tooltip">Patient List</span>
-     </li>
-     <li>
-       <a href="staff.php">
-       <i class='bx bx-plus-medical'></i>
-         <span class="links_name">Staff</span>
-       </a>
-       <span class="tooltip">Staff</span>
      </li>
      <li>
          <a href="doctorprofile.php">
          <i class='bx bx-user'></i>
           <span class="links_name">Staff Profile</span>
         </a>
-         <span class="tooltip">Staff Profile</span>
       </li>
      <li class="profile">
          <div class="profile-details">
            <!--<img src="profile.jpg" alt="profileImg">-->
            <div class="name_job">
-
            </div>
          </div>
-         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" ></i></a>
+         <a href="logout.php?logout"><i class='bx bx-log-out' id="log_out" >Log Out</i></a>
      </li>
     </ul>
   </div>
@@ -128,39 +96,11 @@ header( 'Location: doctorprofile.php' ) ;
                             <h2>
                             Staff Profile
                             <!-- code it dispalying the data -->
-                            </h2><br><br>
+                            </h2>
  
                                     <h4><?php echo $userRow['doctorFirstName']; ?> <?php echo $userRow['doctorLastName']; ?></h4>
 
                                 <hr />
-                                        
-                                        
-                                        <table>
-                                            <tbody>
-                                                
-                                                
-                                                <tr>
-                                                    <td>Doctor ID</td>
-                                                    <td><?php echo $userRow['doctorId']; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Contact Number</td>
-                                                    <td><?php echo $userRow['doctorPhone']; ?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Email</td>
-                                                    <td><?php echo $userRow['doctorEmail']; ?>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Birthdate</td>
-                                                    <td><?php echo $userRow['doctorDOB']; ?>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table><br><br><br>
-
                                         <form action="<?php $_PHP_SELF ?>" method="post" >
                                             <table>
                                                 <tbody>
