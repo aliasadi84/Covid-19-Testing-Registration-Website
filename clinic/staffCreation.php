@@ -30,7 +30,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com"><img src="../assets/pp.png" width="50%"></a>
+        <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 <!--end of the header-->
@@ -129,7 +129,7 @@ Main Page of the WCHC Clinic Website-->
               <option value="indo">Indo-Aryan</option>
               <option value="other">Other</option>
             </select> -->
-            <br>
+            
 
             <!--This is a section to enter the Email Address of the patient, it uses a text field as a way to enter the Email Address-->
             <label for="staffEmail">E-Mail Address</label><br>
