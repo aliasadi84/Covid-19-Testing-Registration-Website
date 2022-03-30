@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['staffSession']))
 {
 //if not logged in it will take you to the below location
-header("Location: ../index.php");
+header("Location: ../index.html");
 }
 $usersession = $_SESSION['staffSession'];
 $res=mysqli_query($con,"SELECT * FROM staff WHERE icstaff=".$usersession);

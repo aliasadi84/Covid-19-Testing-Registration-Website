@@ -5,7 +5,7 @@ include_once '../assets/conn/dbconnect.php';
 $userid = $_GET['userid'];
 $chkYesNo = $_GET['chkYesNo'];
 
-$update = mysqli_query($con,"UPDATE bookings SET result='Positive' WHERE id=$userid");
+$update = mysqli_query($con,"UPDATE bookings SET result='positive' WHERE id=$userid");
 $update = mysqli_query($con,"UPDATE bookings SET status='result entered' WHERE id=$userid");
 
 $res=mysqli_query($con,"SELECT * FROM bookings WHERE id=$userid");

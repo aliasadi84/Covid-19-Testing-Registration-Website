@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 
 if(!isset($_SESSION['doctorSession']))
 {
-header("Location: ../adminlogin.php");
+header("Location: ../index.html");
 }
 if (isset($_GET['username'])) {
 	$usersession =$_GET['username'];
@@ -39,7 +39,7 @@ header( 'Location: staff.php' ) ;
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/loginButton.css">
-	<link rel="stylesheet" href="../assets/css/table.css">
+	<link rel="stylesheet" href="table.css">
 	<link rel="stylesheet" href="../assets/css/input.css">
 </head>
 

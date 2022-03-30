@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
 {
 //if not logged into the admin side it will direct you to the index
-header("Location: ../adminlogin.php");
+header("Location: ../index.html");
 }
 $usersession = $_SESSION['doctorSession'];
 //Checking the doctor ID making sure it's still there
