@@ -7,13 +7,13 @@ if(!isset($_SESSION['staffSession']))
 }
 else if(isset($_SESSION['staffSession'])!="")
 {
- header("Location: ../stafflogin.php");
+ header("Location: ../index.html");
 }
 
 if(isset($_GET['logout']))
 {
  session_destroy();
  unset($_SESSION['staffSession']);
- header("Location: ../stafflogin.php");
+ header("Location: ../index.html");
 }
 ?>
