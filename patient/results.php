@@ -24,7 +24,7 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/loginButton.css">
+    <link rel="stylesheet" href="../assets/css/button.css">
 	<link rel="stylesheet" href="../assets/css/table.css">
 	<link rel="stylesheet" href="../assets/css/input.css">
 </head>
