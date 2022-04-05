@@ -194,11 +194,9 @@ div.hero-image {
 			}
 		}
 		@media screen and (max-width: 480px) {
-
-			#footer {
+		#footer {
         padding: 2.5em 1em 0.5em 1em ;
 			}
-
 		}
    
 /* social media buttons in footer */
