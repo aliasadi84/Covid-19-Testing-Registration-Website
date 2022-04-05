@@ -29,7 +29,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 <header>
     <div class="hero-image">
-        <a href="https://www.waynecountyhealthy.com"><img src="../assets/pp.png" width="50%"></a>
+        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
 
@@ -55,10 +55,60 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                    <button class="button1"><i class="fa-solid fa-virus-covid"></i><pre>Results</pre></button>
             </a>
             <br>
-            
+            <br>
         </section>
       </article>
 
 
 </body>
+
+<footer id="footer">
+  <section class="hours">
+    <br>
+    <table width="90%">
+      <tr>
+        <th><h3>Clinic Hours</h3></th>
+      </tr>
+       <tr>
+        <td>Sunday</td>
+        <td>Closed</td>
+       </tr>
+       <tr>
+          <td>Monday-Friday</td>
+          <td>9:00 am - 5:30 pm</td>
+        </tr> 
+        <tr>
+          <td>Wednesday</td>
+          <td>11:00 am - 7:30 pm</td>
+        </tr>
+        <tr>
+          <td>Saturday</td>
+          <td>9:00 am - 1:00 pm</td>
+        </tr>
+    </table>
+    <br>
+  </section>
+  <section class="find">
+        <table width="90%">
+            <tr>
+              <th><h3>Find Us!</h3></th>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>(313) 871-1926 x 0000</td><br>
+              </tr>
+            <tr>
+              <td>Address</td>
+              <td>9021 Joseph Campau &bull; Hamtramck, MI 48212 &bull; USA</td>
+            </tr>
+            </table>
+            <br>
+            <div>
+            <a href="https://www.paypal.com/fundraiser/charity/2121252" class="fa fa-paypal"></a>
+            <a href="https://www.facebook.com/WayneCountyHealthyCommunities/" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/waynecountyhealthycommunities/" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/company/wayne-county-healhty-communities/" class="fa fa-linkedin"></a>
+          </div>
+    </section>
+</footer>
 </html>
