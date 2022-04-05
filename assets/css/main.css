@@ -127,10 +127,8 @@ div.hero-image {
                   padding-left: 6em;
 		font-size: .85em; }
 
- /* responsive bf types and radioAlign */
-     @media 
-  only screen and (max-width: 760px),
-  (min-device-width: 100px) and (max-device-width: 1024px)  
+ /* responsive everything */
+@media screen and (max-width: 1280px)
   {
     .bf {
       padding: 20px 20px;
@@ -138,11 +136,136 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
+    .regbf { /* use div class="bf"*/
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+      margin-left: 20%;
+    }
     .radioAlign { text-align: left; 
-      padding-left: 4em;}
+      padding-left: 1em;}
     .uniAlign{ text-align: left;
       padding-left: 0em;
       font-size: .65em;}
+    .regEntry { text-align: left;
+        font-size: .8em;
+        font-weight: bold; 
+        padding-right: 31%;}
+    h5 {font-size: .4em;
+      line-height: 14px;}        
+  }
+
+  @media screen and (max-width: 980px)
+  {
+    .bf {
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+    }
+    .regbf { /* use div class="bf"*/
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+      margin-left: 20%;
+    }
+    .radioAlign { text-align: left; 
+      padding-left: 1em;}
+    .uniAlign{ text-align: left;
+      padding-left: 0em;
+      font-size: .65em;}
+    .regEntry { text-align: left;
+        font-size: .8em;
+        font-weight: bold; 
+        padding-right: 31%;}
+    h5 {font-size: .4em;
+      line-height: 14px;}        
+  }
+
+  @media screen and (max-width: 736px)
+  {
+    .bf {
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+    }
+    .regbf { /* use div class="bf"*/
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+      margin-left: 20%;
+    }
+    .radioAlign { text-align: left; 
+      padding-left: 1em;}
+    .uniAlign{ text-align: left;
+      padding-left: 0em;
+      font-size: .65em;}
+    .regEntry { text-align: left;
+        font-size: .8em;
+        font-weight: bold; 
+        padding-right: 31%;}
+    h5 {font-size: .4em;
+      line-height: 14px;}        
+  }
+
+  @media screen and (max-width: 480px)
+  {
+    .bf {
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+    }
+    .regbf { /* use div class="bf"*/
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+      margin-left: 20%;
+    }
+    .radioAlign { text-align: left; 
+      padding-left: 1em;}
+    .uniAlign{ text-align: left;
+      padding-left: 0em;
+      font-size: .65em;}
+    .regEntry { text-align: left;
+        font-size: .8em;
+        font-weight: bold; 
+        padding-right: 31%;}
+    h5 {font-size: .4em;
+      line-height: 14px;}        
+  }
+
+  @media screen and (max-width: 375px)
+  {
+    .bf {
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+    }
+    .regbf { /* use div class="bf"*/
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+      margin-left: 10%;
+    }
+    h1 {line-height: 20%;}
+    h4 {text-align: center;}
+    .radioAlign { text-align: left; 
+      padding-left: 1em;}
+    .uniAlign{ text-align: left;
+      padding-left: 0em;
+      font-size: .65em;}
+    .regEntry { text-align: left;
+        font-size: .8em;
+        font-weight: bold; 
+        padding-right: 31%;}
     h5 {font-size: .4em;
       line-height: 14px;}        
   }
