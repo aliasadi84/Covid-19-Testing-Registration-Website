@@ -167,13 +167,12 @@ div.hero-image {
 			margin-left: 2em;
 		}
 
-		?* responsive footer details */
+		/* responsive footer details */
 		@media screen and (max-width: 1280px) {
 			#footer {
 				padding: 2em 2em 0em 2em ;
 			}
 		}
-
 		@media screen and (max-width: 980px) {
 
 			#footer {
@@ -182,22 +181,18 @@ div.hero-image {
 				margin: 0 0 3em 0;
 				width: 100%;
 			}
-
 				#footer > * {
 					width: 100%;
 					margin-left: 0;
 					margin-bottom: 1em;
 				}
 		}
-
 		@media screen and (max-width: 736px) {
 
 			#footer {
 				padding: 1em 0em -1em 0em ;
 			}
-
 		}
-
 		@media screen and (max-width: 480px) {
 
 			#footer {
