@@ -83,7 +83,7 @@ div.hero-image {
   
 }
 
-  /*Creating Border around Sections*/
+  /* Creating a border around Sections*/
     .bf { /* use div class="bf"*/
     padding: 120px;
     border-radius: 5px 5px;
@@ -99,7 +99,8 @@ div.hero-image {
     
   }
 
-  .bf-small { /* use div class="bf"*/
+ /* a smaller version of bf */
+  .bf-small { /* use div class="bf-small"*/
     padding: 20px;
     border-radius: 5px 5px;
     margin: auto;
@@ -126,7 +127,7 @@ div.hero-image {
                   padding-left: 6em;
 		font-size: .85em; }
 
-
+ /* responsive bf types and radioAlign */
      @media 
   only screen and (max-width: 760px),
   (min-device-width: 100px) and (max-device-width: 1024px)  
@@ -166,6 +167,7 @@ div.hero-image {
 			margin-left: 2em;
 		}
 
+		?* responsive footer details */
 		@media screen and (max-width: 1280px) {
 			#footer {
 				padding: 2em 2em 0em 2em ;
@@ -204,6 +206,7 @@ div.hero-image {
 
 		}
    
+/* social media buttons in footer */
     .fa {
       padding: 10px;
       font-size: 25px;
