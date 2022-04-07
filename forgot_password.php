@@ -5,49 +5,42 @@ include_once 'assets/conn/dbconnect.php';
 session_start();
 //If a patient session is already running without a loging out from the patient session,
 //it will be directed toward patient.php(file) in patient(folder).
-if (isset($_SESSION['patientSession']) != "") {
-header("Location: patient/patient.php");
-}
 
 if (isset($_POST['login']))
 {
 //gets all the input during a form submission
 $icPatient = mysqli_real_escape_string($con,$_POST['icPatient']);
+$code = rand(999999, 111111);
 //patient username input
-$password  = mysqli_real_escape_string($con,$_POST['password']);
-//patient password input
+$insert_code = "UPDATE patient SET validate = $code WHERE icPatient = '$icPatient'";
+$run_query =  mysqli_query($con, $insert_code);
 $res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'");
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 //check and get if the username is present in the database.
 //if statement check if password matches with what is present for the username.
+
 if (isset($row['icPatient']) == $icPatient)
 {
-if ($row['password'] == $password)
-{
-$_SESSION['patientSession'] = $row['icPatient'];
+$_SESSION['forgotSession'] = $row['icPatient'];
 //error checking
+$to = $row['patientEmail'];
+$subject = "Reset Email";
+$body ="Hello " .$row['patientFirstName']. ",\n\nYou have requested for a password change in your Wayne County Healthy Communities!\n\nThe verification code: $code";
+$header = "From: from@email";
+mail($to, $subject, $body, $header)
 ?>
 
 <script type="text/javascript">
-alert('Login Success');
+alert('Username is valid, please continue to the next process.');
 </script>
 
 <?php
-header("Location: patient/patient.php");
+header("Location: validation.php");
 } else {
 ?>
 
 <script>
-alert('Password is incorrect. Please try again.');
-</script>
-
-<?php
-}
-}else {
-?>
-
-<script>
-alert('Username does not exist. Please try again or register for an account.');
+alert('Username is invalid. Please try again.');
 </script>
 
 <?php
@@ -80,22 +73,12 @@ Main Page of the WCHC Clinic Website-->
     <div class="bf">
         
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
-            <h1>COVID-19 Testing Portal Log In</h1>
-            <!--The text field to enter the Username-->
-            <label for="icPatient">Username</label><br>
-            <input type="text" id="username" name="icPatient" placeholder="Username" required autofocus autocomplete><br>
-            <!--The text field to enter the Password-->
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password" placeholder="Password" required autofocus autocomplete>
-            <!--The link to forgot password-->
-            <br><a href="forgot_password.php">Forgot password?</a><br><br>
-            <!--Log-in button to submit the form-->
-            <button class="button3" name="login" id="login" type="submit">Login</button><br>
-            <!--The link to register user-->
-            <a href = 'reg.html'>Register Here!</a>
+            <h3>Forgot Password</h3>
+            <h4>Enter your username</h4>
+            <input type="text" id="username" name="icPatient" placeholder="Username" required autofocus autocomplete><br><br>
+
+            <button class="button3" name="login" id="login" type="submit">Continue</button><br>
         </form>
-        <br><br>
-        <h5><a href="clinicloginselect.html">If you are a clinician with Wayne County Healthy Communities, click here to sign in.</a></h5>
     </div>
 </body>  
 </html>
