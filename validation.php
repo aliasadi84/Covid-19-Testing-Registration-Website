@@ -98,12 +98,12 @@ Main Page of the WCHC Clinic Website-->
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h3>Validate</h3>
             <h4>Enter your verification code</h4>
-            <input type="text" id="validate" name="validate" placeholder="verification code" required autofocus autocomplete><br><br>
+            <input type="text" id="validate" name="validate" placeholder="Verification Code" required autofocus autocomplete><br><br>
 
             <button class="button3" name="verify" id="verify" type="submit">Verify</button><br><br>
         </form>
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
-            <button class="button3" name="resent" id="resent" type="submit">Resent code</button>
+            <button class="button3" name="resent" id="resent" type="submit">Resend Code</button>
         </form>
     </div>
 </body>  
