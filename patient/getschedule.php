@@ -9,18 +9,30 @@ if(isset($_GET['q'])){
         $result = $stmt->get_result();
     }
 }
+date_default_timezone_set('America/Detroit');
+$today = date('Y-m-d');
+if ($today == $date && date("H") >= 9 ){
 
-$duration = 10;
-$cleanup = 0;
-$start = "09:00";
-$end = "15:00";
+    $ba = date ('i');
+    $ba = ($ba % 10) - 20;
+    $start = date ('H:i', strtotime("-$ba minute"));
+    $start = date ("$start", strtotime("+20 minute"));
+    $duration = 10;
+    $cleanup = 0;
+    $end = "22:00";
+}
+else{
+    $duration = 10;
+    $cleanup = 0;
+    $start = "09:00";
+    $end = "15:00";
+}
 function timeslots($duration, $cleanup, $start, $end){
     $start = new DateTime($start);
     $end = new DateTime($end);
     $interval = new DateInterval("PT".$duration."M");
     $cleanupInterval = new DateInterval("PT".$cleanup."M");
     $slots = array();
-    
     for($intStart = $start; $intStart<$end; $intStart->add($interval)->add($cleanupInterval)){
         $endPeriod = clone $intStart;
         $endPeriod->add($interval);
@@ -53,7 +65,7 @@ function timeslots($duration, $cleanup, $start, $end){
         <h1 class="text-center">Book for Date: <?php echo date('F d, Y', strtotime($date)); ?></h1><hr>
         <div class="row">
         <div class="col-md-12">
-        <?php echo(isset($msg))?$msg:""; ?>
+        <?php echo(isset($msg))?$msg:"";?>
         </div>
         <?php $timeslots = timeslots($duration, $cleanup, $start, $end); 
             $res = "SELECT * FROM bookings WHERE date ='$date'";
@@ -106,3 +118,4 @@ function timeslots($duration, $cleanup, $start, $end){
 </body>
 
 </html>
+
