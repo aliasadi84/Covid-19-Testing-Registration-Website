@@ -24,7 +24,7 @@ if (isset($row['icPatient']) == $icPatient)
 $_SESSION['forgotSession'] = $row['icPatient'];
 //error checking
 $to = $row['patientEmail'];
-$subject = "Reset Email";
+$subject = "Reset Password";
 $body ="Hello " .$row['patientFirstName']. ",\n\nYou have requested for a password change in your Wayne County Healthy Communities!\n\nThe verification code: $code";
 $header = "From: from@email";
 mail($to, $subject, $body, $header)
@@ -76,7 +76,7 @@ Main Page of the WCHC Clinic Website-->
             <h3>Forgot Password</h3>
             <h4>Enter your username</h4>
             <input type="text" id="username" name="icPatient" placeholder="Username" required autofocus autocomplete><br><br>
-
+            <h5>Once you enter your username, an email will be sent to your email address with a verification code. Enter that code on the next page.</h5>
             <button class="button3" name="login" id="login" type="submit">Continue</button><br>
         </form>
     </div>
