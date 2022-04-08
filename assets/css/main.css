@@ -17,8 +17,9 @@ div.hero-image {
 
   /* Produces Map Background */
   body {
-    background-image: url("../map.png"); /* the map background */
-    background-color: #D9D7F1;  /* original purple #98b8fca1 */
+    background-image: url("../map.png");  /*the map background*/
+    background-color: #D9D7F1;   /*original purple #98b8fca1
+    /*background: linear-gradient(0deg, #D9D7F1 0%, #c8deee 100%);  Do not use, I was experimenting with gradient backgrounds */
 
     /* option 2 D9D7F1 */
     position: absolute;
@@ -30,9 +31,8 @@ div.hero-image {
 
   /* Words/Characters/Fonts */
   body, input, select, textarea {
-      font-family: "Source Sans Pro", Helvetica, sans-serif;
+      font-family: "Trebuchet MS";
       font-size: 25pt;
-      font-weight: 100;
       line-height: 1.5;
       border-spacing: 50px 15px;
   }
@@ -59,10 +59,18 @@ div.hero-image {
 
   h4 {font-size: .85em;}
 
-  h5 {font-size: .4em;
-        line-height: 0px;
+  h5 {font-size: .5em;
+        line-height: 15px;
         margin: 0px;
-        padding: 10px; }
+        padding: 10px;
+        }
+  
+  .smallText {font-size: .4em;
+    line-height: 15px;
+    margin: 0px;
+    padding: 10px;
+    padding-right: 20%;
+    font-weight: bold;}
 
   .center {
     text-align: center;
@@ -83,8 +91,8 @@ div.hero-image {
   
 }
 
-  /* Creating a border around Sections*/
-    .bf { /* use div class="bf"*/
+  /*Creating Border around Sections*/
+  .bf { /* use div class="bf"*/
     padding: 120px;
     border-radius: 5px 5px;
     margin: auto;
@@ -99,8 +107,21 @@ div.hero-image {
     
   }
 
- /* a smaller version of bf */
-  .bf-small { /* use div class="bf-small"*/
+
+  .regbf { /* use div class="bf"*/
+    padding: 10px 120px;
+    border-radius: 5px 5px;
+    margin: auto;
+    margin-bottom: 5%;
+    text-align: left;
+    border-style: solid;
+    border-color:black;
+    background-color: white;
+    width: 25%;
+    overflow-x: hidden;
+  }
+
+  .bf-small { /* use div class="bf"*/
     padding: 20px;
     border-radius: 5px 5px;
     margin: auto;
@@ -117,7 +138,7 @@ div.hero-image {
 
   /* better alignment of gender radio buttons on reg page */
     .radioAlign { text-align: left; 
-                    padding-left: 11em;}
+                    padding-left: auto;}
 
     .radioAlign2 { text-align: left; 
                       padding-left: 2.5em;}
@@ -125,10 +146,15 @@ div.hero-image {
     /* For forms with multiple checkboxes */
     .uniAlign{ text-align: left;
                   padding-left: 6em;
-		font-size: .85em; }
+                  font-size: .85em;}
 
- /* responsive everything */
-@media screen and (max-width: 1280px)
+    .regEntry { text-align: left;
+                font-size: .8em;
+                font-weight: bold; 
+                padding-right: 31%;}
+
+
+  @media screen and (max-width: 1280px)
   {
     .bf {
       padding: 20px 20px;
@@ -290,12 +316,12 @@ div.hero-image {
 			margin-left: 2em;
 		}
 
-		/* responsive footer details */
 		@media screen and (max-width: 1280px) {
 			#footer {
 				padding: 2em 2em 0em 2em ;
 			}
 		}
+
 		@media screen and (max-width: 980px) {
 
 			#footer {
@@ -304,25 +330,30 @@ div.hero-image {
 				margin: 0 0 3em 0;
 				width: 100%;
 			}
+
 				#footer > * {
 					width: 100%;
 					margin-left: 0;
 					margin-bottom: 1em;
 				}
 		}
+
 		@media screen and (max-width: 736px) {
 
 			#footer {
 				padding: 1em 0em -1em 0em ;
 			}
+
 		}
+
 		@media screen and (max-width: 480px) {
-		#footer {
+
+			#footer {
         padding: 2.5em 1em 0.5em 1em ;
 			}
+
 		}
    
-/* social media buttons in footer */
     .fa {
       padding: 10px;
       font-size: 25px;
