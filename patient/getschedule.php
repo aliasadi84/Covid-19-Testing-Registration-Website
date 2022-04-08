@@ -19,7 +19,7 @@ if ($today == $date && date("H") >= 9 ){
     $start = date ("$start", strtotime("+20 minute"));
     $duration = 10;
     $cleanup = 0;
-    $end = "22:00";
+    $end = "15:00";
 }
 else{
     $duration = 10;
