@@ -2,9 +2,8 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
 
 
-/* Hero Image*/
+/* Hero Image (pp.png) */
 div.hero-image { 
-
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -15,12 +14,14 @@ div.hero-image {
   margin: 5px;
  }
 
-  /* Produces Map Background */
+  /* index page welcome div class */
   .welcome { /* use div class="welcome"*/
     width: 60%; 
+	  
     padding: 10px 70px;
     margin: auto;
     margin-bottom: 2%;
+	  
     border-style: solid;
     border-color:black;
     background-color: white;
@@ -28,6 +29,7 @@ div.hero-image {
     font-size: 70%;
     }
 
+/* Produces Map Background */
   body {
     background-image: url("../map.png");  /*the map background*/
     background-color: #D9D7F1;   /*original purple #98b8fca1
@@ -41,8 +43,19 @@ div.hero-image {
     overflow-x: hidden;
   }
 
-  /* Words/Characters/Fonts */
-  body, input, select, textarea {
+  /* Words/Characters/Fonts/Sizes */
+ .smallText { /* small font size */
+    font-size: .4em;
+    line-height: 15px;
+    margin: 0px;
+    padding: 10px;
+    padding-right: 20%;
+    font-weight: bold;
+  }
+  .center { /* center text */
+    text-align: center;
+  }
+  body, input, select, textarea {  /* Words/Characters/Fonts */
       font-family: "Trebuchet MS";
       font-size: 25pt;
       line-height: 1.5;
@@ -51,6 +64,8 @@ div.hero-image {
   a {	
       color: inherit;
   }
+
+/* Heading Options */
   h1, h2, h3 {
       font-weight: 300;
       line-height: 1.5;
@@ -68,26 +83,18 @@ div.hero-image {
   h3 {
       font-size: 1.25em;
   }
-
-  h4 {font-size: .85em;}
-
-  h5 {font-size: .5em;
+		/* h4 significantly smaller than previous three */
+  h4 {
+	  font-size: .85em;
+}
+		/* h5 significantly smaller than h4 */
+  h5 {
+	font-size: .5em;
         line-height: 15px;
         margin: 0px;
         padding: 10px;
         }
   
-  .smallText {font-size: .4em;
-    line-height: 15px;
-    margin: 0px;
-    padding: 10px;
-    padding-right: 20%;
-    font-weight: bold;}
-
-  .center {
-    text-align: center;
-  }
-
 /*Creating Border around Home Sections*/
  .home { /* use div class="home"*/
   padding: 25px;
@@ -173,12 +180,13 @@ div.hero-image {
                   padding-left: 6em;
                   font-size: .85em;}
 
-    .regEntry { text-align: left;
+    .regEntry { /* inputs for register page */
+	    	text-align: left;
                 font-size: .8em;
                 font-weight: bold; 
                 padding-right: 31%;}
 
-
+/* main.css responsive section */
   @media screen and (max-width: 1280px)
   {
     .bf {
@@ -187,7 +195,7 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
-    .regbf { /* use div class="bf"*/
+    .regbf {
       padding: 20px 20px;
       left: 25%;
       height: 25%;
@@ -201,6 +209,7 @@ div.hero-image {
       width: 80%;
       font-size: 70%;
     }
+	  
     .radioAlign { text-align: left; 
       padding-left: 1em;}
     .uniAlign{ text-align: left;
@@ -210,6 +219,7 @@ div.hero-image {
         font-size: .8em;
         font-weight: bold; 
         padding-right: 31%;}
+	  
     h5 {font-size: .6em;
       line-height: 14px;}        
   }
@@ -222,13 +232,19 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
-    .regbf { /* use div class="bf"*/
+    .regbf { 
       padding: 20px 20px;
       left: 25%;
       height: 25%;
       width: 80%;
       margin-left: 20%;
     }
+	  
+    h5 {
+      font-size: .4em;
+      line-height: 14px;
+	  }     
+	  
     .radioAlign { text-align: left; 
       padding-left: 1em;}
     .uniAlign{ text-align: left;
@@ -237,9 +253,7 @@ div.hero-image {
     .regEntry { text-align: left;
         font-size: .8em;
         font-weight: bold; 
-        padding-right: 31%;}
-    h5 {font-size: .4em;
-      line-height: 14px;}        
+        padding-right: 31%;}  
   }
 
   @media screen and (max-width: 736px)
@@ -250,13 +264,19 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
-    .regbf { /* use div class="bf"*/
+    .regbf { 
       padding: 20px 20px;
       left: 25%;
       height: 25%;
       width: 80%;
       margin-left: 20%;
     }
+	  
+   h5 {
+	font-size: .4em;
+      line-height: 14px;
+    }      	  
+	  
     .radioAlign { text-align: left; 
       padding-left: 1em;}
     .uniAlign{ text-align: left;
@@ -265,9 +285,7 @@ div.hero-image {
     .regEntry { text-align: left;
         font-size: .8em;
         font-weight: bold; 
-        padding-right: 31%;}
-    h5 {font-size: .4em;
-      line-height: 14px;}        
+        padding-right: 31%;}  
   }
 
   @media screen and (max-width: 480px)
@@ -278,13 +296,19 @@ div.hero-image {
       height: 25%;
       width: 80%;
     }
-    .regbf { /* use div class="bf"*/
+    .regbf { 
       padding: 20px 20px;
       left: 25%;
       height: 25%;
       width: 80%;
       margin-left: 20%;
     }
+	  
+    h5 {
+	font-size: .4em;
+      line-height: 14px;
+	}      
+	  
     .radioAlign { text-align: left; 
       padding-left: 1em;}
     .uniAlign{ text-align: left;
@@ -293,54 +317,67 @@ div.hero-image {
     .regEntry { text-align: left;
         font-size: .8em;
         font-weight: bold; 
-        padding-right: 31%;}
-    h5 {font-size: .4em;
-      line-height: 14px;}        
+        padding-right: 31%;}  
   }
 
   @media screen and (max-width: 375px)
   {
+    /* bf options */
     .bf {
       padding: 20px 20px;
       left: 25%;
       height: 25%;
       width: 80%;
     }
-    .regbf { /* use div class="bf"*/
+    .regbf { 
       padding: 20px 20px;
       left: 25%;
       height: 25%;
       width: 80%;
       margin-left: 10%;
     }
-    h1 {line-height: 20%;}
-    h4 {text-align: center;}
-    .radioAlign { text-align: left; 
-      padding-left: 1em;}
-    .uniAlign{ text-align: left;
+    /* headings */
+    h1 {
+       line-height: 20%;
+    }
+    h4 {
+       text-align: center;
+    }
+    h5 {
+	font-size: .4em;
+        line-height: 14px;
+    } 
+    /* input alignments */
+    .radioAlign { 
+	text-align: left; 
+        padding-left: 1em;
+     }
+    .uniAlign { 
+	    text-align: left;
       padding-left: 0em;
-      font-size: .65em;}
-    .regEntry { text-align: left;
+      font-size: .65em;
+	  }
+    .regEntry { 
+	    text-align: left;
         font-size: .8em;
         font-weight: bold; 
-        padding-right: 31%;}
-    h5 {font-size: .4em;
-      line-height: 14px;}        
+        padding-right: 31%;
+	  }       
   }
 
 /* Footer */
-	#footer {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		padding: 1em 1em -1em 100em ;
-    background-color: #e7e6eebe;
-    font-size: 14pt;
+#footer {
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	padding: 1em 1em -1em 100em ;
+   	background-color: #e7e6eebe;
+   	font-size: 14pt;
 	}
 
 		#footer > * {
@@ -354,38 +391,32 @@ div.hero-image {
 			}
 		}
 
+		/* responsive footer options */
 		@media screen and (max-width: 980px) {
-
 			#footer {
 				padding: 2em 1em 0em 2em ;
 				display: block;
 				margin: 0 0 3em 0;
 				width: 100%;
 			}
-
-				#footer > * {
+			#footer > * {
 					width: 100%;
 					margin-left: 0;
 					margin-bottom: 1em;
 				}
 		}
-
 		@media screen and (max-width: 736px) {
-
 			#footer {
 				padding: 1em 0em -1em 0em ;
 			}
-
 		}
-
 		@media screen and (max-width: 480px) {
-
 			#footer {
         padding: 2.5em 1em 0.5em 1em ;
 			}
-
 		}
    
+/* social media buttons */
     .fa {
       padding: 10px;
       font-size: 25px;
@@ -395,27 +426,22 @@ div.hero-image {
       text-decoration: none;
       margin: 2px 20px;
     }
-    
     .fa:hover {
         opacity: 0.7;
     }
-    
-    .fa-facebook {
+        .fa-facebook {
       background: #3B5998;
       color: white;
     }
-    
-    .fa-linkedin {
+        .fa-linkedin {
       background: #007bb5;
       color: white;
     }
-    
-    .fa-instagram {
+        .fa-instagram {
       background: #d6249f;
       background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
       color: white;
-      
-    }
+          }
     .fa-paypal {
       background: #0000ff;
       color: white;
