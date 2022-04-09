@@ -58,7 +58,7 @@ alert('Username is invalid. Please try again.');
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/loginButton.css">
+    <link rel="stylesheet" href="assets/css/button.css">
     <!--end of css design files-->
 </head>
 <!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
@@ -70,8 +70,8 @@ Main Page of the WCHC Clinic Website-->
 </header>
 <!--end of the header-->
  <body>
-    <div class="bf">
-        
+    <div class="loginbf">
+    <a href="patientLogin.php" class="uniback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h3>Forgot Password</h3>
             <h4>Enter your username</h4>
