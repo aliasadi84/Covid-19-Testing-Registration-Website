@@ -105,6 +105,10 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
               <td>Address</td>
               <td><a href="https://goo.gl/maps/AYQRS5F6WrYikLVj7" target="_blank">9021 Joseph Campau &bull; Hamtramck, MI 48212 &bull; USA</a></td>
             </tr>
+            <tr>
+              <td>Website</td>
+              <td><a href="https://www.waynecountyhealthy.com/" target="_blank">www.waynecountyhealthy.com</a></td>
+            </tr>
             </table>
             <br>
             <div>
