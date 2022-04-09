@@ -60,6 +60,7 @@ header("Location: clinic/doctordashboard.php");
 
 <body>
     <div class="bf">
+    <a href="clinicloginselect.html" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <h2>Administrator Login</h2>
         <form class="form" role="form" method="POST" accept-charset="UTF-8">
             <!--The text field to enter the Username-->
