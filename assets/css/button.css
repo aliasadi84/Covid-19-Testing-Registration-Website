@@ -1,6 +1,6 @@
 /* Button CSS */
 
-/* register back button (when bf type is left align) */
+/* back button */
 .regback {
   position: relative;
      left: -30%;
@@ -12,7 +12,6 @@
      font-size: 200%;
 }
 
-/* universal back button */
 .uniback {
   position: relative;
      left: -60%;
@@ -24,17 +23,65 @@
      font-size: 200%;
 }
 
+.patientback {
+  position: relative;
+     left: -57%;
+     overflow: hidden;
+     text-decoration: none;
+     display: inline-block;
+     padding: -10px 16px;
+     line-height: 0%;
+     
+}
+
+.resultsback {
+  position: relative;
+     left: 0;
+     overflow: hidden;
+     text-decoration: none;
+     display: inline-block;
+     line-height: 0%; 
+}
+
+/* index Buttons */
+.button5 {
+  overflow: hidden;
+
+  border: 1px solid #18181a;
+  color: #18181a;
+  display: inline-block;
+
+  font-size: 20px;
+  line-height: 60px;
+  text-decoration: none;
+
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.925); /* original color #fff */
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+  left: 38%;
+  width: 90%;
+  margin: 15%;
+  padding: 50px;
+}
+
+.button5:hover {
+  background-color: #eaffac; /* original purple e2c3ff96 */
+  /* exotic option #fffee9 */
+  color: black;
+}   
+
 /* patient Home Page Buttons */
 .button1 {
 position: relative;
 overflow: hidden;
 
-  /* border edits */
 border: 1px solid #18181a;
 color: #18181a;
 display: inline-block;
 
-  /* font edits */
 font-size: 15px;
 line-height: 15px;
 text-decoration: none;
@@ -45,7 +92,6 @@ user-select: none;
 -webkit-user-select: none;
 touch-action: manipulation;
 
-  /* positioning */
 left: 38%;
 height: 75%;
 width: 25%;
@@ -53,7 +99,6 @@ margin-bottom: 20px;
 padding: 18px 18px 17px;
 }
 
-/* hover options */
 .button1:hover {
 background-color: #eaffac; /* original purple e2c3ff96 */
 /* exotic option #fffee9 */
@@ -360,7 +405,7 @@ color: black;
   opacity: .24;
 }
 
-/* responsive details */
+
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  
@@ -392,5 +437,38 @@ only screen and (max-width: 760px),
    
     height: 25%;
     width: 50%;
+  }
+
+  .regback {
+    position: relative;
+       left: -2%;
+       overflow: hidden;
+       text-decoration: none;
+       display: inline-block;
+       padding: -10px 16px;
+       line-height: 50%;
+       font-size: 200%;
+  }
+
+  .uniback {
+    position: relative;
+       left: -42%;
+       overflow: hidden;
+       text-decoration: none;
+       display: inline-block;
+       padding: -10px 16px;
+       line-height: 55%;
+       font-size: 200%;
+  }
+
+  .patientback {
+    position: relative;
+       left: -42%;
+       overflow: hidden;
+       text-decoration: none;
+       display: inline-block;
+       padding: -10px 16px;
+       line-height: 0%;
+       
   }
 }
