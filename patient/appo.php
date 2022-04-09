@@ -43,7 +43,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 	<section>
     <div class="bf">
 	<section id="promo-1" class="content-block">
-	<a href="patient.php" class="profileback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+	<a href="patient.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 		<h2> Choose your appointment</h2>
 		<!--Input the date for the appointment which is sent to the script below to populate available appointments-->
 		<input type="date" id="date" name="date" min="<?php echo date("Y-m-d"); ?>" max="<?php echo date("Y-m-d", strtotime("+14 days")); ?>" onchange="showUser(this.value)"/>
