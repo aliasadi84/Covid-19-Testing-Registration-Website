@@ -10,6 +10,36 @@
        padding: -10px 16px;
  }
 
+ 
+  /* index Buttons */
+  .button5 {
+    overflow: hidden;
+  
+    border: 1px solid #18181a;
+    color: #18181a;
+    display: inline-block;
+  
+    font-size: 20px;
+    line-height: 60px;
+    text-decoration: none;
+  
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.925); /* original color #fff */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    
+    left: 38%;
+    width: 90%;
+    margin: 15%;
+    padding: 50px;
+  }
+  
+  .button5:hover {
+    background-color: #eaffac; /* original purple e2c3ff96 */
+    /* exotic option #fffee9 */
+    color: black;
+  }   
 
 /* patient Home Page Buttons */
 .button1 {
@@ -43,7 +73,6 @@
   color: black;
 }
 
-
 /* buttons centered on page outside of div class bf */
 .button2 {
     align-items: center;
@@ -75,7 +104,7 @@
     height: 25%;
     width: 20%;
   }
-  
+
   /* makes button rounded */
   .button2:before,
   .button2:after {
@@ -345,7 +374,6 @@
   }
 
 
-
 @media 
 only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  
@@ -367,6 +395,12 @@ only screen and (max-width: 760px),
       width: 50%;
     }
    .button3 {
+      padding: 20px 20px;
+     
+      height: 25%;
+      width: 50%;
+    }
+    .button4{
       padding: 20px 20px;
      
       height: 25%;
