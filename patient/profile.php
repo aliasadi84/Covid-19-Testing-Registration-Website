@@ -63,6 +63,7 @@ $female = "checked";
   
   <div class="wrapper">
     <div class="bf">
+	<a href="patient.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
 	<section>
 	<div>
 		<h4><?php echo $userRow['patientFirstName']; ?> <?php echo $userRow['patientLastName']; ?></h4>
