@@ -36,16 +36,12 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 </header>
 
 <body>
-  
-  <div class="wrapper">
     <?php
-
-
     //populates the appointments that you have booked
 	  // NOTE FROM TIM: I would recommend changing "Your Appointment List" to say "<user-first-name>'s Appointment List" like we have on the homepage
-    echo "<h1>" . $userRow['patientFirstName'] . "'s Results</h1>";
     echo "<table>";
     echo "<thead>";
+    echo "<th colspan='7'><h2>" . $userRow['patientFirstName'] . "'s Results</h2></th><br>";
     echo "<tr>";
     echo "<th>Date </th>";
     echo "<th>Time Slot</th>";
@@ -66,7 +62,7 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     while ($userRow = mysqli_fetch_array($res)) {
     echo "<tbody>";
     echo "<tr>";
-    echo "<td>" . $userRow['date'] . "</td>";
+    echo "<td>" . date('F d, Y', strtotime($userRow['date'])) . "</td>";
     echo "<td>" . $userRow['timeslot'] . "</td>";
     echo "<td>" . $userRow['result'] . "</td>";
     }
@@ -74,9 +70,8 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     echo "</tr>";
     echo "</tbody>";
     echo "</table>";
-
     ?>
-	</div>
+	
 
 </body>
 </html>
