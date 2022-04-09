@@ -16,6 +16,18 @@ div.hero-image {
  }
 
   /* Produces Map Background */
+  .welcome { /* use div class="welcome"*/
+    width: 60%; 
+    padding: 10px 70px;
+    margin: auto;
+    margin-bottom: 2%;
+    border-style: solid;
+    border-color:black;
+    background-color: white;
+  
+    font-size: 70%;
+    }
+
   body {
     background-image: url("../map.png");  /*the map background*/
     background-color: #D9D7F1;   /*original purple #98b8fca1
@@ -91,19 +103,6 @@ div.hero-image {
   
 }
 
-/*Creating Border around Sections on Index page*/
-   .welcome { /* use div class="welcome"*/
-  width: 80%; 
-  padding: 10px 70px;
-  margin: 3%;
-
-  border-style: solid;
-  border-color:black;
-  background-color: white;
-
-  font-size: 70%;
-  }
-
   /*Creating Border around Sections*/
   .bf { /* use div class="bf"*/
     padding: 120px;
@@ -115,11 +114,24 @@ div.hero-image {
     border-color:black;
     background-color: white;
     width: 50%;
-    
+    left: -30%;
     overflow-x: hidden;
     
   }
 
+  .loginbf { /* use div class="bf"*/
+    padding: 10px 120px;
+    border-radius: 5px 5px;
+    margin: auto;
+    margin-bottom: 5%;
+    text-align: center;
+    border-style: solid;
+    border-color:black;
+    background-color: white;
+    width: 40%;
+    overflow-x: hidden;
+    
+  }
 
   .regbf { /* use div class="bf"*/
     padding: 10px 120px;
@@ -182,6 +194,13 @@ div.hero-image {
       width: 80%;
       margin-left: 20%;
     }
+    .loginbf {
+      padding: 20px 20px;
+      left: 25%;
+      height: 25%;
+      width: 80%;
+      font-size: 70%;
+    }
     .radioAlign { text-align: left; 
       padding-left: 1em;}
     .uniAlign{ text-align: left;
@@ -191,7 +210,7 @@ div.hero-image {
         font-size: .8em;
         font-weight: bold; 
         padding-right: 31%;}
-    h5 {font-size: .4em;
+    h5 {font-size: .6em;
       line-height: 14px;}        
   }
 
