@@ -11,50 +11,55 @@
 </head>
 
 <header>
-    <div class="hero-image">
-        <a href="index.html"><img src="assets/pp.png"></a>
-    </div>
+  <div class="hero-image">
+      <a href="patient.php"><img src="./assets/pp.png" width="50%"></a>
+  </div>
 </header>
 
 <main>
     <body>
-<div class="home">
-<h1>Welcome!</h1><hr>
-<p>
-    This is the Wayne Healthy Communities COVID-19 Testing Portal. 
-    As a patient, please login with the patient login button. 
-    <div class="center">Once logged in, you will be directed to select one of four option:
-    <ol>
-        <li>Account Edits</li>
-        <li>Appointment Schedule</li>
-        <li>Online Check-In</li>
-        <li>View Test Results</li>
-      </ol> 
-    </div>
-</p>
-</div>
+      <table padding="10px" width="90%">
+        <tr aria-colspan="2">
+         <td width="80%">
+           <div class="welcome">
+           <h1>Welcome!</h1><hr>
+           <p>
+               The Wayne County Healthy Communities COVID-19 Testing Portal <br>
+               Please register or login to an account to begin your easy COVID testing preocess.
+               <div class="center">Once logged in, you will be directed to select one of four options:
+               <ol>
+                   <li>Account Edits, where your account information can be viewed.</li>
+                   <li>Schedule, where you can schedule your appointment at your earliest convinience.</li>
+                   <li>Check-In, for call free appointment check-in!</li>
+                   <li>Results, the page to view all previous and current test results.</li>
+                 </ol> 
+               </div>
+           </td>
+   
+         <td width="25%">
+           <form action="patientLogin.php"><button class="button4">LogIn</button></form><br>
+           <form action="reg.html"><button class="button4">Register</button></form><br>
+         </td>
+        </tr> 
+     </table>
+
+     <div class="welcome">
+      <h1>Welcome!</h1><hr>
+      <p>
+          The Wayne County Healthy Communities COVID-19 Testing Portal <br>
+          Please register or login to an account to begin your easy COVID testing preocess.
+          <div class="center">Once logged in, you will be directed to select one of four options:
+          <ol>
+              <li>Account Edits, where your account information can be viewed.</li>
+              <li>Schedule, where you can schedule your appointment at your earliest convinience.</li>
+              <li>Check-In, for call free appointment check-in!</li>
+              <li>Results, the page to view all previous and current test results.</li>
+            </ol> 
+          </div>
     
 <form action="patientLogin.php"><button class="button2">Log In</button></form><br>
-    
- <!-- Steps Breakdown -->
-<div class="home">
-    <p>
-      <h1>Instructions</h1><hr>
-      <h1>Your Account</h1>
-      At account you can edit your basic account information, such as name, email, and phone number.
-      
-      <h1>Appointment Schedule</h1>
-      At appointment schedule you can schedule your COVID-19 test on an available day or time. 
-      You will then be asked to complete a questionnaire before your appointment will be scheduled.
-     
-        <h1>Online Check-In</h1>
-      When you are ready to attend your appointment, please use our online check-in. This way our 
-      staff will be able to locate you with ease and quickly administer the test.
-     
-        <h1>View Test Results</h1>
-        When your COVID test results are in, use the test results button to view your results.
-    </p>
-</div>
+<form action="reg.html"><button class="button2">Register</button></form><br>
+
     </body>
 </main>
 
@@ -71,13 +76,17 @@
         <td>Closed</td>
        </tr>
        <tr>
-          <td>Monday-Friday</td>
+          <td>Monday-Tuesday</td>
           <td>9:00 am - 5:30 pm</td>
         </tr> 
         <tr>
           <td>Wednesday</td>
           <td>11:00 am - 7:30 pm</td>
         </tr>
+        <tr>
+          <td>Thursday-Friday</td>
+          <td>9:00 am - 5:30 pm</td>
+        </tr> 
         <tr>
           <td>Saturday</td>
           <td>9:00 am - 1:00 pm</td>
@@ -92,19 +101,19 @@
             </tr>
             <tr>
                 <td>Phone</td>
-                <td>(313) 871-1926 x 0000</td><br>
+                <td><a href="tel:3138711926">(313) 871-1926 x 0000</a></td><br>
               </tr>
             <tr>
               <td>Address</td>
-              <td>9021 Joseph Campau &bull; Hamtramck, MI 48212 &bull; USA</td>
+              <td><a href="https://goo.gl/maps/AYQRS5F6WrYikLVj7" target="_blank">9021 Joseph Campau &bull; Hamtramck, MI 48212 &bull; USA</a></td>
             </tr>
             </table>
             <br>
             <div>
-            <a href="https://www.paypal.com/fundraiser/charity/2121252" class="fa fa-paypal"></a>
-            <a href="https://www.facebook.com/WayneCountyHealthyCommunities/" class="fa fa-facebook"></a>
-            <a href="https://www.instagram.com/waynecountyhealthycommunities/" class="fa fa-instagram"></a>
-            <a href="https://www.linkedin.com/company/wayne-county-healhty-communities/" class="fa fa-linkedin"></a>
+            <a href="https://www.paypal.com/fundraiser/charity/2121252" target="_blank" class="fa fa-paypal"></a>
+            <a href="https://www.facebook.com/WayneCountyHealthyCommunities/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/waynecountyhealthycommunities/" target="_blank" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/company/wayne-county-healhty-communities/" target="_blank" class="fa fa-linkedin"></a>
           </div>
     </section>
 </footer>
