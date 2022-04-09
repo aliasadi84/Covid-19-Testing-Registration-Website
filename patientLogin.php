@@ -20,8 +20,6 @@ $res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'")
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 //check and get if the username is present in the database.
 //if statement check if password matches with what is present for the username.
-if (isset($row['icPatient']) == $icPatient)
-{
 if ($row['password'] == $password)
 {
 $_SESSION['patientSession'] = $row['icPatient'];
@@ -38,16 +36,7 @@ header("Location: patient/patient.php");
 ?>
 
 <script>
-alert('Password is incorrect. Please try again.');
-</script>
-
-<?php
-}
-}else {
-?>
-
-<script>
-alert('Username does not exist. Please try again or register for an account.');
+alert('Username or Password incorrect. Please try again.');
 </script>
 
 <?php
@@ -65,7 +54,7 @@ alert('Username does not exist. Please try again or register for an account.');
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/loginButton.css">
+    <link rel="stylesheet" href="assets/css/button.css">
     <!--end of css design files-->
 </head>
 <!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
@@ -77,8 +66,8 @@ Main Page of the WCHC Clinic Website-->
 </header>
 <!--end of the header-->
  <body>
-    <div class="bf">
-        
+    <div class="loginbf">
+    <a href="index.html" class="uniback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h1>COVID-19 Testing Portal Log In</h1>
             <!--The text field to enter the Username-->
