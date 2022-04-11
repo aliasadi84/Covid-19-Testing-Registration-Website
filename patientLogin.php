@@ -20,6 +20,8 @@ $res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'")
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 //check and get if the username is present in the database.
 //if statement check if password matches with what is present for the username.
+if (isset($row['icPatient']) == $icPatient)
+{
 if ($row['password'] == $password)
 {
 $_SESSION['patientSession'] = $row['icPatient'];
@@ -36,7 +38,16 @@ header("Location: patient/patient.php");
 ?>
 
 <script>
-alert('Username or Password incorrect. Please try again.');
+alert('Password is incorrect. Please try again.');
+</script>
+
+<?php
+}
+}else {
+?>
+
+<script>
+alert('Username does not exist. Please try again or register for an account.');
 </script>
 
 <?php
