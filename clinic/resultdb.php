@@ -21,7 +21,7 @@ $timeslot = $userRow['timeslot'];
 
 
 $to = $userDow['patientEmail'];
-$subject = "COVID Test Results Available";
+$subject = "Test Results Available";
 $body ="Hello " .$userDow['patientFirstName']. ",\n\nThank you for testing with Wayne County Healthy Communities! The results of your COVID test on " . date('m/d/Y', strtotime($dateofappointment)) . " are now available.\n\nPlease log in to WCHC COVID-19 Portal to view results.";
 $header = "From: from@email";
 mail($to, $subject, $body, $header)
