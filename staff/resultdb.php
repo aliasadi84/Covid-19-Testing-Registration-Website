@@ -19,8 +19,8 @@ $dateofappointment = date('m/d/Y',strtotime($dateofappointment));
 $timeslot = $userRow['timeslot'];
 
 $to = $userDow['patientEmail'];
-$subject = "WCHC Result have been entered";
-$body ="Hello " .$userDow['patientFirstName']. ",\n\nThank you for testing with Wayne County Healthy Communities! The results of your COVID test on " . date('m/d/Y', strtotime($dateofappointment)) . " are now available.\n\nPlease log in to WCHC COVID-19 Portal to view results.";
+$subject = "Test Results Available";
+$body ="Hello " .$userDow['patientFirstName']. ",\n\nThank you for testing with Wayne County Healthy Communities! The results of your COVID test on " . date('F d, Y', strtotime($dateofappointment)) . " are now available.\n\nPlease log in to WCHC COVID-19 Portal to view results.";
 $header = "From: from@email";
 mail($to, $subject, $body, $header)
 
