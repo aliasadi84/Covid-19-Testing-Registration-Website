@@ -31,7 +31,7 @@ alert('Password has been renewed. Please try logging in!');
 </script>
 
 <?php
-header("Location: patientLogin.php");
+header("Location: confirmchangepass.html");
 } else {
 ?>
 
@@ -53,7 +53,7 @@ alert('Password cannot be renewed. Please try again!');
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/loginButton.css">
+    <link rel="stylesheet" href="assets/css/button.css">
     <!--end of css deesign files-->
 </head>
 
@@ -119,8 +119,7 @@ Main Page of the WCHC Clinic Website-->
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             
             <!--A heading reminding the user that all fields are required-->
-            <h1>Enter New Password:</h1>
-            <h4>All Fields are Required</h4>
+            <h1>Change Password</h1>
             <h5>Requires at least 8 characters, including at least one uppercase, one number, and one special character</h5><br>
             <label for="password">Password</label><br>
             <!--This text field is set to be required-->
@@ -135,7 +134,7 @@ Main Page of the WCHC Clinic Website-->
         <br>
           <!--By clicking the submit button, it will check if all required fields have an input and also is sent
               to validate if the password meets requirement and also if the password and confirm password is a match.-->
-              <button class="button3" type="submit" name="change" onclick="validatePassword()">Register</button><br>
+              <button class="button3" type="submit" name="change" onclick="validatePassword()">Update</button><br>
           
     </form>
     <!--The form ends here-->
