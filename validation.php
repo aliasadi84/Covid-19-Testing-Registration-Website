@@ -81,7 +81,7 @@ alert('Validation code is invalid. Please try again.');
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/loginButton.css">
+    <link rel="stylesheet" href="assets/css/button.css">
     <!--end of css design files-->
 </head>
 <!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
@@ -94,7 +94,7 @@ Main Page of the WCHC Clinic Website-->
 <!--end of the header-->
  <body>
     <div class="bf">
-        
+    <a href="patientLogin.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h3>Validate</h3>
             <h4>Enter your verification code</h4>
