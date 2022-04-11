@@ -81,16 +81,16 @@ $female = "checked";
 				
 					<tr>
 						<td>First Name</td>
-						<td><input type="text" class="form-control" name="patientFirstName" value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
+						<td><input type="text" class="form-control" name="patientFirstName" required value="<?php echo $userRow['patientFirstName']; ?>"  /></td>
 					</tr>
 					<tr>
 						<td>Last Name</td>
-						<td><input type="text" class="form-control" name="patientLastName" value="<?php echo $userRow['patientLastName']; ?>"  /></td>
+						<td><input type="text" class="form-control" name="patientLastName" required value="<?php echo $userRow['patientLastName']; ?>"  /></td>
 					</tr>
 
 					<tr>
 						<td>Date of Birth</td>
-						<td><input type="date" class="form-control" name="patientDOB" value="<?php echo $userRow['patientDOB']; ?>"  /></td>
+						<td><input type="date" class="form-control" name="patientDOB" required value="<?php echo $userRow['patientDOB']; ?>"  /></td>
 					</tr>
 					<!-- radio button -->
 					<tr>
