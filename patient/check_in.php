@@ -42,9 +42,23 @@
       $color = $_POST['color'];
       $plate = $_POST['plate'];
       // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
+      date_default_timezone_set('America/Detroit');
+      $present_time = date('H:i');
+      $timeslots = $appointment['timeslot'];
+      $newA = current(explode(" ", $timeslots));
+      $time_in_24_hour_format  = date('H:i', strtotime("$newA"));
+      $start = strtotime("-15 minutes", strtotime($time_in_24_hour_format));
+      $start = date('H:i', $start);
+      $end = strtotime("+5 minutes", strtotime($time_in_24_hour_format));
+      $end = date('H:i', $end);
+      $present_time  = str_replace(array(':'), '',$present_time);
+      $start = str_replace(array(':'), '',$start);
+      $end = str_replace(array(':'), '',$end);
+      if ($present_time >= $start && $present_time <= $end){
       $update=mysqli_query($con,"UPDATE bookings SET status='checked-in', location='$location', make='$make', color='$color', plate='$plate' WHERE id = '$app'");
       // $userRow=mysqli_fetch_array($res);
       header("Location: checkinconf.html");
+      }
       }
 
    }
@@ -108,7 +122,19 @@ function CheckColors(val){
           exit();
       }
       while ($appointment=mysqli_fetch_array($res)) {
-      
+      date_default_timezone_set('America/Detroit');
+      $present_time = date('H:i');
+      $timeslots = $appointment['timeslot'];
+      $newA = current(explode(" ", $timeslots));
+      $time_in_24_hour_format  = date('H:i', strtotime("$newA"));
+      $start = strtotime("-15 minutes", strtotime($time_in_24_hour_format));
+      $start = date('H:i', $start);
+      $end = strtotime("+5 minutes", strtotime($time_in_24_hour_format));
+      $end = date('H:i', $end);
+      $present_time  = str_replace(array(':'), '',$present_time);
+      $start = str_replace(array(':'), '',$start);
+      $end = str_replace(array(':'), '',$end);
+      if ($present_time >= $start && $present_time <= $end){
       if ($appointment['status']=='appointment booked') {
           $status="danger";
           $icon='remove';
@@ -119,7 +145,6 @@ function CheckColors(val){
           $icon='ok';
           $checked = 'disabled';
       }
-      
       echo "<tbody>";
       echo "<tr>";
           //appointment details is populated
@@ -128,7 +153,8 @@ function CheckColors(val){
           echo "<form method='POST'>";
 
       
-      } 
+      
+      }} 
           echo "</tr>";
       echo "</tbody>";
       echo "</table>";
