@@ -102,8 +102,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         echo "<td>" . $appointment['timeslot'] . "</td>";
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
-                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
-                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick=' return chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='return chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
                 
                     
                 } 
@@ -121,7 +121,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 <!-- takes all the inputs from the checkbox, send to resultdb.php to enter the positive result -->
 <script type="text/javascript">
-function chkit(uid, chk) {
+function chkit(uid, chk) 
+{
+  var confirmAction = confirm("Are you sure you want to select a positive test reusult?");
+  if (confirmAction === true)
+  {
+   
    chk = (chk==true ? "1" : "0");
    var url = "resultdb.php?userid="+uid+"&chkYesNo="+chk;
    if(window.XMLHttpRequest) {
@@ -132,19 +137,40 @@ function chkit(uid, chk) {
    // Use get instead of post.
    req.open("GET", url, true);
    req.send(null);
+  }
+  else {
+    alert("No result has been selected");
+    
+  }
+  return confirmAction;
 }
+
+
+
+
 //takes all the inputs from the checkbox, send to nresultdb.php to enter the negetive results
-function chki(uid, chk) {
-   chk = (chk==true ? "1" : "0");
+function chki(uid, chk) 
+{   
+  var confirmAction = confirm("Are you sure you want to select a negative test reusult?");
+  if (confirmAction === true)
+   {
+    chk = (chk==true ? "1" : "0");
    var url = "nresultdb.php?userid="+uid+"&chkYesNo="+chk;
-   if(window.XMLHttpRequest) {
+   if(window.XMLHttpRequest) 
+   {
       req = new XMLHttpRequest();
-   } else if(window.ActiveXObject) {
+   } else if(window.ActiveXObject) 
+   {
       req = new ActiveXObject("Microsoft.XMLHTTP");
    }
    // Use get instead of post.
    req.open("GET", url, true);
    req.send(null);
+  }
+  else{
+    alert("No result has been selected");
+  }
+  return confirmAction;
 }
 </script>
                 </div>
