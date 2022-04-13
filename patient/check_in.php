@@ -97,7 +97,7 @@ function CheckColors(val){
 
 <body>
   <div class="bf">
-
+  	<a href="patient.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
   <h3>Check-In</h3>
   <h5>You will not be able to check in if you don't have an appointment scheduled today.</h5>
 
