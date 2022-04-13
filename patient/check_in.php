@@ -42,23 +42,9 @@
       $color = $_POST['color'];
       $plate = $_POST['plate'];
       // mysqli_query("UPDATE blogEntry SET content = $udcontent, title = $udtitle WHERE id = $id");
-      date_default_timezone_set('America/Detroit');
-      $present_time = date('H:i');
-      $timeslots = $appointment['timeslot'];
-      $newA = current(explode(" ", $timeslots));
-      $time_in_24_hour_format  = date('H:i', strtotime("$newA"));
-      $start = strtotime("-15 minutes", strtotime($time_in_24_hour_format));
-      $start = date('H:i', $start);
-      $end = strtotime("+5 minutes", strtotime($time_in_24_hour_format));
-      $end = date('H:i', $end);
-      $present_time  = str_replace(array(':'), '',$present_time);
-      $start = str_replace(array(':'), '',$start);
-      $end = str_replace(array(':'), '',$end);
-      if ($present_time >= $start && $present_time <= $end){
       $update=mysqli_query($con,"UPDATE bookings SET status='checked-in', location='$location', make='$make', color='$color', plate='$plate' WHERE id = '$app'");
       // $userRow=mysqli_fetch_array($res);
       header("Location: checkinconf.html");
-      }
       }
 
    }
@@ -66,14 +52,14 @@
 <!DOCTYPE HTML>
 <html> 
 <head>  
-<script type="text/javascript">
+<!--<script type="text/javascript">
 function CheckColors(val){
- var element=document.getElementById('carcolor');
+ var element=document.getElementById('color');
  if(val=='Other')
    element.style.display='block';
  else  
    element.style.display='none';
-}
+}-->
 
 </script> 
 </head>
@@ -97,7 +83,7 @@ function CheckColors(val){
 
 <body>
   <div class="bf">
-  	<a href="patient.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+  <a href="patient.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
   <h3>Check-In</h3>
   <h5>You will not be able to check in if you don't have an appointment scheduled today.</h5>
 
@@ -122,19 +108,7 @@ function CheckColors(val){
           exit();
       }
       while ($appointment=mysqli_fetch_array($res)) {
-      date_default_timezone_set('America/Detroit');
-      $present_time = date('H:i');
-      $timeslots = $appointment['timeslot'];
-      $newA = current(explode(" ", $timeslots));
-      $time_in_24_hour_format  = date('H:i', strtotime("$newA"));
-      $start = strtotime("-15 minutes", strtotime($time_in_24_hour_format));
-      $start = date('H:i', $start);
-      $end = strtotime("+5 minutes", strtotime($time_in_24_hour_format));
-      $end = date('H:i', $end);
-      $present_time  = str_replace(array(':'), '',$present_time);
-      $start = str_replace(array(':'), '',$start);
-      $end = str_replace(array(':'), '',$end);
-      if ($present_time >= $start && $present_time <= $end){
+      
       if ($appointment['status']=='appointment booked') {
           $status="danger";
           $icon='remove';
@@ -145,6 +119,7 @@ function CheckColors(val){
           $icon='ok';
           $checked = 'disabled';
       }
+      
       echo "<tbody>";
       echo "<tr>";
           //appointment details is populated
@@ -153,8 +128,7 @@ function CheckColors(val){
           echo "<form method='POST'>";
 
       
-      
-      }} 
+      } 
           echo "</tr>";
       echo "</tbody>";
       echo "</table>";
@@ -182,19 +156,23 @@ function CheckColors(val){
       </select><br>
       
         <h2>Car</h2>
-        <input type="text" id="car" name="make" placeholder="Car Type"><br><br>
+        <input type="text" id="car" name="make" placeholder="Car Type"><br>
 
-        <select name="color" id="color" onchange='CheckColors(this.value);'>
+        <select name="color" id="color">
         <option default selected disabled>Car Color</option>
         <option value="White">White</option>
         <option value="Black">Black</option>
         <option value="Silver">Silver</option>
         <option value="Red">Red</option>
         <option value="Blue">Blue</option>
-        <option value="Other">Other (Type Below)</option>
+        <option value="Brown">Brown</option>
+        <option value="Green">Green</option>
+        <option value="Gold">Gold</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Orange">Orange</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
         </select>
-        <input type="text" name="color" id="carcolor" style='display:none;'/><br><br>
-
       <h2>License Plate</h2>
       <input type="text" id="plate" name="plate" placeholder="Plate Number">
   </div>
