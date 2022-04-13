@@ -3,22 +3,20 @@
 include_once 'assets/conn/dbconnect.php';
 
 session_start();
-//If a patient session is already running without a loging out from the patient session,
-//it will be directed toward patient.php(file) in patient(folder).
 
 if (isset($_POST['login']))
 {
 //gets all the input during a form submission
 $icPatient = mysqli_real_escape_string($con,$_POST['icPatient']);
 $code = rand(999999, 111111);
-//patient username input
+//insert a new verification code for the patient.
 $insert_code = "UPDATE patient SET validate = $code WHERE icPatient = '$icPatient'";
 $run_query =  mysqli_query($con, $insert_code);
+//get patient information for the entered username.
 $res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$icPatient'");
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
-//check and get if the username is present in the database.
-//if statement check if password matches with what is present for the username.
 
+//if-else statement to verify if the username exists and sents an email with verification code if the username exists.
 if (isset($row['icPatient']) == $icPatient)
 {
 $_SESSION['forgotSession'] = $row['icPatient'];
@@ -61,7 +59,7 @@ alert('Username is invalid. Please try again.');
     <link rel="stylesheet" href="assets/css/button.css">
     <!--end of css design files-->
 </head>
-<!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
+<!--The header of the forgot_password page, which contains the logo of WCHC clinic. The link is directed to the
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
@@ -74,6 +72,7 @@ Main Page of the WCHC Clinic Website-->
     <a href="patientLogin.php" class="uniback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h3>Forgot Password</h3>
+            <!--Text field to enter username-->
             <h4>Enter your username</h4>
             <input type="text" id="username" name="icPatient" placeholder="Username" required autofocus autocomplete><br><br>
             <h5>Once you enter your username, an email will be sent to your email address with a verification code. Enter that code on the next page.</h5>

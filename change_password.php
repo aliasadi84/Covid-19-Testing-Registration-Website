@@ -3,13 +3,14 @@
 include_once 'assets/conn/dbconnect.php';
 
 session_start();
+
+//if the patient has not verified using verification code, the page is directed toward the main page. 
 if(!isset($_SESSION['forgotSession']))
 {
 header("Location: ../index.php");
 }
 $usersession = $_SESSION['forgotSession'];
-//If a patient session is already running without a loging out from the patient session,
-//it will be directed toward patient.php(file) in patient(folder).
+
 
 if (isset($_POST['change']))
 {
@@ -19,15 +20,15 @@ $insert_code = "UPDATE patient SET password = '$password' WHERE icPatient = '$us
 $run_query =  mysqli_query($con, $insert_code);
 $res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$usersession'");
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
-//check and get if the username is present in the database.
-//if statement check if password matches with what is present for the username.
+//get user details of the patient.
+//if-else statement to check if password matches with what is present in the database for the username.
 
 if ($row['password'] == $password)
 {
 ?>
 
 <script type="text/javascript">
-alert('Password has been renewed. Please try logging in!');
+alert('Password has been renewed!');
 </script>
 
 <?php
@@ -57,7 +58,7 @@ alert('Password cannot be renewed. Please try again!');
     <!--end of css deesign files-->
 </head>
 
-<!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
+<!--The header of the change_password page, which contains the logo of WCHC clinic. The link is directed to the
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
@@ -67,7 +68,7 @@ Main Page of the WCHC Clinic Website-->
 <!--end of the header-->
 
 
-<!--This script is used to validate the Passwords before registering the account.-->
+<!--This script is used to validate the Passwords before changing the password.-->
 <script type="text/javascript">
 		
 	
@@ -95,37 +96,30 @@ Main Page of the WCHC Clinic Website-->
 				confirm_password.setCustomValidity("Passwords don't match");
 			} 
 			else {
-                //if the value for password and confirm password is a match. No error message will pop up and will be directed to registering their accont.
+                //if the value for password and confirm password is a match. No error message will pop up and will be directed to changing password of their account.
 				confirm_password.setCustomValidity('');
 			}	
 			confirm_password.onkeyup = checkMatching;
 		}
     
     </script>
-    <!--end of the password validation script-->
 
-    <!--header stating that it is a Registration page-->
-      
-    <!--end of the header-->
-
-    <!--body of the page is beginning here-->
     <body>
     
     <!--A div class 'bf' is created to contain all the rest of the page content in a box-->
     <div class="bf">
 
-        <!--The form for registration starts here, upon submission of this form it is first incorperates
-        the password validation and then is send to connection.php to register the account-->
+        <!--The form for changing password starts here, upon submission of this form it is first incorperates
+        the password validation and then the password is changed-->
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             
-            <!--A heading reminding the user that all fields are required-->
             <h1>Change Password</h1>
+            <!--A heading reminding the password requirement-->
             <h5>Requires at least 8 characters, including at least one uppercase, one number, and one special character</h5><br>
             <label for="password">Password</label><br>
             <!--This text field is set to be required-->
             <input type="password" id="password" name="password" placeholder="Password" required><br>
 
-            <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
             <label for="password">Confirm Password</label><br>
             <!--This text field is set to be required-->
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter Password" required><br>

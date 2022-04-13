@@ -3,11 +3,12 @@
 include_once 'assets/conn/dbconnect.php';
 
 session_start();
-//If a clinic session is already running without loging out from the clinic session,
-//it will be directed toward doctordashboard.php(file) in clinic(folder).
+//If a staff session is already running without loging out from the staff session,
+//it will be directed toward doctordashboard.php(file) in staff(folder).
 if (isset($_SESSION['staffSession']) != "") {
 header("Location: staff/doctordashboard.php");
 }
+
 if (isset($_POST['login']))
 {
 $icstaff = mysqli_real_escape_string($con,$_POST['icstaff']);
@@ -17,13 +18,12 @@ $password  = mysqli_real_escape_string($con,$_POST['password']);
 $res = mysqli_query($con,"SELECT * FROM staff WHERE icstaff = '$icstaff'");
 //check and get if the username is present in the database.
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
-//if statement check if password matches with what is present for the username.
+//if statement check if password matches with what is present for the username and if the staff is active.
 if ($row['password'] == $password && $row['active'] == 'active')
 {
 $_SESSION['staffSession'] = $row['icstaff'];
 //error checking
-//If a clinic session is already running without loging out from the clinic session,
-//it will be directed toward doctordashboard.php(file) in clinic(folder).
+//A new staff session is created with the staff username and is directed to doctordashboard.php 
 ?>
 <script type="text/javascript">
 alert('Login Success');
@@ -54,12 +54,12 @@ header("Location: staff/doctordashboard.php");
     <link rel="stylesheet" href="assets/css/account.css">
     <!--end of css design files-->
 </head>
-<!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
+<!--The header of the stafflogin page, which contains the logo of WCHC clinic. The link is directed to the
 Main Page of the WCHC Clinic Website-->   
 <header>
     <div class="hero-image">
         <a href="index.html" ><img src="assets/pp.png" width="50%"></a>
-        <!--The image is located inside the assets(folder) -> img(folder) -> pp.png --> 
+        <!--The image is located inside the assets(folder) -> pp.png --> 
     </div>
 </header>
 <!--end of the header-->

@@ -1,28 +1,36 @@
 <?php
 //connection to the database
 include_once 'assets/conn/dbconnect.php';
-
 session_start();
+
+//if the user has not finished the step to enter username, it will be redirected to index.html
 if(!isset($_SESSION['forgotSession']))
 {
-header("Location: ../index.php");
+header("Location: ./index.html");
 }
+
+//username of the patient is gathered.
 $usersession = $_SESSION['forgotSession'];
-//If a patient session is already running without a loging out from the patient session,
-//it will be directed toward patient.php(file) in patient(folder).
+
+//if the user click the re-sent button a new verification code is entered to database.
 if (isset($_POST['resent']))
 {
+    //a new random six-digit verification code is created and stored to database.
     $code = rand(999999, 111111);
-    //patient username input
     $insert_code = "UPDATE patient SET validate = $code WHERE icPatient = '$usersession'";
     $run_query =  mysqli_query($con, $insert_code);
+
+    //information of the patient is taken from the database.
     $rep = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$usersession'");
     $rov=mysqli_fetch_array($rep,MYSQLI_ASSOC);
 
+    //a mail is sent with the new verification code.
     $to = $rov['patientEmail'];
     $subject = "Reset Email";
     $body ="Hello " .$rov['patientFirstName']. ",\n\nYou have requested for a password change in your Wayne County Healthy Communities!\n\nThe verification code: $code";
     $header = "From: from@email";
+
+    //if-else statement to verify if the validation code is sent to the patient email.
     if (mail($to, $subject, $body, $header))
     { ?>
         <script>
@@ -39,22 +47,22 @@ if (isset($_POST['resent']))
     }
 }
 
+//if the user click the verify button the code entered is validated with what is on database.
 if (isset($_POST['verify']))
 {
-//gets all the input during a form submission
+//gets the information present for the username.
 $validate = mysqli_real_escape_string($con,$_POST['validate']);
-//patient username input
 $res = mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$usersession'");
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
-//check and get if the username is present in the database.
-//if statement check if password matches with what is present for the username.
+
+//if-else statement check if validation code matches with what is present in the database.
 
 if ($row['validate'] == $validate)
 {
 ?>
 
 <script type="text/javascript">
-alert('Username is valid, please continue to the next process.');
+alert('Validation code is valid, please continue to entering the new password.');
 </script>
 
 <?php
@@ -81,10 +89,10 @@ alert('Validation code is invalid. Please try again.');
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/button.css">
+    <link rel="stylesheet" href="assets/css/loginButton.css">
     <!--end of css design files-->
 </head>
-<!--The header of the registration page, which contains the logo of WCHC clinic. The link is directed to the
+<!--The header of the validation page, which contains the logo of WCHC clinic. The link is directed to the
 Main Page of the WCHC Clinic Website-->
 <header>
     <div class="hero-image">
@@ -94,15 +102,17 @@ Main Page of the WCHC Clinic Website-->
 <!--end of the header-->
  <body>
     <div class="bf">
-    <a href="patientLogin.php" class="patientback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
             <h3>Validate</h3>
+            <!--Verification code text-field-->
             <h4>Enter your verification code</h4>
             <input type="text" id="validate" name="validate" placeholder="Verification Code" required autofocus autocomplete><br><br>
-
+            <!--Verify button-->
             <button class="button3" name="verify" id="verify" type="submit">Verify</button><br><br>
         </form>
         <form class="form" role="form" method="POST" accept-charset="UTF-8" >
+            <!--Re-sent Verification code button-->
             <button class="button3" name="resent" id="resent" type="submit">Resend Code</button>
         </form>
     </div>

@@ -12,7 +12,6 @@ $res=mysqli_query($con,"SELECT * FROM staff WHERE icstaff = '$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
-//html needs to be redone
 ?>
 
 <!DOCTYPE html>
@@ -20,20 +19,26 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
-	  <link rel="stylesheet" href="../assets/css/navbar.css">
+	<link rel="stylesheet" href="table.css">
+	<link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
+    <!--end of css design files-->
 </head>
-
+<!--The header of the doctor dashboard page, which contains the logo of WCHC clinic. The link is directed to the
+the WCHC Clinic Staff Dashboard-->
 <header>
     <div class="hero-image">
         <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<!--end of the header-->
 <body>
+  <!--Top navigation with all links to the staff side-->
     <ul>
       <li><a class="active" href="doctordashboard.php">Dashboard</a></li>
       <li><a href="addresults.php">Add Result</a></li>
@@ -41,15 +46,15 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
       <li><a href="doctorprofile.php">Your Account</a></li>
       <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
+    <!--End of top navigation-->
   <section>
             <table>
                 <thead>
+                <!--Table heading-->
                 <th colspan="9"><h2>Appointment List</h2></th>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <!--<th>Contact No.</th>
-                        <th>Email</th>-->
                         <th>Date</th>
                         <th>Location</th>
                         <th>Car Type</th>
@@ -58,12 +63,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         <th>Status</th>
                         <th>Complete</th>
                     </tr>
+                <!--End of table heading-->
                 </thead>
-              
+                <tbody>
                 
                 
-               <!-- Below code is populating the appointment table -->
-               <!-- First code block is pulling the data and comparing the data -->
+               <!-- Below code is populating the bookings with the status of 'appointment booked' and 'checked-in' -->
                 <?php 
                 $res=mysqli_query($con,"SELECT a.*, b.*
                                         FROM patient a
@@ -72,14 +77,16 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                         WHERE b.status = 'checked-in'
                                         OR b.status = 'appointment booked'
                                         Order By date desc");
+                      //Error checking if the data couldn't be pulled
                       if (!$res) {
                         printf("Error: %s\n", mysqli_error($con));
                         exit();
                     }
+                //while loop to list out each row of the table with relevant details.
                 while ($appointment=mysqli_fetch_array($res)) {
                     
                 
-                  //code for the check in box    
+                  //code to block all the 'appointment booked' from being their status changed to sample collected.  
                   if ($appointment['status']=='checked-in') {
                         $status="danger";
                         $icon='remove';
@@ -91,12 +98,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         $checked = 'disabled';
                     }
                     // Displaying the data, 
-                    echo "<tbody>";
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
-                        /*echo "<td>" . $appointment['patientPhone'] . "</td>";
-                        echo "<td>" . $appointment['patientEmail'] . "</td>";*/
                         echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
                         echo "<td>" . $appointment['location'] . "</td>";
                         echo "<td>" . $appointment['make'] . "</td>";
@@ -105,10 +109,9 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                         echo "<td>" . $appointment['status'] . "</td>";
                         echo "<form method='POST'>";
                         echo "<td ><input type='checkbox' name='enable' id='enable' value='".$appointment['id']."' onclick='chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
-
+                    echo "</tr>";
                     
                 } 
-                    echo "</tr>";
                 echo "</tbody>";
             echo "</table>";
             echo "<div>";
@@ -118,9 +121,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
             echo "</div>";
             ?>
   </section>
-                    <!-- panel end -->
 
-<!-- takes all the inputs from the checkbox, send to checkdatabase.php -->
+<!-- takes all the inputs from the checkbox, send to checkdb.php -->
 <script type="text/javascript">
 function chkit(uid, chk) {
    chk = (chk==true ? "1" : "0");
@@ -135,45 +137,6 @@ function chkit(uid, chk) {
    req.send(null);
 }
 </script>
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
-        
-        
-        
-        
-        
-        
-      
-          </div>
-
-
-          <!-- This is sidebar code to make it pretty, needs to removed to bettwr fit the theme -->
-          <script>
-          let sidebar = document.querySelector(".sidebar");
-          let closeBtn = document.querySelector("#btn");
-          let searchBtn = document.querySelector(".bx-search");
-
-          closeBtn.addEventListener("click", ()=>{
-            sidebar.classList.toggle("open");
-            menuBtnChange();//calling the function(optional)
-          });
-
-          searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-            sidebar.classList.toggle("open");
-            menuBtnChange(); //calling the function(optional)
-          });
-
-          // following are the code to change sidebar button(optional)
-          function menuBtnChange() {
-          if(sidebar.classList.contains("open")){
-            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-          }else {
-            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-          }
-          }
-          </script>
 
     </body>
 </html>
