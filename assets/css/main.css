@@ -10,10 +10,9 @@ div.hero-image {
   background-repeat: no-repeat;
   background-size:contain;
   position: relative;
-
   left: 25%;
   margin: 5px;
- }
+}
 
   /* Produces Map Background */
   .welcome { /* use div class="welcome"*/
@@ -35,6 +34,7 @@ div.hero-image {
     background: linear-gradient(0deg, #d7daff 0%, #f0dcff 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    overflow-x: hidden;
   }
 
   /* Words/Characters/Fonts */
