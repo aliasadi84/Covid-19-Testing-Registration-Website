@@ -2,20 +2,14 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
-//if your not login it will take you to the admin login
+//if not logged into the staff side it will direct you to the index.html
 {
 header("Location: ../index.html");
 }
 $usersession = $_SESSION['doctorSession'];
+//Checking the admin ID making sure it's still there
 $res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
-
-
-
-
-
-
-
 
 
 if (isset($_POST['submit'])) {
@@ -34,33 +28,32 @@ $res=mysqli_query($con,"UPDATE doctor SET doctorFirstName='$doctorFirstName', do
 header( 'Location: doctorprofile.php' ) ;
 
 }
-
-
-
-
-
 ?>
 <!DOCTYPE html>
-<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
-<!-- NOTE FROM TIM: Please remove all references to outside source code like this -->
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
-	  <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
+    <!--end of css design files-->
 </head>
-
+<!--The header of the doctorprofile page, which contains the logo of WCHC clinic. The link is directed to the
+the WCHC Clinic Admin Dashboard-->
 <header>
     <div class="hero-image">
         <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<!--end of the header-->
 <body>
-<ul>
+    <!--Top navigation with all links to the staff side-->
+    <ul>
       <li><a href="doctordashboard.php">Dashboard</a></li>
       <li><a href="addresults.php">Add Result</a></li>
       <li><a href="patientlist.php">Patient List</a></li>
@@ -68,66 +61,42 @@ header( 'Location: doctorprofile.php' ) ;
       <li><a class="active" href="doctorprofile.php">Your Account</a></li>
       <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
+    <!--End of top navigation-->
     <form action="<?php $_PHP_SELF ?>" method="post" >
+        <!--Table to view staff details-->
         <table>
             <tbody>
             <th colspan="7"><h2><?php echo $userRow['doctorFirstName']; ?> <?php echo $userRow['doctorLastName'];?>  </h2></th>
+                <!--Displays First name-->
                 <tr>
                     <td>First Name</td>
                     <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"  /></td>
                 </tr>
+                <!--Displays Last name-->
                 <tr>
                     <td>Last Name</td>
                     <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"  /></td>
                 </tr>
-
+                <!--Displays Phone Number-->
                 <tr>
                     <td>Phone Number</td>
                     <td><input type="text" class="form-control" name="doctorPhone" value="<?php echo $userRow['doctorPhone']; ?>"  /></td>
                 </tr>
+                <!--Displays Email Address-->
                 <tr>
                     <td>E-mail Address</td>
                     <td><input type="text" class="form-control" name="doctorEmail" value="<?php echo $userRow['doctorEmail']; ?>"  /></td>
                 </tr>
+                <!--Submit Update Info button-->
                 <tr>
                     <td>
                         <input type="submit" name="submit" class="btn btn-info" value="Update Info"></td>
-                    </tr>
-                </tbody>
+                </tr>
+            </tbody>
                 
-            </table>
+        </table>
+        <!--End of table-->
+    </form>
 
-        </form>
-
-
-
-
-<!-- Sidebar code that needs to be removed -->
-    </section>
-        <script>
-          let sidebar = document.querySelector(".sidebar");
-          let closeBtn = document.querySelector("#btn");
-          let searchBtn = document.querySelector(".bx-search");
-
-          closeBtn.addEventListener("click", ()=>{
-            sidebar.classList.toggle("open");
-            menuBtnChange();
-          });
-
-          searchBtn.addEventListener("click", ()=>{ 
-            sidebar.classList.toggle("open");
-            menuBtnChange();
-          });
-
-          
-          function menuBtnChange() {
-          if(sidebar.classList.contains("open")){
-            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-          }else {
-            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");
-          }
-          }
-          </script>
-
-    </body>
+</body>
 </html>

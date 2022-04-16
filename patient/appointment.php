@@ -1,25 +1,38 @@
 <?php
+//connection to the database
 session_start();
 include_once '../assets/conn/dbconnect.php';
+
+if(!isset($_SESSION['patientSession']))
+{
+//if not logged into the staff side it will direct you to the index.html
+header("Location: ../index.html");
+}
+//patient username is stored into the variable '$session'
 $session= $_SESSION['patientSession'];
 
+//gets the date and time of the appointment
 if (isset($_GET['date']) && isset($_GET['timeslot'])) {
 	$date =$_GET['date'];
 	$timeslot = $_GET['timeslot'];
 }
-
-
 	
 //The survey answers into the database
 if (isset($_POST['appointment'])) {
+//gets the input of question 2
 $isolating = mysqli_real_escape_string($con,$_POST['isolating']);
+//gets the input of question 3
 $contact = mysqli_real_escape_string($con,$_POST['contact']);
+//gets the input of question 4
 $travel = mysqli_real_escape_string($con,$_POST['travel']);
+//gets the input of question 5
 $vaccinated = mysqli_real_escape_string($con,$_POST['vaccinated']);
+//status variable is set to 'appointment booked'
 $status = "appointment booked";
+//gets the input of question 1 taking into symptom checkbox inputs
 $checkbox1=$_POST['symp'];  
 $chk="";
- 
+ //below code to get the inputs for the checkbox
 foreach($checkbox1 as $chk1)  
    {  
       $chk .= $chk1.",";  
@@ -34,28 +47,9 @@ else
    {  
       echo'<script>alert("Failed To Insert")</script>';  
    }
+//all the data collected from the form is enterd into the database
 $query = "INSERT INTO bookings (  username , symp, isolating , contact , travel , vaccinated, status, date, timeslot)
 VALUES ( '$session', '$chk', '$isolating', '$contact', '$travel', '$vaccinated', '$status', '$date', '$timeslot') "; 
-
-
-
-
-//email needs to be connected, Salem part imma do that soon
-// $scheduleres=mysqli_query($con,$sql);
-
-// $receiver = "joseph.pezhathinal1@gmail.com";
-// $subject = "Email Test via PHP using Localhost";
-// $body = "Hi, there...This is a test email send from Localhost.";
-// $sender = "From:seniorprojectwchc@gmail.com";
-// if(mail($receiver, $subject, $body, $sender)){
-//     echo "Email sent successfully to $receiver";
-// }else{
-//     echo "Sorry, failed while sending mail!";
-// }
-
-// if ($scheduleres) {
-// 	$btn= "disable";
-// } 
 
 
 $result = mysqli_query($con,$query);
@@ -67,19 +61,18 @@ if( $result )
 alert('Appointment made successfully.');
 </script>
 <?php
+//if the appointment is made the page directs to appointment confimation page
 header("Location: appconfirmation.php?&date=$date&timeslot=$timeslot");
 }
 else
 {
-	echo mysqli_error($con);
 ?>
 <script type="text/javascript">
 alert('Appointment booking fail. Please try again.');
 </script>
 <?php
-header("Location: patient.php");
+header("Location: appo.php");
 }
-//dapat dari generator end
 }
 ?>
 <!DOCTYPE HTML>
@@ -88,19 +81,24 @@ header("Location: patient.php");
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+	<!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
 	<link rel="stylesheet" href="../assets/css/submit.css">
 	<link rel="stylesheet" href="../assets/css/table.css">
 	<link rel="stylesheet" href="../assets/css/input.css">
+	<!--end of css design files-->
 </head>
-
+<!--The header of the appointment page, which contains the logo of WCHC clinic. The link is directed to the
+the WCHC Clinic Staff Dashboard-->
 <header>
     <div class="hero-image">
         <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<!--end of the header-->
 
 <header>
 	<h1>Appointment</h1>
@@ -126,30 +124,30 @@ header("Location: patient.php");
 				the list below in the past 48 hours?</p>
 			
 			
-			<div class="uniAlign">
-			<input type="checkbox" class= "largerCheckbox" id="symptom1" name="symp[]" value="fever or chills">
-			<label for="symptom1"> Fever or chills</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom2" name="symp[]" value="cough">
-			<label for="symptom2"> Cough</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom3" name="symp[]" value="shortness of breath or difficulty breathing">
-			<label for="symptom3"> Shortness of breath or difficulty breathing</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom4" name="symp[]" value="fatigue">
-			<label for="symptom4"> Fatigue</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom5" name="symp[]" value="muscle or body aches">
-			<label for="symptom5"> Muscle or body aches</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom6" name="symp[]" value="headache">
-			<label for="symptom6"> Headache</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom7" name="symp[]" value="new loss of taste or smell">
-			<label for="symptom7"> New loss of taste or smell</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom8" name="symp[]" value="sore throat">
-			<label for="symptom8"> Sore throat</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom9" name="symp[]" value="congestion or runny nose">
-			<label for="symptom9"> Congestion or runny nose</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom10" name="symp[]" value="nausea or vomiting">
-			<label for="symptom10"> Nausea or vomiting</label><br>
-			<input type="checkbox" class= "largerCheckbox" id="symptom11" name="symp[]" value="diarrhea">
-			<label for="symptom11"> Diarrhea</label><br>
-			</div>
+				<div class="uniAlign">
+				<input type="checkbox" class= "largerCheckbox" id="symptom1" name="symp[]" value="fever or chills">
+				<label for="symptom1"> Fever or chills</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom2" name="symp[]" value="cough">
+				<label for="symptom2"> Cough</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom3" name="symp[]" value="shortness of breath or difficulty breathing">
+				<label for="symptom3"> Shortness of breath or difficulty breathing</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom4" name="symp[]" value="fatigue">
+				<label for="symptom4"> Fatigue</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom5" name="symp[]" value="muscle or body aches">
+				<label for="symptom5"> Muscle or body aches</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom6" name="symp[]" value="headache">
+				<label for="symptom6"> Headache</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom7" name="symp[]" value="new loss of taste or smell">
+				<label for="symptom7"> New loss of taste or smell</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom8" name="symp[]" value="sore throat">
+				<label for="symptom8"> Sore throat</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom9" name="symp[]" value="congestion or runny nose">
+				<label for="symptom9"> Congestion or runny nose</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom10" name="symp[]" value="nausea or vomiting">
+				<label for="symptom10"> Nausea or vomiting</label><br>
+				<input type="checkbox" class= "largerCheckbox" id="symptom11" name="symp[]" value="diarrhea">
+				<label for="symptom11"> Diarrhea</label><br>
+				</div>
 
 			<p>2. Are you isolating or quarantining because you
 			tested positive for COVID-19 or are worried
@@ -180,11 +178,11 @@ header("Location: patient.php");
 
 
 
-		<p>5. Are you vaccinated for COVID-19?</p>
-		  <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated" value="yes" required>
-		  <label for="yes_vaccinated"> Yes</label><br>
-		  <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated" value="no">
-		  <label for="no_vaccinated"> No</label><br><br>
+			<p>5. Are you vaccinated for COVID-19?</p>
+			  <input type="radio" class= "largerRadio" id="yes_vaccinated" name="vaccinated" value="yes" required>
+			  <label for="yes_vaccinated"> Yes</label><br>
+			  <input type="radio" class= "largerRadio" id="no_vaccinated" name="vaccinated" value="no">
+			  <label for="no_vaccinated"> No</label><br><br>
 
 		<!--Covid-19 questionaire ends-->
         <!--when the submit button is clicked the input will be sent to the php at the top to be entered to the database-->

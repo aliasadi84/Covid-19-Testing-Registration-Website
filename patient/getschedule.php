@@ -1,5 +1,6 @@
 <?php
 $mysqli = new mysqli('localhost', 'root', '', 'sourcecodester_dadb');
+//get's the chosen date from appo.php
 if(isset($_GET['q'])){
     $date = $_GET['q'];
     $stmt = $mysqli->prepare("select * from bookings where date = ? ");
@@ -10,6 +11,7 @@ if(isset($_GET['q'])){
     }
 }
 date_default_timezone_set('America/Detroit');
+//make sure the start time is 20 minute after the current time if the date is equal to todays date.
 $today = date('Y-m-d');
 if ($today == $date && date("H") >= 9 ){
 
@@ -27,6 +29,7 @@ else{
     $start = "09:00";
     $end = "15:00";
 }
+//populate timeslots
 function timeslots($duration, $cleanup, $start, $end){
     $start = new DateTime($start);
     $end = new DateTime($end);
@@ -55,40 +58,46 @@ function timeslots($duration, $cleanup, $start, $end){
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
+    <!--end of css design files-->
 </head>
 
   <body>
     <div class="container">
+        <!--new date is displayed-->
         <h1 class="text-center">Book for Date: <?php echo date('F d, Y', strtotime($date)); ?></h1><hr>
         <div class="row">
         <div class="col-md-12">
         <?php echo(isset($msg))?$msg:"";?>
         </div>
+        <!--Remove any timeslots that are already booked-->
         <?php $timeslots = timeslots($duration, $cleanup, $start, $end); 
             $res = "SELECT * FROM bookings WHERE date ='$date'";
             $result = $mysqli -> query($res);
             
             if (!$res) {
                 die("Error running $sql: " . mysqli_error());
-                }
-            
-            
-                while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
-                    $ti = $row['timeslot'];
-                    $y = count($timeslots) - 1;
-                    for ($x = 0; $x <= $y; $x++) {
+            }
+        
+        
+            while ($row = $result -> fetch_array(MYSQLI_ASSOC)) {
+                $ti = $row['timeslot'];
+                $y = count($timeslots) - 1;
+                for ($x = 0; $x <= $y; $x++) {
 
-                        if ($timeslots[$x] == $ti) {
-                            $y = $y - 1;
-                            unset($timeslots[$x]);
-                            $timeslots = array_values($timeslots);
-                        }
-                      }
-                }
-            foreach($timeslots as $ts){
+                    if ($timeslots[$x] == $ti) {
+                        $y = $y - 1;
+                        unset($timeslots[$x]);
+                        $timeslots = array_values($timeslots);
+                    }
+                    }
+            }
+        //display timeslots that are available
+        foreach($timeslots as $ts){
         ?>
         <div class="col-md-2">
             <div class="form-group">
@@ -104,17 +113,6 @@ function timeslots($duration, $cleanup, $start, $end){
         </div>
         
                 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script>
-    $(".book").click(function(){
-        var timeslot = $(this).attr('data-timeslot');
-        $("#slot").html(timeslot);
-        $("#timeslot").val(timeslot);
-        $("#myModal").modal("show");
-    });
-    </script>
 </body>
 
 </html>

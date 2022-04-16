@@ -1,6 +1,6 @@
 <?php
 include_once '../assets/conn/dbconnect.php';
-//inputting negetive result
+//inputting positive result
 //Get the variables username and checked.
 $userid = $_GET['userid'];
 $chkYesNo = $_GET['chkYesNo'];

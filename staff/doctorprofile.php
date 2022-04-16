@@ -2,7 +2,6 @@
 session_start();
 include_once '../assets/conn/dbconnect.php';
 
-
 //if not logged into the staff side it will direct you to the stafflogin.php
 if(!isset($_SESSION['staffSession']))
 {

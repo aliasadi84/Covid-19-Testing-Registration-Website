@@ -73,10 +73,6 @@ Main Page of the WCHC Clinic Website-->
     </script>
     <!--end of the password validation script-->
 
-    <!--header stating that it is a Registration page-->
-      
-    <!--end of the header-->
-
     <!--body of the page is beginning here-->
     <body>
     
@@ -95,42 +91,18 @@ Main Page of the WCHC Clinic Website-->
             <label for="staffFirstName">First Name</label><br>
             <input type="text" id="staffFirstName" name="staffFirstName" placeholder="First Name" required autofocus autocomplete><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
+ 
             <!--The text field to enter the Last Name-->
             <label for="staffLastName">Last Name</label><br>
+
             <!--This text field is set to be required, autofocused, and also autocomplete-->
             <input type="text" id="staffLastName" name="staffLastName" placeholder="Last Name" required autofocus autocomplete><br>
-            <!--This is a section to enter the gender of the patient, it uses radio button as a way to choose gender-->
-            <!-- <label>Gender Assigned at Birth</label><br> -->
-            <!--The selection to choose 'Male' for gender option-->
-
-            <div class="radioAlign">
-            <!-- <input type="radio" id="male" name="patientGender" value="male">
-            <label for="male">Male</label><br> -->
-            <!--The selection to choose 'Female' for gender option-->
-            <!-- <input type="radio" id="female" name="patientGender" value="female">
-            <label for="female">Female</label><br> -->
-            </div>
 
             <!--This is a section to enter the date of birth of the patient, it uses date type as a way to choose Date of Birth-->
             <label for="staffDOB">Date of Birth</label><br>
             <!--Choose the date for the date of birth-->
             <input type="date" id="staffDOB" name="staffDOB" placeholder="Date of Birth" required autofocus autocomplete><br>
- 
-
-
-           <!--This is a section to enter the race of the patient, it uses dropdown as a way to choose Race-->
-           <!-- <label for="race">Race/Ethnicity</label><br>
-            <select id = "race" name="race">
-              <option value="Race/Ethnicity"  selected disabled hidden>Race/Ethnicity</option>
-	          <option value="white">White</option>
-              <option value="arab">Arab</option>
-	          <option value="asian">Asian</option>
-              <option value="black">Black/African American</option>
-              <option value="indo">Indo-Aryan</option>
-              <option value="other">Other</option>
-            </select> -->
             
-
             <!--This is a section to enter the Email Address of the patient, it uses a text field as a way to enter the Email Address-->
             <label for="staffEmail">E-Mail Address</label><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->

@@ -9,7 +9,7 @@
         }
         
     
-        // collect value of input field
+        // collect value of input field for registering a user
         $patientFirstName = $_REQUEST['patientFirstName'];
         $patientLastName = $_REQUEST['patientLastName'];
         $patientGender = $_REQUEST['patientGender'];
@@ -20,15 +20,16 @@
         $password = $_REQUEST['password'];
         $patientPhone = $_REQUEST['patientPhone'];
         
-        $sql = "INSERT INTO patient VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender','$patientPhone', '$patientEmail', '$race', NULL)";
+        $sql = "INSERT INTO patient VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender','$patientPhone', '$patientEmail', '$race')";
             
         if(mysqli_query($con, $sql)){
             
                 header("location: regconfirmation.html"); 
 
             } else{
-                echo "ERROR: Hush! Sorry $sql. " 
-                    . mysqli_error($con);
+                ?> <script>alert('Registration was not processed. Please try again.');</script>
+
+                <?php
             }
         
         mysqli_close($con);

@@ -1,7 +1,15 @@
 <?php
 session_start();
+//connection to the database
 include_once '../assets/conn/dbconnect.php';
+if(!isset($_SESSION['patientSession']))
+{
+//if not logged into the patient side it will direct you to the index.html
+header("Location: ../index.html");
+}
+//patient username is stored into the variable '$session'
 $session=$_SESSION[ 'patientSession'];
+//gets all the appointments of the patient
 $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 	JOIN bookings b
 		On a.icPatient = b.username
@@ -15,6 +23,7 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--css design files-->
     <link rel="stylesheet" href="assets/css/main.css" />  
     <link rel="stylesheet" href="assets/css/nav.css">
     <link rel="stylesheet" href="assets/css/account.css">
@@ -23,26 +32,27 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
 	<link rel="stylesheet" href="../assets/css/table.css">
 	<link rel="stylesheet" href="../assets/css/input.css">
-</head>
-
-<header>
-    <div class="hero-image">
-        <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
-    </div>
-</header>
+    <!--end of css design files-->
+    </head>
+    <!--The header of the patient appointment list page, which contains the logo of WCHC clinic. The link is directed to the
+    the WCHC Clinic Staff Dashboard-->
+    <header>
+        <div class="hero-image">
+            <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
+        </div>
+    </header>
+    <!--end of the header-->
 
 <body>
   
   <div class="wrapper">
+    <!--displays appointment list-->
     <?php
-
-
-    //populates the appointments that you have booked
-	  // NOTE FROM TIM: I would recommend changing "Your Appointment List" to say "<user-first-name>'s Appointment List" like we have on the homepage
     echo "<h1>" . $userRow['patientFirstName'] . "'s Appointment List</h1>";
     echo "<table>";
     echo "<thead>";
@@ -57,17 +67,18 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
         FROM patient a
         JOIN bookings b
         On a.icPatient = b.username
-        WHERE b.username ='$session'");
+        WHERE b.username ='$session'
+        Order By date desc");
 
     if (!$res) {
     die("Error running $sql: " . mysqli_error());
     }
 
-
-    while ($userRow = mysqli_fetch_array($res)) {
     echo "<tbody>";
+    while ($userRow = mysqli_fetch_array($res)) {
+    if ($userRow['status'] != 'result entered'){
     echo "<tr>";
-    echo "<td>" . $userRow['date'] . "</td>";
+    echo "<td>" . date('F d, Y', strtotime($userRow['date'])) . "</td>";
     echo "<td>" . $userRow['timeslot'] . "</td>";
     echo "<td>" . $userRow['status'] . "</td>";
     if ($userRow['status'] == 'appointment booked'){
@@ -76,9 +87,8 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
     if ($userRow['status'] != 'appointment booked'){
         echo "<td><a>Not available</a></td>";
     }
-    }
-
     echo "</tr>";
+    }}
     echo "</tbody>";
     echo "</table>";
 

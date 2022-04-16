@@ -1,13 +1,17 @@
 <?php
 //main page in the patient side
 session_start();
+//connection to the database
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['patientSession']))
 {
-header("Location: ../index.php");
+//page directs to the  index.html if a patient session has not been started.
+header("Location: ../index.html");
 }
+//patient username is stored into the variable '$usersession'
 $usersession = $_SESSION['patientSession'];
 
+//getting patient information by the datbase where the patient table is found through the constriction in patient username -> "WHERE icPatient = '$usersession'".
 $res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$usersession'");
 
 if ($res===false) {
@@ -22,35 +26,46 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
+    <!--end of css design files-->
 </head>
-
+<!--The header of the patient dashboard page, which contains the logo of WCHC clinic. The link is directed to the
+the WCHC Clinic Patient Dashboard-->
 <header>
     <div class="hero-image">
         <a href="patient.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<!--end of the header-->
 
 <body>
 
     <?php
+                //Patient Dashboard heading with first name -> "$userRow['patientFirstName']"
                 echo "<h1>Welcome to the COVID-19 Testing Portal, " . $userRow['patientFirstName'] . "!</h1>";  
     ?>
     </div>
 
     <article>
         <section>
-	<a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>">
+            <!--Links to different function of the patient side-->
+            <!--Button to Account page -> profile.php-->
+	          <a href="profile.php?patientId=<?php echo $userRow['icPatient']; ?>">
                  <button class="button1" ><i class="fa-solid fa-user"></i><pre>Account</pre></button>
             </a><br>
+            <!--Button to Schedule page -> appo.php-->
             <a href="appo.php?patientId=<?php echo $userRow['icPatient']; ?>">
                 <button class="button1"><i class="fa-solid fa-calendar-days"></i><pre>Schedule</pre></button>
             </a><br>
+            <!--Button to Check-In page -> check_in.php-->
             <a href="check_in.php">
                 <button class="button1"><i class="fa-solid fa-car-side"></i><pre>Check-In</pre></button>
             </a><br>
+            <!--Button to Results page -> results.php-->
             <a href="results.php">
                    <button class="button1"><i class="fa-solid fa-virus-covid"></i><pre>Results</pre></button>
             </a>
@@ -61,6 +76,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
 </body>
+<!--Footer with clinic details-->
 <footer id="footer">
   <section class="hours">
     <br>

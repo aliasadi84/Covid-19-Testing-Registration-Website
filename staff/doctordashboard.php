@@ -97,7 +97,7 @@ the WCHC Clinic Staff Dashboard-->
                         $icon='ok';
                         $checked = 'disabled';
                     }
-                    // Displaying the data, 
+                    // Displaying the data.
                     echo "<tr>";
                         echo "<td>" . $appointment['patientFirstName'] . "</td>";
                         echo "<td>" . $appointment['patientLastName'] . "</td>";
@@ -115,9 +115,7 @@ the WCHC Clinic Staff Dashboard-->
                 echo "</tbody>";
             echo "</table>";
             echo "<div>";
-            echo "<div>";
             echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
-            echo "</div>";
             echo "</div>";
             ?>
   </section>

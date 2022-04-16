@@ -1,5 +1,6 @@
 <?php
 session_start();
+//logout session
 
 if(!isset($_SESSION['patientSession']))
 {

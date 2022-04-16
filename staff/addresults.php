@@ -23,8 +23,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
-	  <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
     <!--end of css design files-->
 </head>
@@ -124,9 +124,13 @@ the WCHC Clinic Staff Dashboard-->
 
 
 <script type="text/javascript">
-
-//takes all the inputs from the radio button, send to resultdb.php to enter the positive result.
-function chkit(uid, chk) {
+function chkit(uid, chk) 
+{
+  //takes all the inputs from the radio button, send to resultdb.php to enter the positive result.
+  var confirmAction = confirm("Are you sure you want to select a positive test reusult?");
+  if (confirmAction === true)
+  {
+   
    chk = (chk==true ? "1" : "0");
    var url = "resultdb.php?userid="+uid+"&chkYesNo="+chk;
    if(window.XMLHttpRequest) {
@@ -137,20 +141,37 @@ function chkit(uid, chk) {
    // Use get instead of post.
    req.open("GET", url, true);
    req.send(null);
+  }
+  else {
+    alert("No result has been selected");
+    
+  }
+  return confirmAction;
 }
 
-//takes all the inputs from the radio button, send to nresultdb.php to enter the negetive results.
-function chki(uid, chk) {
-   chk = (chk==true ? "1" : "0");
+//takes all the inputs from the checkbox, send to nresultdb.php to enter the negetive results
+function chki(uid, chk) 
+{   
+  var confirmAction = confirm("Are you sure you want to select a negative test reusult?");
+  if (confirmAction === true)
+   {
+    chk = (chk==true ? "1" : "0");
    var url = "nresultdb.php?userid="+uid+"&chkYesNo="+chk;
-   if(window.XMLHttpRequest) {
+   if(window.XMLHttpRequest) 
+   {
       req = new XMLHttpRequest();
-   } else if(window.ActiveXObject) {
+   } else if(window.ActiveXObject) 
+   {
       req = new ActiveXObject("Microsoft.XMLHTTP");
    }
    // Use get instead of post.
    req.open("GET", url, true);
    req.send(null);
+  }
+  else{
+    alert("No result has been selected");
+  }
+  return confirmAction;
 }
 </script>
 

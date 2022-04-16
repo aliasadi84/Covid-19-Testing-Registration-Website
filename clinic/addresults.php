@@ -3,37 +3,43 @@ session_start();
 include_once '../assets/conn/dbconnect.php';
 if(!isset($_SESSION['doctorSession']))
 {
-//if not logged into the admin side it will direct you to the index
+//if not logged into the admin side it will direct you to the index.html
 header("Location: ../index.html");
 }
 $usersession = $_SESSION['doctorSession'];
-//Checking the doctor ID making sure it's still there
+//Getting the admin detail.
 $res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
-//html needs to be redone
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+    <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
 	  <link rel="stylesheet" href="table.css">
 	  <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
+    <!--end of css design files-->
 </head>
-
+<!--The header of the add result page, which contains the logo of WCHC clinic. The link is directed to the
+the WCHC Clinic Admin Dashboard-->
 <header>
     <div class="hero-image">
         <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<!--end of the header-->
+
 <body>
-<ul>
+    <!--Top navigation with all links to the staff side-->
+    <ul>
       <li><a href="doctordashboard.php">Dashboard</a></li>
       <li><a class="active" href="addresults.php">Add Result</a></li>
       <li><a href="patientlist.php">Patient List</a></li>
@@ -41,88 +47,85 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
       <li><a href="doctorprofile.php">Your Account</a></li>
       <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
+    <!--End of top navigation--> 
   <section class="home-section">
             
-            <table>
-                <thead>
-                <th colspan="7"><h2>Add Results</h2></th>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <!--<th>Contact No.</th>
-                        <th>Email</th>-->
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Status</th>
-                        <th>Positive</th>
-                        <th>Negative</th>
-                    </tr>
-                </thead>
-              
-                
-                
-               <!-- Below code is populating the appointment table -->
-               <!-- First code block is pulling the data and comparing the data -->
-                <?php 
-                $res=mysqli_query($con,"SELECT a.*, b.*
-                                        FROM patient a
-                                        JOIN bookings b
-                                        On a.icPatient = b.username
-                                        WHERE b.status = 'sample collected'
-                                        OR b.status = 'result entered'
-                                        Order By date desc");
-                      if (!$res) {
-                        printf("Error: %s\n", mysqli_error($con));
-                        exit();
-                    }
-                    $cal= 0;
-                while ($appointment=mysqli_fetch_array($res)) {
-                    
-                
-                  //code for the check in box    
-                  if ($appointment['status']=='sample collected') {
-                        $status="danger";
-                        $icon='remove';
-                        $checked='';
+    <table>
+        <thead>
+        <th colspan="7"><h2>Add Results</h2></th>
+        <!--Table heading-->
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Positive</th>
+                <th>Negative</th>
+            </tr>
+        <!--End of table heading-->
+        </thead>
+      
+        
+        
+      <!-- Below code is populating the bookings with the status of 'result entered' and 'sample collected'-->
+        <?php 
+        $res=mysqli_query($con,"SELECT a.*, b.*
+                                FROM patient a
+                                JOIN bookings b
+                                On a.icPatient = b.username
+                                WHERE b.status = 'sample collected'
+                                OR b.status = 'result entered'
+                                Order By date desc");
+              //Error checking if the data couldn't be pulled
+              if (!$res) {
+                printf("Error: %s\n", mysqli_error($con));
+                exit();
+            }
+            $cal= 0; //variable set to differentiate the 'radio button name' to allow multiple result to be entered in a streatch.
+            //while loop to list out each row of the table with relevant details.
+            echo "<tbody>";
+        while ($appointment=mysqli_fetch_array($res)) {
+            
+        
+          //code to block all the 'result entered' from entering a new result.    
+          if ($appointment['status']=='sample collected') {
+                $status="danger";
+                $icon='remove';
+                $checked='';
 
-                    } else {
-                        $status="success";
-                        $icon='ok';
-                        $checked = 'disabled';
-                    }
-                    $cal= $cal+1;
-                    // Displaying the data, 
-                    echo "<tbody>";
-                    echo "<tr>";
-                        echo "<td>" . $appointment['patientFirstName'] . "</td>";
-                        echo "<td>" . $appointment['patientLastName'] . "</td>";
-                        /*echo "<td>" . $appointment['patientPhone'] . "</td>";
-                        echo "<td>" . $appointment['patientEmail'] . "</td>";*/
-                        echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
-                        echo "<td>" . $appointment['timeslot'] . "</td>";
-                        echo "<td>" . $appointment['status'] . "</td>";
-                        echo "<form method='POST'>";
-                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick=' return chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
-                        echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='return chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
-                
-                    
-                } 
-                    echo "</tr>";
-                echo "</tbody>";
-            echo "</table>";
-            echo "<div>";
-            echo "<div>";
-            echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
-            echo "</div>";
-            echo "</div>";
-            ?>
+            } else {
+                $status="success";
+                $icon='ok';
+                $checked = 'disabled';
+            }
+            $cal= $cal+1;//'$cal' is incremented evry time the while loop loops back.
+            // Displaying the data, 
+            echo "<tr>";
+                echo "<td>" . $appointment['patientFirstName'] . "</td>";
+                echo "<td>" . $appointment['patientLastName'] . "</td>";
+                echo "<td>" . date('m/d/Y', strtotime($appointment['date'])) . "</td>";
+                echo "<td>" . $appointment['timeslot'] . "</td>";
+                echo "<td>" . $appointment['status'] . "</td>";
+                echo "<form method='POST'>";
+                // '$cal' is used here to have a different name and id during every loop.
+                echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick=' return chkit(".$appointment['id'].",this.checked);' ".$checked."></td>";
+                echo "<td ><input type='radio' name='enable".$cal."' id='enable".$cal."' value='".$appointment['id']."' onclick='return chki(".$appointment['id'].",this.checked);' ".$checked."></td>";
+            echo "</tr>";
+            
+        } 
+    echo "</tbody>";
+    echo "</table>";
+    echo "<div>";
+    echo "<button class='button2' type='submit' value='Submit' name='submit'>Update</button>";
+    echo "</div>";
+    ?>
   </section>
-                    <!-- panel end -->
 
-<!-- takes all the inputs from the checkbox, send to resultdb.php to enter the positive result -->
 <script type="text/javascript">
 function chkit(uid, chk) 
 {
+  //takes all the inputs from the radio button, send to resultdb.php to enter the positive result.
   var confirmAction = confirm("Are you sure you want to select a positive test reusult?");
   if (confirmAction === true)
   {
@@ -144,9 +147,6 @@ function chkit(uid, chk)
   }
   return confirmAction;
 }
-
-
-
 
 //takes all the inputs from the checkbox, send to nresultdb.php to enter the negetive results
 function chki(uid, chk) 
@@ -173,45 +173,7 @@ function chki(uid, chk)
   return confirmAction;
 }
 </script>
-                </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
-        
-        
-        
-        
-        
-        
-      
-          </div>
-
-
-          <!-- This is sidebar code to make it pretty, needs to removed to bettwr fit the theme -->
-          <script>
-          let sidebar = document.querySelector(".sidebar");
-          let closeBtn = document.querySelector("#btn");
-          let searchBtn = document.querySelector(".bx-search");
-
-          closeBtn.addEventListener("click", ()=>{
-            sidebar.classList.toggle("open");
-            menuBtnChange();//calling the function(optional)
-          });
-
-          searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-            sidebar.classList.toggle("open");
-            menuBtnChange(); //calling the function(optional)
-          });
-
-          // following are the code to change sidebar button(optional)
-          function menuBtnChange() {
-          if(sidebar.classList.contains("open")){
-            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-          }else {
-            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-          }
-          }
-          </script>
+                
 
     </body>
 </html>

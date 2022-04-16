@@ -4,6 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 
 if(!isset($_SESSION['doctorSession']))
 {
+//if not logged into the admin side it will direct you to the index.html
 header("Location: ../index.html");
 }
 if (isset($_GET['username'])) {
@@ -36,19 +37,25 @@ header( 'Location: staff.php' ) ;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<!--css design files-->
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
+	<!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
-	  <link rel="stylesheet" href="../assets/css/navbar.css">
+	<link rel="stylesheet" href="table.css">
+	<link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
+	<!--end of css design files-->
 </head>
-
+<!--The header of the edit staff page, which contains the logo of WCHC clinic. The link is directed to the
+the WCHC Clinic Admin Dashboard-->
 <header>
     <div class="hero-image">
         <a href="doctordashboard.php"><img src="../assets/pp.png" width="50%"></a>
     </div>
 </header>
+<!--end of the header-->
+
 <title>Account</title>
 
 <body>
@@ -79,8 +86,6 @@ header( 'Location: staff.php' ) ;
 						<td>Date of Birth</td>
 						<td><input type="date" class="form-control" name="staffDOB" value="<?php echo $userRow['staffDOB']; ?>"  /></td>
 					</tr>
-					<!-- radio button -->
-					
 					<tr>
 						<td>Phone Number</td>
 						<td><input type="text" class="form-control" name="staffPhone" value="<?php echo $userRow['staffPhone']; ?>"  /></td>
@@ -92,9 +97,6 @@ header( 'Location: staff.php' ) ;
 				</table>
 			<button class="button3" name="submit" type="submit">Update</button>
 			</form>
-				
-				
-	
 	
     </section>
 	

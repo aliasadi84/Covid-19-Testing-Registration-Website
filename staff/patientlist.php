@@ -26,8 +26,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
-	  <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
     <!--end of css design files-->
 </head>
@@ -52,6 +52,7 @@ the WCHC Clinic Staff Dashboard-->
 <section class="home-section">
     <table>
         <thead>
+        <!--Table heading-->
         <th colspan="8"><h2>Patient List</h2></th>
             <tr>
                 <th>Username</th>

@@ -1,4 +1,5 @@
 <?php
+//log-out session
 session_start();
 
 if(!isset($_SESSION['doctorSession']))
