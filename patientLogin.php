@@ -26,34 +26,36 @@ if ($row['password'] == $password)
 {
 $_SESSION['patientSession'] = $row['icPatient'];
 //error checking
-?>
+echo '<script>';
+echo 'alert("Login Successful");';
+echo 'window.location.href = "patient/patient.php";';
+echo '</script>';
 
-<script type="text/javascript">
-alert('Login Success');
-</script>
+die();
+} 
+else 
+{
+    echo '<script>';
+    echo 'alert("Incorrect password");';
+    echo 'window.location.href = "patientLogin.php";';
+    echo '</script>';
 
-<?php
-header("Location: patient/patient.php");
-} else {
-?>
-
-<script>
-alert('Password is incorrect. Please try again.');
-</script>
-
-<?php
-}
-}else {
-?>
-
-<script>
-alert('Username does not exist. Please try again or register for an account.');
-</script>
-
-<?php
+    die();
 }
 }
+else 
+{
+    echo '<script>';
+    echo 'alert("Username does not exist. Please try again or register for an account.");';
+    echo 'window.location.href = "patientLogin.php";';
+    echo '</script>';
+
+    die();
+}
+}
 ?>
+
+
 
 <!DOCTYPE HTML>
 
