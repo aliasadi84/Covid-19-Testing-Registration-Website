@@ -12,8 +12,8 @@ header("Location: ../index.html");
 $userid = $_GET['username'];
 //delete from the bookings table by getting the appointment id -> "WHERE id='$userid'"
 $update = mysqli_query($con,"DELETE FROM bookings WHERE id='$userid'");
-//the page re-directs to patientapplist.php
-header("Location: patientapplist.php");
+//the page re-directs to cancelconf.html
+header("Location: cancelconf.html");
 
 
 
