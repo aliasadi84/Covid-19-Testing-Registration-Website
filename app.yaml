@@ -1,0 +1,21 @@
+runtime: php72
+runtime_config:
+  document_root: .
+
+handlers:
+- url: /(.+\.(gif|png|jpg|css|js|map|PNG))$
+  static_files: \1
+  upload: .+\.(gif|png|jpg|css|js|map|PNG)$
+
+- url: /.*
+  script: auto
+
+entrypoint: serve handler.php
+env_variables:
+  APP_LOG: errorlog
+  GOOGLE_STORAGE_BUCKET: wchc-covid-testing-portal
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: wchc-database
+  CLOUDSQL_PASSWORD: waynecountyhealthy2022
+  CLOUDSQL_DSN: turnkey-timer-289112:us-central1:wchc-database
+  
