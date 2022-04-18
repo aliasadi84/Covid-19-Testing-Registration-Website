@@ -214,7 +214,7 @@ Main Page of the WCHC Clinic Website-->
         <option value="28">28</option>
         <option value="29">29</option>
         <option value="30">30</option>
-        <option value="30">31</option>
+        <option value="31">31</option>
       </select><br>
       
         <h2>Car</h2>
