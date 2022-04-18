@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: Mar 29, 2022 at 04:39 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Host: 127.0.0.1
+-- Generation Time: Apr 18, 2022 at 06:40 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sourcecodester_dadb`
+-- Database: `wchc_database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `AdminId` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `AdminFirstName` varchar(50) NOT NULL,
+  `AdminLastName` varchar(50) NOT NULL,
+  `AdminPhone` varchar(15) NOT NULL,
+  `AdminEmail` varchar(20) NOT NULL,
+  `AdminDOB` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`AdminId`, `password`, `AdminFirstName`, `AdminLastName`, `AdminPhone`, `AdminEmail`, `AdminDOB`) VALUES
+('wchcadmin', 'Wchcadmin!', 'First', 'Last', '3135550000', 'email@gmail.com', '1970-01-01');
 
 -- --------------------------------------------------------
 
@@ -45,34 +68,6 @@ CREATE TABLE `bookings` (
   `result` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doctor`
---
-
-CREATE TABLE `doctor` (
-  `icDoctor` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `doctorId` int(3) NOT NULL,
-  `doctorFirstName` varchar(50) NOT NULL,
-  `doctorLastName` varchar(50) NOT NULL,
-  `doctorAddress` varchar(100) NOT NULL,
-  `doctorPhone` varchar(15) NOT NULL,
-  `doctorEmail` varchar(20) NOT NULL,
-  `doctorDOB` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `doctor`
---
-
-INSERT INTO `doctor` (`icDoctor`, `password`, `doctorId`, `doctorFirstName`, `doctorLastName`, `doctorAddress`, `doctorPhone`, `doctorEmail`, `doctorDOB`) VALUES
-('wchcadmin', 'waynecountyhealthy2022', 1, 'First', 'Last', '', '3135550000', 'email@gmail.com', '1970-01-01');
--- First Name, Last Name, Phone Number, and Email Address can be changed manually by the admin user on the admin profile page --
--- Other info can be changed by hard-manipulating the database --
-
 -- --------------------------------------------------------
 
 --
@@ -90,8 +85,6 @@ CREATE TABLE `patient` (
   `patientEmail` varchar(100) NOT NULL,
   `race` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
 
 -- --------------------------------------------------------
 
@@ -111,16 +104,20 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`AdminId`);
+
+--
 -- Indexes for table `bookings`
 --
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `doctor`
---
-ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`icDoctor`);
 
 --
 -- Indexes for table `patient`
@@ -148,5 +145,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-

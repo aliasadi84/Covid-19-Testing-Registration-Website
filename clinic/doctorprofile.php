@@ -1,27 +1,26 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['doctorSession']))
+if(!isset($_SESSION['AdminSession']))
 //if not logged into the staff side it will direct you to the index.html
 {
 header("Location: ../index.html");
 }
-$usersession = $_SESSION['doctorSession'];
+$usersession = $_SESSION['AdminSession'];
 //Checking the admin ID making sure it's still there
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM admin WHERE AdminId= '$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 
 if (isset($_POST['submit'])) {
 //functionality to allow the admin to change first name, last name, phone, or email and save it into the database
-$doctorFirstName = $_POST['doctorFirstName'];
-$doctorLastName = $_POST['doctorLastName'];
-$doctorPhone = $_POST['doctorPhone'];
-$doctorEmail = $_POST['doctorEmail'];
-$doctorAddress = $_POST['doctorAddress'];
+$AdminFirstName = $_POST['AdminFirstName'];
+$AdminLastName = $_POST['AdminLastName'];
+$AdminPhone = $_POST['AdminPhone'];
+$AdminEmail = $_POST['AdminEmail'];
 
 //doing the changing
-$res=mysqli_query($con,"UPDATE doctor SET doctorFirstName='$doctorFirstName', doctorLastName='$doctorLastName', doctorPhone='$doctorPhone', doctorEmail='$doctorEmail', doctorAddress='$doctorAddress' WHERE doctorId=".$_SESSION['doctorSession']);
+$res=mysqli_query($con,"UPDATE admin SET AdminFirstName='$AdminFirstName', AdminLastName='$AdminLastName', AdminPhone='$AdminPhone', AdminEmail='$AdminEmail' WHERE AdminId= '$usersession'");
 // $userRow=mysqli_fetch_array($res);
 
 //After update takes you to this page
@@ -66,26 +65,26 @@ the WCHC Clinic Admin Dashboard-->
         <!--Table to view staff details-->
         <table>
             <tbody>
-            <th colspan="7"><h2><?php echo $userRow['doctorFirstName']; ?> <?php echo $userRow['doctorLastName'];?>  </h2></th>
+            <th colspan="7"><h2><?php echo $userRow['AdminFirstName']; ?> <?php echo $userRow['AdminLastName'];?>  </h2></th>
                 <!--Displays First name-->
                 <tr>
                     <td>First Name</td>
-                    <td><input type="text" class="form-control" name="doctorFirstName" value="<?php echo $userRow['doctorFirstName']; ?>"  /></td>
+                    <td><input type="text" class="form-control" name="AdminFirstName" value="<?php echo $userRow['AdminFirstName']; ?>"  /></td>
                 </tr>
                 <!--Displays Last name-->
                 <tr>
                     <td>Last Name</td>
-                    <td><input type="text" class="form-control" name="doctorLastName" value="<?php echo $userRow['doctorLastName']; ?>"  /></td>
+                    <td><input type="text" class="form-control" name="AdminLastName" value="<?php echo $userRow['AdminLastName']; ?>"  /></td>
                 </tr>
                 <!--Displays Phone Number-->
                 <tr>
                     <td>Phone Number</td>
-                    <td><input type="text" class="form-control" name="doctorPhone" value="<?php echo $userRow['doctorPhone']; ?>"  /></td>
+                    <td><input type="text" class="form-control" name="AdminPhone" value="<?php echo $userRow['AdminPhone']; ?>"  /></td>
                 </tr>
                 <!--Displays Email Address-->
                 <tr>
                     <td>E-mail Address</td>
-                    <td><input type="text" class="form-control" name="doctorEmail" value="<?php echo $userRow['doctorEmail']; ?>"  /></td>
+                    <td><input type="text" class="form-control" name="AdminEmail" value="<?php echo $userRow['AdminEmail']; ?>"  /></td>
                 </tr>
                 <!--Submit Update Info button-->
                 <tr>

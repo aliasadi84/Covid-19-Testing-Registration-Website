@@ -13,7 +13,7 @@ if (mysqli_connect_errno())
 /* NOTE FROM LAST TEAM: When connecting to Google Cloud, comment out lines 16-21 */
 /* and uncomment 2-11 */
 
-$con = mysqli_connect("localhost","root","","sourcecodester_dadb");
+$con = mysqli_connect("localhost","root","","wchc_database");
 // Check connection
 if (mysqli_connect_errno())
   {

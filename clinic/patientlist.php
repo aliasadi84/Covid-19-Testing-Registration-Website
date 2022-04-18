@@ -1,14 +1,14 @@
 <?php
 session_start();
 include_once '../assets/conn/dbconnect.php';
-if(!isset($_SESSION['doctorSession']))
+if(!isset($_SESSION['AdminSession']))
 {
 //if not logged into the admin side it will direct you to the index.html
 header("Location: ../index.html");
 }
-$usersession = $_SESSION['doctorSession'];
+$usersession = $_SESSION['AdminSession'];
 //Checking the admin ID making sure it's still there
-$res=mysqli_query($con,"SELECT * FROM doctor WHERE doctorId=".$usersession);
+$res=mysqli_query($con,"SELECT * FROM admin WHERE AdminId= '$usersession'");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
 ?>

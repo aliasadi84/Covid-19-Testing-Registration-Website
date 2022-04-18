@@ -5,22 +5,22 @@ include_once 'assets/conn/dbconnect.php';
 session_start();
 //If a clinic session is already running without loging out from the clinic session,
 //it will be directed toward doctordashboard.php(file) in clinic(folder).
-if (isset($_SESSION['doctorSession']) != "") {
+if (isset($_SESSION['AdminSession']) != "") {
 header("Location: clinic/doctordashboard.php");
 }
 if (isset($_POST['login']))
 {
-$doctorId = mysqli_real_escape_string($con,$_POST['doctorId']);
+$AdminId = mysqli_real_escape_string($con,$_POST['AdminId']);
 //clinc staff username
 $password  = mysqli_real_escape_string($con,$_POST['password']);
 //clinic staff password
-$res = mysqli_query($con,"SELECT * FROM doctor WHERE doctorId = '$doctorId'");
+$res = mysqli_query($con,"SELECT * FROM admin WHERE AdminId = '$AdminId'");
 //check and get if the username is present in the database.
 $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 //if statement check if password matches with what is present for the username.
 if ($row['password'] == $password)
 {
-$_SESSION['doctorSession'] = $row['doctorId'];
+$_SESSION['AdminSession'] = $row['AdminId'];
 //error checking
 echo '<script>';
 echo 'window.location.href = "clinic/doctordashboard.php";';
@@ -61,7 +61,7 @@ echo '</script>';
         <form class="form" role="form" method="POST" accept-charset="UTF-8">
             <!--The text field to enter the Username-->
             <label>Username</label><br>
-            <input name="doctorId" type="text" placeholder="Doctor ID" required><br>
+            <input name="AdminId" type="text" placeholder="Doctor ID" required><br>
             <!--The text field to enter the Password-->
             <label>Password</label><br>
             <input name="password" type="password" placeholder="Password" required><br><br>
