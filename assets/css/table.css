@@ -10,7 +10,8 @@ table {
   
     border-style: solid;
     border-color:black;
-    background-color: white;  
+    background-color: white;
+    font-size: 20px;
   }
 
   /* responsive below */
@@ -20,7 +21,8 @@ table {
   
     /* makes table behave not like a table */
     table, thead, tbody, th, td, tr { 
-      display: block; 
+      display: block;
+      font-size: 20px; 
     }
     
     /* Hide table headers */
@@ -28,9 +30,10 @@ table {
       position: absolute;
       top: -9999px;
       left: -9999px;
+      font-size: 20px;
     }
     
-    tr { border: 1px solid #ccc; }
+    tr { border: 1px solid #ccc; font-size: 15px; }
     
     td { 
       /* a "row" */
@@ -38,6 +41,7 @@ table {
       /*border-bottom: 1px solid #eee;*/ 
       position: relative;
       padding-left: 0%; 
+      font-size: 20px;
     }
     
     td:before { 
@@ -49,5 +53,6 @@ table {
       padding-right: 10px 20px; 
       white-space: nowrap;
       text-align: center;
+      font-size: 20px;
     }
 }
