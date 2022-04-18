@@ -77,6 +77,9 @@ switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/patient/cancelappt.php':
         require 'patient/cancelappt.php';
         break;
+    case '/patient/cancelconf.html':
+        require 'patient/cancelconf.html';
+        break;
     case '/patient/checkinconf.html':
         require 'patient/checkinconf.html';
         break;
