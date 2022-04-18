@@ -24,18 +24,18 @@ if ($row['password'] == $password && $row['active'] == 'active')
 $_SESSION['staffSession'] = $row['icstaff'];
 //error checking
 //A new staff session is created with the staff username and is directed to doctordashboard.php 
-?>
-<script type="text/javascript">
-alert('Login Success');
-</script>
-<?php
-header("Location: staff/doctordashboard.php");
+//error checking
+//If a clinic session is already running without loging out from the clinic session,
+//it will be directed toward doctordashboard.php(file) in clinic(folder).
+echo '<script>';
+echo 'alert("Login Successful");';
+echo 'window.location.href = "staff/doctordashboard.php";';
+echo '</script>';
 } else {
-?>
-<script type="text/javascript">
-    alert("Account deactivated or information entered is incorrect. Please try again.");
-</script>
-<?php
+echo '<script>';
+echo 'alert("Account deactivated or information entered is incorrect. Please try again.");';
+echo 'window.location.href = "stafflogin.php";';
+echo '</script>';
 }
 }
 ?>
