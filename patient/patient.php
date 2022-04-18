@@ -71,6 +71,9 @@ the WCHC Clinic Patient Dashboard-->
             </a>
             <br>
             <br>
+		 <!--logout button-->
+		<a href="patientlogout.php?logout=<?php echo $userRow['icPatient']; ?>"><button class="button2">Log Out</button></a><br><br>
+          
         </section>
       </article>
 
