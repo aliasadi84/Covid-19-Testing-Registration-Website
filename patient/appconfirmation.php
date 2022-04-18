@@ -28,7 +28,7 @@ $to = $userRow['patientEmail'];
 //the 'subject:' content of the email
 $subject = "Appointment Confirmation Email";
 //the 'body:' content of the email. ".$userRow['patientFirstName']." states the first name of the patient, "$date" states date of the appointment, & "$timeslot" states the start - end time of the appointment.
-$body ="Hello " .$userRow['patientFirstName']. ",\n\nThank you for scheduling an appointment with Wayne County Healthy Communities! You have scheduled an appointment for $date from $timeslot.\n\nWe look forward to seeing you!";
+$body ="Hello " .$userRow['patientFirstName']. ",\n\nThank you for scheduling an appointment with Wayne County Healthy Communities! You have scheduled an appointment for $date from $timeslot.\n\nWe look forward to seeing you! If you are minor please bring a parent or guardian with you";
 $header = "From: from@email";
 mail($to, $subject, $body, $header)
 ?>  
