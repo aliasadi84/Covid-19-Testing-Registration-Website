@@ -61,7 +61,7 @@ echo '</script>';
         <form class="form" role="form" method="POST" accept-charset="UTF-8">
             <!--The text field to enter the Username-->
             <label>Username</label><br>
-            <input name="AdminId" type="text" placeholder="Doctor ID" required><br>
+            <input name="AdminId" type="text" placeholder="Admin Username" required><br>
             <!--The text field to enter the Password-->
             <label>Password</label><br>
             <input name="password" type="password" placeholder="Password" required><br><br>
