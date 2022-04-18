@@ -176,6 +176,7 @@ Main Page of the WCHC Clinic Website-->
   
       <label for="location">Location:</label>
       <select name="location" id="location">
+        <option default selected disabled>Select Parking Space</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
