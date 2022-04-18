@@ -19,7 +19,17 @@
         $icPatient = $_REQUEST['icPatient'];
         $password = $_REQUEST['password'];
         $patientPhone = $_REQUEST['patientPhone'];
-        
+        $check = mysqli_query($con,"SELECT * FROM patient WHERE icPatient='$icPatient'");
+        $row = mysqli_num_rows($check);
+        if ($row > 0) {
+            echo '<script>';
+            echo 'alert("The username already exist! Please try another...");';
+            echo 'window.location.href = "reg.html";';
+            echo '</script>';
+
+            die();
+        }
+        else{
         $sql = "INSERT INTO patient VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender','$patientPhone', '$patientEmail', '$race', '0')";
             
         if(mysqli_query($con, $sql)){
@@ -32,6 +42,7 @@
                 <?php
                 printf("Error: %s\n", mysqli_error($con));
             }
+        }
         
         mysqli_close($con);
 ?>

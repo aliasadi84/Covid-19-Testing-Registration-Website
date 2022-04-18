@@ -20,11 +20,10 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 
 //if there are no results found in the database for the patient an alert maessage is given to notify them that -> "alert('There are no results available at the present');"
 	if (!$res) {
-		?>
-        <script>
-            alert('There are no results available at the present');
-        </script>
-        <?php
+        echo '<script>';
+        echo 'alert("No data have been stored for results");';
+        echo 'window.location.href = "addresults.php";';
+        echo '</script>';
 	}
 	$userRow=mysqli_fetch_array($res);
 ?>

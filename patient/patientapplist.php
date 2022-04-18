@@ -13,7 +13,7 @@ $session=$_SESSION[ 'patientSession'];
 $res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$session'");
         if (!$res) {
             echo '<script>';
-            echo 'alert("No data have been stored for entering results");';
+            echo 'alert("No data have been stored for appointments");';
             echo 'window.location.href = "addresults.php";';
             echo '</script>';
         

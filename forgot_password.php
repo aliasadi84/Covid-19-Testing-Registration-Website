@@ -39,9 +39,11 @@ header("Location: validation.php");
 
 <script>
 alert('Username is invalid. Please try again.');
+window.location.href = "forgot_password.php";
 </script>
 
 <?php
+die();
 }
 }
 ?>

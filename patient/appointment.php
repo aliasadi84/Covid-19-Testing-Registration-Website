@@ -23,7 +23,7 @@ $check = mysqli_query($con,"SELECT * FROM bookings WHERE date ='$date' AND times
 $row = mysqli_num_rows($check);
 if ($row > 0) {
 	echo '<script>';
-	echo 'alert("No data have been stored for appointment");';
+	echo 'alert("A appointment exists for the given timeslot, please choose another timeslot!");';
 	echo 'window.location.href = "appo.php";';
 	echo '</script>';
 

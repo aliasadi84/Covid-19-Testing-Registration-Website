@@ -7,7 +7,7 @@ if(!isset($_SESSION['AdminSession']))
 header("Location: ../index.html");
 }
 $usersession = $_SESSION['AdminSession'];
-//Checking the doctor ID making sure it's still there
+//Checking the admin ID making sure it's still there
 $res=mysqli_query($con,"SELECT * FROM admin WHERE AdminId= '$usersession' ");
 $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
 

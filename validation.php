@@ -42,8 +42,10 @@ if (isset($_POST['resent']))
     { ?>
         <script>
         alert('Validation code could not be sent. Please try again.');
+        window.location.href = "validation.php";
         </script>
     <?php
+    die();
     }
 }
 
@@ -72,9 +74,11 @@ header("Location: change_password.php");
 
 <script>
 alert('Validation code is invalid. Please try again.');
+window.location.href = "validation.php";
 </script>
 
 <?php
+die();
 }
 }
 ?>
@@ -90,6 +94,7 @@ alert('Validation code is invalid. Please try again.');
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/loginButton.css">
+    <link rel="stylesheet" href="assets/css/button.css">
     <!--end of css design files-->
 </head>
 <!--The header of the validation page, which contains the logo of WCHC clinic. The link is directed to the

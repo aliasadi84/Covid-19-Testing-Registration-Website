@@ -38,9 +38,11 @@ header("Location: confirmchangepass.html");
 
 <script>
 alert('Password cannot be renewed. Please try again!');
+window.location.href = "change_password.php";
 </script>
 
 <?php
+die();
 }
 }
 ?>
