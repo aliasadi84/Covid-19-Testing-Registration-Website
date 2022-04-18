@@ -80,55 +80,56 @@ Main Page of the WCHC Clinic Website-->
     <body>
     
     <!--A div class 'bf' is created to contain all the rest of the page content in a box-->
-    <div class="bf">
-
+    <div class="regbf">
+    <a href="staff.php" class="regback"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <!--The form for registration starts here, upon submission of this form it is first incorperates
         the password validation and then is send to connection.php to register the account-->
         <form method="post" action="staffconnection.php" autocomplete="on">
             
             <!--A heading reminding the user that all fields are required-->
-            Create Staff Account<br><br>
-            All Fields are Required<br>
+            <h1>Create Staff Account</h1>
+            <h4>All Fields are Required<br></h4>
 
             <!--The text field to enter the First Name-->
-            <label for="staffFirstName">First Name</label><br>
+            <label class="regEntry" for="staffFirstName">First Name</label><br>
             <input type="text" id="staffFirstName" name="staffFirstName" placeholder="First Name" required autofocus autocomplete><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
  
             <!--The text field to enter the Last Name-->
-            <label for="staffLastName">Last Name</label><br>
+            <label class="regEntry" for="staffLastName">Last Name</label><br>
 
             <!--This text field is set to be required, autofocused, and also autocomplete-->
             <input type="text" id="staffLastName" name="staffLastName" placeholder="Last Name" required autofocus autocomplete><br>
 
             <!--This is a section to enter the date of birth of the patient, it uses date type as a way to choose Date of Birth-->
-            <label for="staffDOB">Date of Birth</label><br>
+            <label class="regEntry" for="staffDOB">Date of Birth</label><br>
             <!--Choose the date for the date of birth-->
             <input type="date" id="staffDOB" name="staffDOB" placeholder="Date of Birth" required autofocus autocomplete><br>
             
             <!--This is a section to enter the Email Address of the patient, it uses a text field as a way to enter the Email Address-->
-            <label for="staffEmail">E-Mail Address</label><br>
+            <label class="regEntry" for="staffEmail">E-Mail Address</label><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
             <input type="email" id="staffEmail" name="staffEmail" placeholder="E-Mail Address" required autofocus autocomplete><br>
             
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
             
-            <label for="staffPhone">Phone Number</label><br>
+            <label class="regEntry" for="staffPhone">Phone Number</label><br>
             <!--This text field is set to be required, autofocused, and also autocomplete-->
             <input type="tel" id="staffPhone" name="staffPhone" placeholder="Phone Number" required autofocus autocomplete>
             
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
-            <br><label for="icstaff">Username</label><br>
+            <br><label class="regEntry" for="icstaff">Username</label><br>
             <!--This text field is set to be required and autofocused-->
             <input type="icstaff" id="icstaff" name="icstaff" placeholder="Username" required autofocus><br>
 
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
-            <label for="password">Password</label><br>
+            <label class="regEntry" for="password">Password</label><br>
+            <div class="smallText">Requires at least 8 characters, including at least one uppercase, one number, and one special character</div>
             <!--This text field is set to be required-->
             <input type="password" id="password" name="password" placeholder="Password" required><br>
 
             <!--This is a section to enter the Phone Number of the patient, it uses a text field as a way to enter the Phone Number-->
-            <label for="password">Confirm Password</label><br>
+            <label class="regEntry" for="password">Confirm Password</label><br>
             <!--This text field is set to be required-->
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter Password" required><br>
         
@@ -136,7 +137,7 @@ Main Page of the WCHC Clinic Website-->
         <br>
           <!--By clicking the submit button, it will check if all required fields have an input and also is sent
               to validate if the password meets requirement and also if the password and confirm password is a match.-->
-          <button class="button3" type="submit" onclick="validatePassword()">Register</button>
+          <button class="button4" type="submit" onclick="validatePassword()">Create Staff</button>
           
     </form>
     <!--The form ends here-->
