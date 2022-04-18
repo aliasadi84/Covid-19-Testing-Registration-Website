@@ -42,11 +42,7 @@ header( 'Location: staff.php' ) ;
 	<!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	<link rel="stylesheet" href="table.css">
-	<link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/input.css">
-	<!--end of css design files-->
-    <link rel="stylesheet" href="../assets/css/table.css">
+    <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
