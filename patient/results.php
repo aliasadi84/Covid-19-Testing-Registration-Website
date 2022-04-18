@@ -56,6 +56,19 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 
 <body>
     <?php
+    $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
+	JOIN bookings b
+	On a.icPatient = b.username
+	WHERE b.username ='$session'
+    Order By date desc");
+
+//if there are no results found in the database for the patient an alert maessage is given to notify them that -> "alert('There are no results available at the present');"
+	if (!$res) {
+        echo '<script>';
+        echo 'alert("No data have been stored for results");';
+        echo 'window.location.href = "addresults.php";';
+        echo '</script>';
+	}
     //populates the results that are entered
     echo "<table>";
     echo "<thead>";
@@ -83,3 +96,4 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
 
 </body>
 </html>
+
