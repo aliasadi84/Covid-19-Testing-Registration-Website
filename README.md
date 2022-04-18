@@ -1,8 +1,4 @@
-# Wayne County Healthy Clinics Covid Test Site 
+# Wayne County Healthy Communities COVID-19 Testing Portal
 
-Previously known as scaryTest
-
-a website using the Google Cloud Platform which allows users to create an appointment, utilize online check-in, and view their COVID test results.
-Languages in use: HTML5, CSS3, JavaScript, ...
-
-continue later
+An online application that allows users to create an appointment, utilize online check-in, and view their COVID test results.
+Languages in use: HTML5, CSS3, PHP 7.4, JavaScript
