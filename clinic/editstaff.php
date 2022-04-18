@@ -46,6 +46,9 @@ header( 'Location: staff.php' ) ;
 	<link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 	<!--end of css design files-->
+    <link rel="stylesheet" href="../assets/css/table.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/input.css">
 </head>
 <!--The header of the edit staff page, which contains the logo of WCHC clinic. The link is directed to the
 the WCHC Clinic Admin Dashboard-->

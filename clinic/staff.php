@@ -20,6 +20,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
     <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="../assets/css/table.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
