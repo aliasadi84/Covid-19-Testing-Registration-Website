@@ -23,7 +23,7 @@
         $row = mysqli_num_rows($check);
         if ($row > 0) {
             echo '<script>';
-            echo 'alert("The username is already in use. Please try another.");';
+            echo 'alert("This username is already in use. Please try another.");';
             echo 'window.location.href = "reg.html";';
             echo '</script>';
 
