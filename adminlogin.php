@@ -22,18 +22,14 @@ if ($row['password'] == $password)
 {
 $_SESSION['doctorSession'] = $row['doctorId'];
 //error checking
-?>
-<script type="text/javascript">
-alert('Login Success');
-</script>
-<?php
-header("Location: clinic/doctordashboard.php");
+echo '<script>';
+echo 'window.location.href = "clinic/doctordashboard.php";';
+echo '</script>';
 } else {
-?>
-<script type="text/javascript">
-    alert("Username or password incorrect. Please try again.");
-</script>
-<?php
+    echo '<script>';
+    echo 'alert("Username or password incorrect. Please try again.");';
+    echo 'window.location.href = "adminlogin.php";';
+    echo '</script>';
 }
 }
 ?>
