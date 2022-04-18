@@ -27,7 +27,6 @@ if ($row['password'] == $password)
 $_SESSION['patientSession'] = $row['icPatient'];
 //error checking
 echo '<script>';
-echo 'alert("Login Successful");';
 echo 'window.location.href = "patient/patient.php";';
 echo '</script>';
 
