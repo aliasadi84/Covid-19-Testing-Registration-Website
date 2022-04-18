@@ -20,7 +20,7 @@
         $password = $_REQUEST['password'];
         $patientPhone = $_REQUEST['patientPhone'];
         
-        $sql = "INSERT INTO patient VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender','$patientPhone', '$patientEmail', '$race')";
+        $sql = "INSERT INTO patient VALUES ('$icPatient', '$password', '$patientFirstName', '$patientLastName', '$patientDOB', '$patientGender','$patientPhone', '$patientEmail', '$race', '0')";
             
         if(mysqli_query($con, $sql)){
             
@@ -30,6 +30,7 @@
                 ?> <script>alert('Registration was not processed. Please try again.');</script>
 
                 <?php
+                printf("Error: %s\n", mysqli_error($con));
             }
         
         mysqli_close($con);

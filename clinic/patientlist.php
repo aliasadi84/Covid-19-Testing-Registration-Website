@@ -46,10 +46,12 @@ the WCHC Clinic Admin Dashboard-->
     </ul>
     <!--End of top navigation-->
   <section class="home-section">
-    <table>
+    
+  <input type="text" name="search" id="search" placeholder="Search..." />
+    <h4 style="text-align:center;">Patient List</h4> 
+    <table class="table-sortable">
         <thead>
         <!--Table heading-->
-        <th colspan="8"><h2>Patient List</h2></th>
             <tr>
                 <th>Username</th>
                 <th>First Name</th>
@@ -66,7 +68,14 @@ the WCHC Clinic Admin Dashboard-->
         <!-- Below code is populating the patient details-->
         <?php 
         $result=mysqli_query($con,"SELECT * FROM patient");
+        if (!$result) {
+            echo '<script>';
+            echo 'alert("No data have been stored for patient");';
+            echo 'window.location.href = "patientlist.php";';
+            echo '</script>';
         
+            die();
+        }
         echo "<tbody>";
         //displaying the data from the datebase     
         while ($patientRow=mysqli_fetch_array($result)) {
@@ -90,6 +99,19 @@ the WCHC Clinic Admin Dashboard-->
     ?>
 
     </section>
-
+    <script>
+        const searchInput = document.getElementById("search");
+        const rows = document.querySelectorAll("tbody tr");
+        console.log(rows);
+        searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+    </script>
+    <script src="tablesort.js"></script>
 </body>
 </html>

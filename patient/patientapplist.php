@@ -10,13 +10,15 @@ header("Location: ../index.html");
 //patient username is stored into the variable '$session'
 $session=$_SESSION[ 'patientSession'];
 //gets all the appointments of the patient
-$res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
-	JOIN bookings b
-		On a.icPatient = b.username
-	WHERE b.username ='$session'");
-	if (!$res) {
-		die( "Error running $sql: " . mysqli_error());
-	}
+$res=mysqli_query($con,"SELECT * FROM patient WHERE icPatient = '$session'");
+        if (!$res) {
+            echo '<script>';
+            echo 'alert("No data have been stored for entering results");';
+            echo 'window.location.href = "addresults.php";';
+            echo '</script>';
+        
+            die();
+        }
 	$userRow=mysqli_fetch_array($res);
 ?>
 <!DOCTYPE html>
@@ -71,7 +73,12 @@ $res=mysqli_query($con, "SELECT a.*, b.* FROM patient a
         Order By date desc");
 
     if (!$res) {
-    die("Error running $sql: " . mysqli_error());
+        echo '<script>';
+        echo 'alert("No data have been stored for appointment");';
+        echo 'window.location.href = "patientapplist.php";';
+        echo '</script>';
+
+        die();
     }
 
     echo "<tbody>";

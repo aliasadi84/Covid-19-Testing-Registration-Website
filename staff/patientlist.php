@@ -26,7 +26,7 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-    <link rel="stylesheet" href="../assets/css/table.css">
+    <link rel="stylesheet" href="table.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
     <!--end of css design files-->
@@ -50,10 +50,11 @@ the WCHC Clinic Staff Dashboard-->
     </ul>
     <!--End of top navigation-->
 <section class="home-section">
-    <table>
+    <input type="text" name="search" id="search" placeholder="Search..." />         
+        <h4 style="text-align:center;">Patient List</h4> 
+        <table class="table-sortable">
         <thead>
         <!--Table heading-->
-        <th colspan="8"><h2>Patient List</h2></th>
             <tr>
                 <th>Username</th>
                 <th>First Name</th>
@@ -70,7 +71,14 @@ the WCHC Clinic Staff Dashboard-->
         <!-- Below code is populating the patient details-->
         <?php 
         $result=mysqli_query($con,"SELECT * FROM patient");
-
+        if (!$result) {
+            echo '<script>';
+            echo 'alert("No data have been stored for patients");';
+            echo 'window.location.href = "patientlist.php";';
+            echo '</script>';
+        
+            die();
+        }
         //displaying the data from the datebase     
         while ($patientRow=mysqli_fetch_array($result)) {
             echo "<tr>";
@@ -88,6 +96,32 @@ the WCHC Clinic Staff Dashboard-->
         echo "</table>";
     ?>
 </section>
-
+<script>
+        const searchInput = document.getElementById("search");
+        const rows = document.querySelectorAll("tbody tr");
+        console.log(rows);
+        searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+</script>
+<script>
+        const searchInput = document.getElementById("search");
+        const rows = document.querySelectorAll("tbody tr");
+        console.log(rows);
+        searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+</script>
+<script src="tablesort.js"></script>
 </body>
 </html>

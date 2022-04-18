@@ -80,7 +80,12 @@ function timeslots($duration, $cleanup, $start, $end){
             $result = $mysqli -> query($res);
             
             if (!$res) {
-                die("Error running $sql: " . mysqli_error());
+                echo '<script>';
+                echo 'alert("No data have been stored for set date");';
+                echo 'window.location.href = "getschedule.php";';
+                echo '</script>';
+        
+                die();
             }
         
         

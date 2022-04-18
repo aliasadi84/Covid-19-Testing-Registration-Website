@@ -19,8 +19,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <script src="https://kit.fontawesome.com/95c473646d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-	  <link rel="stylesheet" href="table.css">
-	  <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
 </head>
 
@@ -39,10 +39,12 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
       <li style="float:right"><a href="logout.php?logout">Log Out</a></li>
     </ul>
   <section class="home-section">
+      
+    <input type="text" name="search" id="search" placeholder="Search..." />
+    <h4 style="text-align:center;">Staff List</h4> 
     <br><a href='staffCreation.php'><button class="button2">Add Staff (+)</button></a>
-    <table>
+    <table class="table-sortable">
         <thead>
-        <th colspan="8"><h2>Staff List</h2></th>
             <tr>
                 <th>Username</th>
                 <th>First Name</th>
@@ -58,7 +60,14 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
         
         <?php 
         $result=mysqli_query($con,"SELECT * FROM staff");
-        
+        if (!$result) {
+          echo '<script>';
+          echo 'alert("No data have been stored for staff");';
+          echo 'window.location.href = "patientlist.php";';
+          echo '</script>';
+      
+          die();
+      }
         echo "<tbody>";
         //displaying staff data from the datebase     
         while ($patientRow=mysqli_fetch_array($result)) {
@@ -78,6 +87,19 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     ?>
 
     </section>
-
+    <script>
+        const searchInput = document.getElementById("search");
+        const rows = document.querySelectorAll("tbody tr");
+        console.log(rows);
+        searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+    </script>
+    <script src="tablesort.js"></script>
     </body>
 </html>

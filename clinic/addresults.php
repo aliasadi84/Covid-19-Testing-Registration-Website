@@ -23,8 +23,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-    <link rel="stylesheet" href="../assets/css/table.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
+	  <link rel="stylesheet" href="table.css">
+	  <link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
     <!--end of css design files-->
 </head>
@@ -49,10 +49,10 @@ the WCHC Clinic Admin Dashboard-->
     </ul>
     <!--End of top navigation--> 
   <section class="home-section">
-            
-    <table>
+  <input type="text" name="search" id="search" placeholder="Search..." />         
+  <h4 style="text-align:center;">Add Results</h4> 
+  <table class="table-sortable">
         <thead>
-        <th colspan="7"><h2>Add Results</h2></th>
         <!--Table heading-->
             <tr>
                 <th>First Name</th>
@@ -79,8 +79,12 @@ the WCHC Clinic Admin Dashboard-->
                                 Order By date desc");
               //Error checking if the data couldn't be pulled
               if (!$res) {
-                printf("Error: %s\n", mysqli_error($con));
-                exit();
+                echo '<script>';
+                echo 'alert("No data have been stored for entering results");';
+                echo 'window.location.href = "addresults.php";';
+                echo '</script>';
+            
+                die();
             }
             $cal= 0; //variable set to differentiate the 'radio button name' to allow multiple result to be entered in a streatch.
             //while loop to list out each row of the table with relevant details.
@@ -173,7 +177,20 @@ function chki(uid, chk)
   return confirmAction;
 }
 </script>
-                
+<script>
+        const searchInput = document.getElementById("search");
+        const rows = document.querySelectorAll("tbody tr");
+        console.log(rows);
+        searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+</script>
+<script src="tablesort.js"></script>               
 
     </body>
 </html>

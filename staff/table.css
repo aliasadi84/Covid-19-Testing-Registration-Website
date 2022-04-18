@@ -1,40 +1,40 @@
 /* table css */
 
 table {
-    padding: 60px;
-    border-radius: 10px 10px;
-    margin: 25px 25px 25px;
-    width: 95%;
-   
-    text-align: center;
-  
-    border-style: solid;
-    border-color:black;
-    background-color: white;
-    font-size: 20px;
-  }
-  
-  .table-sortable th {
-    cursor: pointer;
-  }
-  
-  .table-sortable .th-sort-asc::after {
-    content: "\25b4";
-  }
-  
-  .table-sortable .th-sort-desc::after {
-    content: "\25be";
-  }
-  
-  .table-sortable .th-sort-asc::after,
-  .table-sortable .th-sort-desc::after {
-    margin-left: 5px;
-  }
-  
-  .table-sortable .th-sort-asc,
-  .table-sortable .th-sort-desc {
-    background: rgba(0, 0, 0, 0.1);
-  }
+  padding: 60px;
+  border-radius: 10px 10px;
+  margin: 25px 25px 25px;
+  width: 95%;
+ 
+  text-align: center;
+
+  border-style: solid;
+  border-color:black;
+  background-color: white;
+  font-size: 20px;
+}
+
+.table-sortable th {
+  cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after {
+  content: "\25b4";
+}
+
+.table-sortable .th-sort-desc::after {
+  content: "\25be";
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+  margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc,
+.table-sortable .th-sort-desc {
+  background: rgba(0, 0, 0, 0.1);
+}
 
   /* responsive below */
   @media 

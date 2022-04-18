@@ -16,9 +16,19 @@ if (isset($_GET['date']) && isset($_GET['timeslot'])) {
 	$date =$_GET['date'];
 	$timeslot = $_GET['timeslot'];
 }
-	
-//The survey answers into the database
+
 if (isset($_POST['appointment'])) {
+//to check if the appointment slot is already taken
+$check = mysqli_query($con,"SELECT * FROM bookings WHERE date ='$date' AND timeslot='$timeslot'");
+$row = mysqli_num_rows($check);
+if ($row > 0) {
+	echo '<script>';
+	echo 'alert("No data have been stored for appointment");';
+	echo 'window.location.href = "appo.php";';
+	echo '</script>';
+
+	die();
+} else {
 //gets the input of question 2
 $isolating = mysqli_real_escape_string($con,$_POST['isolating']);
 //gets the input of question 3
@@ -72,6 +82,7 @@ alert('Appointment booking fail. Please try again.');
 </script>
 <?php
 header("Location: appo.php");
+}
 }
 }
 ?>

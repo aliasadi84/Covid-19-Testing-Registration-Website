@@ -24,8 +24,8 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
     <!--fontawesome link that connects fontawesome with the page-->
     <link rel="stylesheet" href="../assets/css/main.css">
     <link rel="stylesheet" href="../assets/css/button.css">
-    <link rel="stylesheet" href="../assets/css/table.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
+	<link rel="stylesheet" href="table.css">
+	<link rel="stylesheet" href="../assets/css/navbar.css">
     <link rel="stylesheet" href="../assets/css/input.css">
     <!--end of css design files-->
 </head>
@@ -48,10 +48,11 @@ the WCHC Clinic Staff Dashboard-->
     </ul>
     <!--End of top navigation-->
   <section>
-            <table>
+        <input type="text" name="search" id="search" placeholder="Search..." />         
+        <h4 style="text-align:center;">Appointment List</h4> 
+        <table class="table-sortable">
                 <thead>
                 <!--Table heading-->
-                <th colspan="9"><h2>Appointment List</h2></th>
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -79,8 +80,12 @@ the WCHC Clinic Staff Dashboard-->
                                         Order By date desc");
                       //Error checking if the data couldn't be pulled
                       if (!$res) {
-                        printf("Error: %s\n", mysqli_error($con));
-                        exit();
+                        echo '<script>';
+                        echo 'alert("No data have been stored for appointments");';
+                        echo 'window.location.href = "doctordashboard.php";';
+                        echo '</script>';
+                    
+                        die();
                     }
                 //while loop to list out each row of the table with relevant details.
                 while ($appointment=mysqli_fetch_array($res)) {
@@ -135,6 +140,19 @@ function chkit(uid, chk) {
    req.send(null);
 }
 </script>
-
+    <script>
+        const searchInput = document.getElementById("search");
+        const rows = document.querySelectorAll("tbody tr");
+        console.log(rows);
+        searchInput.addEventListener("keyup", function (event) {
+        const q = event.target.value.toLowerCase();
+        rows.forEach((row) => {
+          row.querySelector("td").textContent.toLowerCase().startsWith(q)
+            ? (row.style.display = "table-row")
+            : (row.style.display = "none");
+        });
+      });
+    </script>
+    <script src="tablesort.js"></script>
     </body>
 </html>
