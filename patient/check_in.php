@@ -75,14 +75,6 @@
 <!DOCTYPE HTML>
 <html> 
 <head>  
-<script type="text/javascript">
-function CheckColors(val){
- var element=document.getElementById('carcolor');
- if(val=='Other')
-   element.style.display='block';
- else  
-   element.style.display='none';
-}
 
 </script> 
 </head>
@@ -220,16 +212,22 @@ Main Page of the WCHC Clinic Website-->
         <h2>Car</h2>
         <input type="text" id="car" name="make" placeholder="Car Type"><br><br>
 
-        <select name="color" id="color" onchange='CheckColors(this.value);'>
+        <select name="color" id="color">
         <option default selected disabled>Car Color</option>
         <option value="White">White</option>
         <option value="Black">Black</option>
         <option value="Silver">Silver</option>
+        <option value="Gray">Gray</option>
         <option value="Red">Red</option>
         <option value="Blue">Blue</option>
-        <option value="Other">Other (Type Below)</option>
+        <option value="Green">Green</option>
+        <option value="Yellow">Yellow</option>
+        <option value="Gold">Gold</option>
+        <option value="Brown">Brown</option>
+        <option value="Purple">Purple</option>
+        <option value="Pink">Pink</option>
+        <option value="Orange">Orange</option>
         </select>
-        <input type="text" name="color" id="carcolor" style='display:none;'/><br><br>
 
       <h2>License Plate</h2>
       <input type="text" id="plate" name="plate" placeholder="Plate Number">
