@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost', 'root', '', 'sourcecodester_dadb');
+$mysqli = new mysqli('localhost', 'root', '', 'wchc_database');
 //get's the chosen date from appo.php
 if(isset($_GET['q'])){
     $date = $_GET['q'];
