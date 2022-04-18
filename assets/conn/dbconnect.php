@@ -10,7 +10,7 @@ if (mysqli_connect_errno())
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }*/
 
-/* NOTE FROM LAST TEAM: When connecting to Google Cloud, comment out lines 15-20 */
+/* NOTE FROM LAST TEAM: When connecting to Google Cloud, comment out lines 16-21 */
 /* and uncomment 2-11 */
 
 $con = mysqli_connect("localhost","root","","sourcecodester_dadb");
