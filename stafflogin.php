@@ -28,7 +28,6 @@ $_SESSION['staffSession'] = $row['icstaff'];
 //If a clinic session is already running without loging out from the clinic session,
 //it will be directed toward doctordashboard.php(file) in clinic(folder).
 echo '<script>';
-echo 'alert("Login Successful");';
 echo 'window.location.href = "staff/doctordashboard.php";';
 echo '</script>';
 } else {
